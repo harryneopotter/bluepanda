@@ -283,15 +283,7 @@ const HomePage = ({ navigate }) => (
     <ParticleBackground />
 
     {/* Top Bar */}
-    <div className="absolute top-0 left-0 w-full p-6 flex justify-between items-center z-20">
-      <div className="flex items-center gap-2">
-        <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-        <span className="font-mono text-cyan-400 font-bold tracking-widest glow-text-cyan">BLUE PANDA</span>
-      </div>
-      <div className="font-mono text-xs text-cyan-400/60 hidden md:block">
-        SYSTEM STATUS: QUANTUM CORE STABLE :: 98% EFFICIENCY
-      </div>
-    </div>
+
 
     {/* Hero Section */}
     <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
@@ -375,7 +367,7 @@ const ServicesPage = () => (
                 <CheckCircle2 className="w-4 h-4" /> Zero-Downtime Deployments
               </li>
             </ul>
-            <Button variant="outline">Explore Cloud Plans</Button>
+            <Button variant="outline" onClick={() => window.open('https://qpanda.cloud', '_blank')}>Explore Cloud Plans</Button>
           </div>
         </div>
 
@@ -403,7 +395,7 @@ const ServicesPage = () => (
                 <CheckCircle2 className="w-4 h-4" /> Enterprise Data Privacy
               </li>
             </ul>
-            <Button variant="outline">Consult AI Architect</Button>
+            <Button variant="outline" onClick={() => window.open('https://bluepanda.cloud', '_blank')}>Consult AI Architect</Button>
           </div>
         </div>
 
@@ -431,7 +423,7 @@ const ServicesPage = () => (
                 <CheckCircle2 className="w-4 h-4" /> 24/7 Human Support
               </li>
             </ul>
-            <Button variant="outline">View Hosting Packages</Button>
+            <Button variant="outline" onClick={() => window.open('https://qpanda.online', '_blank')}>View Hosting Packages</Button>
           </div>
         </div>
       </div>
@@ -765,6 +757,67 @@ const InfrastructureArchitect = () => {
   );
 };
 
+
+// --- Footer Component ---
+const Footer = () => (
+  <footer className="relative z-10 border-t border-white/10 bg-black/50 backdrop-blur-sm mt-20 pb-32">
+    <div className="max-w-7xl mx-auto px-6 py-12">
+      <div className="grid md:grid-cols-3 gap-8 mb-8">
+        {/* Brand */}
+        <div>
+          <div className="flex items-center gap-2 mb-4">
+            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
+            <span className="font-mono text-cyan-400 font-bold tracking-widest">BLUE PANDA</span>
+          </div>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Building tomorrow's infrastructure today. From traditional hosting to quantum-powered AI systems.
+          </p>
+        </div>
+
+        {/* Quick Links */}
+        <div>
+          <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Quick Links</h3>
+          <ul className="space-y-2 text-sm">
+            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Services</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Projects</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">About Us</a></li>
+            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">AI Architect</a></li>
+          </ul>
+        </div>
+
+        {/* Contact */}
+        <div>
+          <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Contact</h3>
+          <ul className="space-y-2 text-sm">
+            <li>
+              <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                sachin@bluepanda.in
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/harryneopotter/bluepanda" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
+                <Github className="w-4 h-4" />
+                GitHub
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      {/* Bottom Bar */}
+      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-gray-500 text-sm font-mono">
+          © 2013-2025 Blue Panda Hosting and Designs. All rights reserved.
+        </p>
+        <p className="text-gray-500 text-sm font-mono">
+          Operating since 2013 • Quantum-Ready Infrastructure
+        </p>
+      </div>
+    </div>
+  </footer>
+);
+
 // --- System Menu ---
 const SystemMenu = ({ isOpen, onClose, navigate }) => {
   if (!isOpen) return null;
@@ -884,8 +937,11 @@ const App = () => {
         {page === 'projects' && <ProjectsPage onOpenCaseStudy={setSelectedCaseStudy} />}
       </main>
 
+      {/* Footer */}
+      <Footer />
+
       {/* Floating Bottom Navigation */}
-      <BottomNav currentPage={page} setPage={navigate} />
+      {/* <BottomNav currentPage={page} setPage={navigate} />*/}
     </div>
   );
 };
