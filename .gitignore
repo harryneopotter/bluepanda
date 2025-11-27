@@ -31,3 +31,10 @@ docs/
 # Environment and config
 .env
 .env.*
+
+# Scratch/test/old files
+*.txt
+*CLEAN*
+*ENHANCED*
+*NEW_*
+.monorepo.*
