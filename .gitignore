@@ -23,10 +23,12 @@ dist-ssr
 *.sln
 *.sw?
 
+
 # Documentation (except README.md)
 docs/
 *.md
 !README.md
+!current-issues.txt
 
 # Environment and config
 .env
@@ -38,3 +40,5 @@ docs/
 *ENHANCED*
 *NEW_*
 .monorepo.*
+
+!PROGRESS.md

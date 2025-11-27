@@ -119,16 +119,16 @@ const Button = ({ children, variant = 'primary', className = "", ...props }) => 
 const TestimonialsSection = () => {
   const testimonials = [
     {
-      text: "Blue Panda's AI infrastructure predicted a critical load spike 2 hours before it happened, auto-scaling our resources and saving our Black Friday launch.",
-      author: "Sarah J.",
-      role: "CTO, FinTech Corp",
-      company: "FinTech Corp"
+      text: "I run my own software company and have used hosting services of so many branded vendors..but no one has ever delivered the services like bluepanda..thanks bluepanda and team for your support.",
+      author: "Yogesh",
+      role: "CEO",
+      company: "Syndicated Technologies"
     },
     {
-      text: "The transition to their quantum-ready cloud was seamless. We've seen a 40% reduction in latency and our dev team loves the autonomous agents.",
-      author: "Marcus R.",
-      role: "Lead DevOps",
-      company: "DataFlow Systems"
+      text: "Amazing hosting company. Far better than GoDaddy and any other hosting company I have used in 25 years of being on the internet and having my own websites. So much so, that I have recommended their services to many of my current clients.",
+      author: "Darren",
+      role: "Web Professional/Musician",
+      company: "SEO for Music"
     }
   ];
 
@@ -333,7 +333,7 @@ const HomePage = ({ navigate }) => (
 );
 
 const ServicesPage = () => (
-  <div className="relative min-h-screen bg-void text-white pt-24 pb-32 px-4">
+  <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
     <ParticleBackground />
     <Section className="relative z-10">
       <h1 className="text-5xl font-bold mb-12 text-center">
@@ -435,7 +435,7 @@ const ServicesPage = () => (
 );
 
 const ProjectsPage = ({ onOpenCaseStudy }) => (
-  <div className="relative min-h-screen bg-void text-white pt-24 pb-32 px-4">
+  <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
     <ParticleBackground />
     <Section className="relative z-10">
       <div className="flex items-center gap-4 mb-12">
@@ -466,7 +466,7 @@ const ProjectsPage = ({ onOpenCaseStudy }) => (
 );
 
 const AboutPage = () => (
-  <div className="relative min-h-screen bg-void text-white pt-24 pb-32 px-4">
+  <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
     <ParticleBackground />
     <Section className="relative z-10 max-w-4xl">
       <h1 className="text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
@@ -665,7 +665,7 @@ const InfrastructureArchitect = () => {
   };
 
   return (
-    <div className="relative min-h-screen bg-void text-white pt-24 pb-32 px-4">
+    <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
       <ParticleBackground />
       <Section className="relative z-10">
         <FadeIn>
@@ -759,7 +759,7 @@ const InfrastructureArchitect = () => {
 
 
 // --- Footer Component ---
-const Footer = () => (
+const Footer = ({ navigate }) => (
   <footer className="relative z-10 border-t border-white/10 bg-black/50 backdrop-blur-sm mt-20 pb-32">
     <div className="max-w-7xl mx-auto px-6 py-12">
       <div className="grid md:grid-cols-3 gap-8 mb-8">
@@ -778,10 +778,10 @@ const Footer = () => (
         <div>
           <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Quick Links</h3>
           <ul className="space-y-2 text-sm">
-            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Services</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">Projects</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">About Us</a></li>
-            <li><a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">AI Architect</a></li>
+            <li><button onClick={() => navigate('services')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Services</button></li>
+            <li><button onClick={() => navigate('projects')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Projects</button></li>
+            <li><button onClick={() => navigate('about')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">About Us</button></li>
+            <li><button onClick={() => navigate('architect')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">AI Architect</button></li>
           </ul>
         </div>
 
@@ -795,12 +795,7 @@ const Footer = () => (
                 sachin@bluepanda.in
               </a>
             </li>
-            <li>
-              <a href="https://github.com/harryneopotter/bluepanda" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
-                <Github className="w-4 h-4" />
-                GitHub
-              </a>
-            </li>
+
           </ul>
         </div>
       </div>
@@ -938,7 +933,7 @@ const App = () => {
       </main>
 
       {/* Footer */}
-      <Footer />
+      <Footer navigate={navigate} />
 
       {/* Floating Bottom Navigation */}
       {/* <BottomNav currentPage={page} setPage={navigate} />*/}
