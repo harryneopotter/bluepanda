@@ -1,5 +1,5 @@
 export const caseStudiesData = {
-    "Teacher Website": {
+    "Telegram CMS Website": {
         challenge: "Created for a creative educator with limited mobility who needed a phone-first way to manage website content without relying on traditional CMS or laptop workflows. Updating PDFs, images, and student work through conventional CMS would be difficult due to physical constraints.",
         solution: "Built a Telegram bot interface for content management - upload showcase content and receive contact leads using just a phone. Uses GCP serverless infrastructure for stability and fits within Always Free tier.",
         techStack: ["Next.js 14 (App Router)", "Telegram bot via GCP Cloud Functions", "Cloud Storage for PDFs & thumbnails", "Firestore for content metadata", "Cloud Run (frontend + bot backend)", "Telegram alerts for monitoring"],
