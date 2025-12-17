@@ -407,7 +407,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
     const projects = [
         {
             status: "live",
-            title: "Teacher Website",
+            title: "Telegram CMS Website",
             description: "A mobile-first content management system built for a creative educator. Solves accessibility constraints by allowing full website management via a Telegram bot. Features auto-processing of PDFs and images, real-time lead generation, and runs on GCP free tier.",
             tags: ["Next.js 14", "Telegram Bot", "GCP Cloud Functions", "Firestore"],
             type: "web",
