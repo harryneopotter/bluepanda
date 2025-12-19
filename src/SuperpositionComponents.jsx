@@ -1,6 +1,70 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Zap, Cpu, Server, Globe, Shield, Activity, Sparkles, Code2, Database, ExternalLink, Github, ArrowRight, Home, Briefcase, User, Mail, Terminal, FileText } from 'lucide-react';
 
+// --- Panda Hologram ---
+export const PandaHologram = () => (
+    <div className="relative w-64 h-64 md:w-80 md:h-80 flex items-center justify-center">
+        {/* Glow Effects */}
+        <div className="absolute inset-0 bg-cyan-500/20 rounded-full blur-[60px] animate-pulse" />
+        <div className="absolute inset-0 bg-purple-500/10 rounded-full blur-[40px] animate-pulse delay-700" />
+        
+        {/* Decorative Orbits */}
+        <div className="absolute w-full h-full border border-cyan-500/20 rounded-full animate-[spin_10s_linear_infinite]" />
+        <div className="absolute w-[80%] h-[80%] border border-purple-500/20 rounded-full animate-[spin_15s_linear_infinite_reverse]" />
+        
+        {/* Hexagonal Frame */}
+        <div className="absolute inset-0 flex items-center justify-center">
+            <svg viewBox="0 0 100 100" className="w-full h-full opacity-30 fill-none stroke-cyan-400 stroke-[0.5]">
+                <polygon points="50,5 95,25 95,75 50,95 5,75 5,25" />
+            </svg>
+        </div>
+
+        {/* Panda Core */}
+        <div className="relative z-10 w-48 h-48 md:w-56 md:h-56">
+            <svg viewBox="0 0 200 200" className="w-full h-full drop-shadow-[0_0_15px_rgba(0,240,255,0.5)]">
+                {/* Ears */}
+                <circle cx="60" cy="60" r="25" className="fill-cyan-400/20 stroke-cyan-400 stroke-2" />
+                <circle cx="140" cy="60" r="25" className="fill-cyan-400/20 stroke-cyan-400 stroke-2" />
+                
+                {/* Face Base */}
+                <circle cx="100" cy="110" r="70" className="fill-black/80 stroke-cyan-400 stroke-2" />
+                
+                {/* Eyes Areas */}
+                <ellipse cx="70" cy="100" rx="20" ry="25" className="fill-cyan-400/10 stroke-cyan-400/30 stroke-1" />
+                <ellipse cx="130" cy="100" rx="20" ry="25" className="fill-cyan-400/10 stroke-cyan-400/30 stroke-1" />
+                
+                {/* Eyes */}
+                <circle cx="70" cy="100" r="8" className="fill-cyan-400 animate-pulse" />
+                <circle cx="130" cy="100" r="8" className="fill-cyan-400 animate-pulse" />
+                
+                {/* Nose */}
+                <path d="M90 130 Q100 140 110 130" className="stroke-cyan-400 fill-none stroke-2" />
+                
+                {/* Tech lines */}
+                <path d="M40 110 L20 110" className="stroke-cyan-500/50 stroke-1" />
+                <path d="M160 110 L180 110" className="stroke-cyan-500/50 stroke-1" />
+                <path d="M100 40 L100 20" className="stroke-cyan-500/50 stroke-1" />
+            </svg>
+        </div>
+        
+        {/* Floating Particles */}
+        <div className="absolute inset-0 pointer-events-none">
+            {[...Array(6)].map((_, i) => (
+                <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-cyan-400 rounded-full animate-ping"
+                    style={{
+                        top: `${Math.random() * 100}%`,
+                        left: `${Math.random() * 100}%`,
+                        animationDelay: `${i * 0.5}s`,
+                        animationDuration: '3s'
+                    }}
+                />
+            ))}
+        </div>
+    </div>
+);
+
 // --- Particle Background ---
 export const ParticleBackground = () => {
     const canvasRef = useRef(null);

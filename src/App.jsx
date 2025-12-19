@@ -22,9 +22,14 @@ import {
   Code2,
   ExternalLink,
   User,
-  FileText
+  FileText,
+  Brain,
+  History,
+  Workflow,
+  Search,
+  ChevronRight
 } from 'lucide-react';
-import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav } from './SuperpositionComponents';
+import { ParticleBackground, GlitchText, PandaHologram } from './SuperpositionComponents';
 import { caseStudiesData } from './caseStudiesData';
 
 // --- API Helper ---
@@ -339,53 +344,145 @@ const HomePage = ({ navigate }) => (
   <div className="relative min-h-screen bg-void text-white overflow-hidden">
     <ParticleBackground />
 
-    {/* Top Bar */}
-
-
     {/* Hero Section */}
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
-      <div className="mb-8 relative">
-        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg blur opacity-20 animate-pulse"></div>
-        <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs tracking-widest uppercase">
-          Infrastructure Excellence Since 2013
-        </span>
-      </div>
+    <div className="relative z-10 flex flex-col items-center justify-center pt-32 pb-20 text-center px-4">
+      <FadeIn delay={200}>
+        <PandaHologram />
+      </FadeIn>
 
-      <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tight leading-none">
-        <GlitchText text="BUILDING TOMORROW'S" />
-        <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-500 glow-text-cyan">
-          INFRASTRUCTURE
-        </span>
-      </h1>
+      <FadeIn delay={400}>
+        <div className="mt-8 mb-4">
+          <span className="text-cyan-400 font-mono text-sm tracking-[0.3em] uppercase">
+            Infrastructure Excellence Since 2013
+          </span>
+        </div>
+        <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight max-w-4xl mx-auto leading-tight">
+          Blue Panda — Responsible Infrastructure for the Long Term
+        </h1>
+        <p className="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto mb-12 font-light leading-relaxed">
+          We design resilient systems across infrastructure, applied AI,
+          and custom engineering — focused on long-term stability,
+          security, and clarity.
+          <br /><br />
+          <span className="text-cyan-400/80 italic">Problem-solving, not service selling.</span>
+        </p>
 
-      <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mb-12 font-mono">
-        From traditional hosting to <span className="text-cyan-400">quantum-powered</span> AI systems.
-      </p>
-
-      <div className="flex flex-col md:flex-row gap-6">
-        <Button onClick={() => navigate('projects')} variant="primary" className="text-lg px-8 py-4">
-          <Code2 className="w-5 h-5" /> View Our Work
-        </Button>
-        <Button onClick={() => navigate('contact')} variant="outline" className="text-lg px-8 py-4">
-          <Mail className="w-5 h-5" /> Get In Touch
-        </Button>
-      </div>
+        {/* Navigation Affordances */}
+        <div className="flex flex-wrap gap-4 justify-center">
+          {[
+            { id: 'services', label: 'Services' },
+            { id: 'projects', label: 'Case Studies' },
+            { id: 'architect', label: 'AI Architect Demo' },
+            { id: 'about', label: 'About' }
+          ].map((btn) => (
+            <button
+              key={btn.id}
+              onClick={() => navigate(btn.id)}
+              className="px-8 py-3 border border-cyan-500/30 bg-cyan-500/5 hover:bg-cyan-500/10 transition-all duration-300 rounded text-sm font-mono tracking-widest uppercase group flex items-center gap-2"
+            >
+              {btn.label}
+              <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+            </button>
+          ))}
+        </div>
+      </FadeIn>
     </div>
 
-    {/* Monolith Services Section */}
-    <div className="relative z-10 pb-32">
-      <div className="text-center mb-12">
-        <h2 className="text-2xl font-mono text-cyan-400 tracking-widest uppercase mb-2">Capabilities</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto" />
-      </div>
-      <MonolithSection />
-      <div className="text-center mt-12">
-        <Button onClick={() => navigate('services')} variant="outline" className="mx-auto">
-          Explore All Services <ArrowRight className="w-4 h-4" />
-        </Button>
-      </div>
-    </div>
+    {/* WHAT WE DO Section */}
+    <Section className="relative z-10 border-t border-white/5">
+      <FadeIn delay={600}>
+        <div className="text-center mb-16">
+          <h2 className="text-2xl font-mono text-white tracking-widest uppercase mb-4">What We Do</h2>
+          <div className="w-24 h-px bg-cyan-500/50 mx-auto" />
+        </div>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Infrastructure Stewardship",
+              icon: <Cloud className="w-8 h-8 text-cyan-400" />,
+              desc: "Designing, operating, and correcting infrastructure that must remain reliable under real-world conditions — across cloud, servers, and long-running systems."
+            },
+            {
+              title: "Applied AI Systems",
+              icon: <Cpu className="w-8 h-8 text-purple-400" />,
+              desc: "Building applied AI systems where control, privacy, and determinism matter more than novelty — embedding AI into real workflows to reduce cognitive load."
+            },
+            {
+              title: "System Correction & Engineering",
+              icon: <History className="w-8 h-8 text-white" />,
+              desc: "Taking responsibility for existing systems that have become fragile, bloated, or hard to reason about — restoring proportionality before adding new complexity."
+            }
+          ].map((item, i) => (
+            <div key={i} className="p-8 rounded-xl bg-black/40 border border-white/10 hover:border-cyan-500/30 transition-all group">
+              <div className="mb-6 p-4 rounded-lg bg-white/5 w-fit group-hover:bg-cyan-500/10 transition-colors">
+                {item.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-4 text-white">{item.title}</h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-6">{item.desc}</p>
+              <button onClick={() => navigate('projects')} className="text-xs font-mono text-cyan-400 hover:text-white transition-colors flex items-center gap-2">
+                VIEW CASE STUDY <ChevronRight className="w-3 h-3" />
+              </button>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    </Section>
+
+    {/* PROJECT SUCCESS STORIES Section */}
+    <Section className="relative z-10 border-t border-white/5 pb-32">
+      <FadeIn delay={800}>
+        <div className="text-center mb-4">
+          <h2 className="text-2xl font-mono text-white tracking-widest uppercase mb-4">Project Success Stories</h2>
+        </div>
+        <p className="text-center text-gray-400 text-sm mb-16 max-w-xl mx-auto">
+          Real-world examples demonstrating our problem solving approach and technical expertise.
+        </p>
+
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
+              icon: <Globe className="w-8 h-8 text-cyan-400" />,
+              desc: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity."
+            },
+            {
+              title: "Smriti — AI Context Engine",
+              icon: <Brain className="w-8 h-8 text-purple-400" />,
+              desc: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead."
+            },
+            {
+              title: "Remote Cloud Dashboard — Secure VM Orchestration",
+              icon: <Cloud className="w-8 h-8 text-white" />,
+              desc: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability."
+            }
+          ].map((item, i) => (
+            <div key={i} className="flex flex-col h-full">
+              <div className="p-8 rounded-xl bg-white/5 border border-white/10 flex-grow hover:border-purple-500/30 transition-all group relative overflow-hidden">
+                <div className="mb-6 flex items-start justify-between">
+                  <div className="p-3 rounded bg-black/50 border border-white/5 group-hover:border-purple-500/20">
+                    {item.icon}
+                  </div>
+                </div>
+                <h3 className="text-lg font-bold mb-4 text-white leading-tight">{item.title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed mb-8">{item.desc}</p>
+                <div className="mt-auto">
+                  <button onClick={() => navigate('projects')} className="text-[10px] font-mono text-gray-500 hover:text-cyan-400 transition-colors flex items-center gap-2 tracking-[0.2em]">
+                    VIEW CASE STUDY <ChevronRight className="w-3 h-3" />
+                  </button>
+                </div>
+                
+                {item.title.includes("Smriti") && (
+                   <div className="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity">
+                      <Brain className="w-40 h-40" />
+                   </div>
+                )}
+              </div>
+            </div>
+          ))}
+        </div>
+      </FadeIn>
+    </Section>
   </div>
 );
 
@@ -817,54 +914,47 @@ const InfrastructureArchitect = () => {
 
 // --- Footer Component ---
 const Footer = ({ navigate }) => (
-  <footer className="relative z-10 border-t border-white/10 bg-black/50 backdrop-blur-sm mt-20 pb-32">
-    <div className="max-w-7xl mx-auto px-6 py-12">
-      <div className="grid md:grid-cols-3 gap-8 mb-8">
-        {/* Brand */}
+  <footer className="relative z-10 border-t border-white/5 bg-void pt-20 pb-12">
+    <div className="max-w-7xl mx-auto px-6">
+      <div className="grid md:grid-cols-2 gap-12 mb-16">
         <div>
-          <div className="flex items-center gap-2 mb-4">
+          <div className="flex items-center gap-2 mb-6">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="font-mono text-cyan-400 font-bold tracking-widest">BLUE PANDA</span>
+            <span className="font-mono text-cyan-400 font-bold tracking-widest uppercase">Blue Panda</span>
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed">
-            Building tomorrow's infrastructure today. From traditional hosting to quantum-powered AI systems.
+          <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
+            Responsible infrastructure, applied AI, and system correction since 2013.
           </p>
         </div>
 
-        {/* Quick Links */}
-        <div>
-          <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
-            <li><button onClick={() => navigate('services')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Services</button></li>
-            <li><button onClick={() => navigate('projects')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Projects</button></li>
-            <li><button onClick={() => navigate('about')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">About Us</button></li>
-            <li><button onClick={() => navigate('architect')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">AI Architect</button></li>
-          </ul>
-        </div>
-
-        {/* Contact */}
-        <div>
-          <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Contact</h3>
-          <ul className="space-y-2 text-sm">
-            <li>
-              <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                sachin@bluepanda.in
-              </a>
-            </li>
-
-          </ul>
+        <div className="grid grid-cols-2 gap-8">
+          <div>
+            <h4 className="font-mono text-white text-xs tracking-widest uppercase mb-6 opacity-50">Navigation</h4>
+            <ul className="space-y-4">
+              <li><button onClick={() => navigate('services')} className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Services</button></li>
+              <li><button onClick={() => navigate('projects')} className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Case Studies</button></li>
+              <li><button onClick={() => navigate('architect')} className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">AI Architect</button></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-mono text-white text-xs tracking-widest uppercase mb-6 opacity-50">Company</h4>
+            <ul className="space-y-4">
+              <li><button onClick={() => navigate('about')} className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">About</button></li>
+              <li><button onClick={() => navigate('contact')} className="text-gray-400 hover:text-cyan-400 transition-colors text-sm">Contact</button></li>
+            </ul>
+          </div>
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-gray-500 text-sm font-mono">
-          © 2013-2025 Blue Panda Hosting and Designs. All rights reserved.
+      <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p className="text-gray-600 text-[10px] font-mono tracking-widest">
+          © 2013-2025 BLUE PANDA HOSTING AND DESIGNS. ALL RIGHTS RESERVED.
         </p>
-        <p className="text-gray-500 text-sm font-mono">
-          Operating since 2013 • Quantum-Ready Infrastructure
-        </p>
+        <div className="flex gap-6">
+          <a href="mailto:sachin@bluepanda.in" className="text-gray-600 hover:text-cyan-400 transition-colors font-mono text-[10px] tracking-widest uppercase">
+            sachin@bluepanda.in
+          </a>
+        </div>
       </div>
     </div>
   </footer>
@@ -877,9 +967,9 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
   const menuItems = [
     { id: 'home', label: 'HOME' },
     { id: 'services', label: 'SERVICES' },
-    { id: 'projects', label: 'PROJECTS' },
-    { id: 'about', label: 'ABOUT' },
+    { id: 'projects', label: 'CASE STUDIES' },
     { id: 'architect', label: 'AI ARCHITECT' },
+    { id: 'about', label: 'ABOUT' },
     { id: 'contact', label: 'CONTACT' },
   ];
 
@@ -887,28 +977,26 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
     <div className="fixed inset-0 z-[100] flex justify-end">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/80 backdrop-blur-sm animate-fade-in"
+        className="absolute inset-0 bg-black/90 backdrop-blur-md animate-fade-in"
         onClick={onClose}
         aria-hidden="true"
       />
 
       {/* Menu Panel */}
-      <div className="relative w-full max-w-md h-full bg-black border-l border-cyan-500/30 p-8 flex flex-col shadow-[0_0_50px_rgba(0,240,255,0.2)] animate-slide-in-right">
-        <div className="flex justify-between items-center mb-12">
-          <div className="flex items-center gap-2">
-            <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="font-mono text-cyan-400 font-bold tracking-widest glow-text-cyan">SYSTEM ACCESS</span>
+      <div className="relative w-full max-w-md h-full bg-void border-l border-white/5 p-12 flex flex-col animate-slide-in-right">
+        <div className="flex justify-between items-center mb-16">
+          <div className="flex items-center gap-2 font-mono text-cyan-400 font-bold tracking-widest uppercase">
+            System Access
           </div>
           <button
             onClick={onClose}
             className="text-gray-400 hover:text-white transition-colors"
-            aria-label="Close Menu"
           >
             <X className="w-8 h-8" />
           </button>
         </div>
 
-        <nav className="flex-1 flex flex-col gap-6">
+        <nav className="flex-1 flex flex-col gap-8">
           {menuItems.map((item) => (
             <button
               key={item.id}
@@ -916,25 +1004,17 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
                 navigate(item.id);
                 onClose();
               }}
-              className="text-left text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 hover:from-cyan-400 hover:to-white transition-all duration-300 font-mono group flex items-center gap-4"
-              aria-label={`Navigate to ${item.label}`}
+              className="text-left text-3xl font-bold text-gray-700 hover:text-cyan-400 transition-all duration-300 font-mono tracking-tighter"
             >
-              <span className="text-sm text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
               {item.label}
             </button>
           ))}
         </nav>
 
-        <div className="mt-auto pt-8 border-t border-white/10">
-          <p className="text-gray-500 font-mono text-sm mb-4">EXTERNAL LINKS</p>
-          <div className="flex gap-4">
-            <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="GitHub">
-              <Github className="w-6 h-6" />
-            </a>
-            <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Email">
-              <Mail className="w-6 h-6" />
-            </a>
-          </div>
+        <div className="mt-auto pt-8 border-t border-white/5">
+          <p className="text-gray-600 font-mono text-[10px] tracking-widest uppercase mb-4 text-center">
+            Operating Since 2013
+          </p>
         </div>
       </div>
     </div>
@@ -953,6 +1033,14 @@ const App = () => {
     window.scrollTo(0, 0);
   };
 
+  useEffect(() => {
+    // Check for direct navigation or refresh
+    const path = window.location.pathname.replace('/', '');
+    if (path && ['home', 'services', 'projects', 'about', 'contact', 'architect'].includes(path)) {
+      setPage(path);
+    }
+  }, []);
+
   if (loading) return <LoadingScreen onComplete={() => setLoading(false)} />;
 
   return (
@@ -960,27 +1048,47 @@ const App = () => {
       <SystemMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} navigate={navigate} />
       <CaseStudyModal project={selectedCaseStudy} onClose={() => setSelectedCaseStudy(null)} />
 
-      {/* Global Top Bar (Visible on all pages) */}
-      <div className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-40 pointer-events-none">
-        <div className="flex items-center gap-2 pointer-events-auto cursor-pointer" onClick={() => navigate('home')} role="button" aria-label="Go to Home">
-          <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-          <span className="font-mono text-cyan-400 font-bold tracking-widest glow-text-cyan shadow-black drop-shadow-md">BLUE PANDA</span>
+      {/* Global Header */}
+      <header className="fixed top-0 left-0 w-full p-8 flex justify-between items-center z-40 pointer-events-none">
+        <div 
+          className="flex items-center gap-2 pointer-events-auto cursor-pointer group" 
+          onClick={() => navigate('home')} 
+          role="button" 
+        >
+          <div className="w-2 h-2 bg-cyan-400 rounded-full group-hover:animate-ping" />
+          <span className="font-mono text-white font-bold tracking-[0.3em] uppercase text-sm group-hover:text-cyan-400 transition-colors">
+            Blue Panda
+          </span>
         </div>
-        <div className="flex items-center gap-4 pointer-events-auto">
-          <div className="font-mono text-xs text-cyan-400/60 hidden md:block bg-black/50 px-3 py-1 rounded border border-cyan-500/20 backdrop-blur-sm">
-            SYSTEM STATUS: STABLE
-          </div>
+        
+        <div className="flex items-center gap-6 pointer-events-auto">
+          <nav className="hidden md:flex gap-8">
+             {[
+               { id: 'services', label: 'Services' },
+               { id: 'projects', label: 'Case Studies' },
+               { id: 'about', label: 'About' }
+             ].map(link => (
+               <button 
+                 key={link.id}
+                 onClick={() => navigate(link.id)}
+                 className="text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 hover:text-white transition-colors"
+               >
+                 {link.label}
+               </button>
+             ))}
+          </nav>
+          
           <button
             onClick={() => setIsMenuOpen(true)}
-            className="p-2 bg-black/50 border border-cyan-500/30 rounded text-cyan-400 hover:bg-cyan-500/10 hover:text-white transition-all backdrop-blur-sm"
+            className="p-2 border border-white/10 rounded hover:border-cyan-400/50 hover:bg-cyan-400/5 transition-all group"
             aria-label="Open Menu"
           >
-            <Menu className="w-6 h-6" />
+            <Menu className="w-5 h-5 text-gray-400 group-hover:text-cyan-400" />
           </button>
         </div>
-      </div>
+      </header>
 
-      <main className="animate-fade-in pt-20">
+      <main className="animate-fade-in">
         {page === 'home' && <HomePage navigate={navigate} />}
         {page === 'services' && <ServicesPage />}
         {page === 'about' && <AboutPage navigate={navigate} />}
@@ -991,9 +1099,6 @@ const App = () => {
 
       {/* Footer */}
       <Footer navigate={navigate} />
-
-      {/* Floating Bottom Navigation */}
-      {/* <BottomNav currentPage={page} setPage={navigate} />*/}
     </div>
   );
 };
