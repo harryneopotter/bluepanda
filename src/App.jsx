@@ -204,134 +204,61 @@ const FAQSection = () => {
 const CaseStudyModal = ({ project, onClose }) => {
   if (!project) return null;
 
-  // Get case study data for this project
-  const caseStudy = caseStudiesData[project.title];
-
-  // Fallback if no case study data exists
-  if (!caseStudy) {
-    return (
-      <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-        <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
-        <div className="relative w-full max-w-2xl bg-black border border-cyan-500/30 rounded-2xl p-8">
-          <button onClick={onClose} className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white">
-            <X className="w-6 h-6" />
-          </button>
-          <h2 className="text-2xl font-bold text-white mb-4">{project.title}</h2>
-          <p className="text-gray-300">Case study coming soon...</p>
-        </div>
-      </div>
-    );
-  }
-
   return (
     <div className="fixed inset-0 z-[60] flex items-center justify-center p-4">
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={onClose} />
-      <div className="relative w-full max-w-4xl max-h-[90vh] overflow-y-auto bg-black border border-cyan-500/30 rounded-2xl p-8 shadow-[0_0_50px_rgba(0,240,255,0.2)] animate-scale-up">
+      <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={onClose} />
+      <div className="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-black border border-white/10 rounded-2xl p-8 md:p-12 animate-scale-up">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-gray-400 hover:text-white hover:bg-white/10 rounded-full transition-all"
+          className="absolute top-6 right-6 p-2 text-gray-500 hover:text-white transition-colors"
         >
           <X className="w-6 h-6" />
         </button>
 
-        <div className="mb-8">
-          <div className="flex items-center gap-2 text-cyan-400 font-mono text-sm mb-2">
-            <FileText className="w-4 h-4" /> CASE_STUDY_FILE
+        <div className="mb-12">
+          <div className="flex items-center gap-2 text-cyan-400 font-mono text-xs tracking-widest uppercase mb-4">
+            <FileText className="w-4 h-4" /> Project Case Study
           </div>
-          <h2 className="text-4xl font-bold text-white mb-4">{project.title}</h2>
-          <div className="flex flex-wrap gap-2">
-            {project.tags.map(tag => (
-              <span key={tag} className="px-3 py-1 bg-cyan-500/10 border border-cyan-500/30 rounded-full text-cyan-300 text-xs font-mono">
-                {tag}
-              </span>
-            ))}
-          </div>
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">{project.title}</h2>
+          <p className="text-cyan-400/60 font-mono text-sm uppercase tracking-wider">{project.category}</p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-8 mb-12">
-          <div className="md:col-span-2 space-y-6 text-gray-300 leading-relaxed">
-            <div>
-              <h3 className="text-xl font-bold text-white mb-2">The Challenge</h3>
-              <p>{caseStudy.challenge}</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-2">The Solution</h3>
-              <p>{caseStudy.solution}</p>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-2">Key Features</h3>
-              <ul className="list-disc list-inside space-y-2 ml-2">
-                {caseStudy.keyFeatures.map((feature, i) => (
-                  <li key={i}>{feature}</li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-bold text-white mb-2">Impact</h3>
-              <p>{caseStudy.impact}</p>
-            </div>
-          </div>
-          <div className="space-y-6">
-            {project.metrics && project.metrics.length > 0 && (
-              <div className="p-6 bg-white/5 rounded-xl border border-white/10">
-                <h4 className="text-sm font-mono text-gray-400 mb-4 uppercase">Key Metrics</h4>
-                <div className="space-y-4">
-                  {project.metrics.map((metric, i) => (
-                    <div key={i}>
-                      <div className="text-3xl font-bold text-cyan-400">{metric.value}</div>
-                      <div className="text-xs text-gray-500 uppercase">{metric.label}</div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            )}
-            <div className="p-6 bg-purple-500/10 rounded-xl border border-purple-500/20">
-              <h4 className="text-sm font-mono text-purple-300 mb-2 uppercase">Tech Stack</h4>
-              <div className="flex flex-wrap gap-2">
-                {caseStudy.techStack.map(tech => (
-                  <span key={tech} className="text-xs text-purple-200 bg-purple-500/20 px-2 py-1 rounded">
-                    {tech}
-                  </span>
-                ))}
-              </div>
-            </div>
-            {(caseStudy.githubUrl || caseStudy.liveUrl) && (
-              <div className="p-6 bg-cyan-500/10 rounded-xl border border-cyan-500/20">
-                <h4 className="text-sm font-mono text-cyan-300 mb-3 uppercase">Links</h4>
-                <div className="space-y-2">
-                  {caseStudy.githubUrl && (
-                    <a
-                      href={caseStudy.githubUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
-                    >
-                      <Github className="w-4 h-4" />
-                      View on GitHub
-                    </a>
-                  )}
-                  {caseStudy.liveUrl && (
-                    <a
-                      href={caseStudy.liveUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
-                    >
-                      <ExternalLink className="w-4 h-4" />
-                      Live Demo
-                    </a>
-                  )}
-                </div>
-              </div>
-            )}
-          </div>
+        <div className="space-y-12">
+          <section>
+            <h3 className="text-xs font-mono text-white/40 uppercase tracking-[0.2em] mb-4">Context</h3>
+            <p className="text-gray-300 text-lg leading-relaxed font-light">{project.context}</p>
+          </section>
+
+          <section>
+            <h3 className="text-xs font-mono text-white/40 uppercase tracking-[0.2em] mb-4">Problem</h3>
+            <p className="text-gray-300 text-lg leading-relaxed font-light">{project.problem}</p>
+          </section>
+
+          <section>
+            <h3 className="text-xs font-mono text-white/40 uppercase tracking-[0.2em] mb-4">Approach</h3>
+            <ul className="space-y-4">
+              {project.approach.map((step, i) => (
+                <li key={i} className="flex items-start gap-4 text-gray-300 font-light">
+                  <div className="mt-2 w-1.5 h-1.5 rounded-full bg-cyan-500/50 flex-shrink-0" />
+                  {step}
+                </li>
+              ))}
+            </ul>
+          </section>
+
+          <section className="pt-8 border-t border-white/5">
+            <h3 className="text-xs font-mono text-cyan-400 uppercase tracking-[0.2em] mb-4">Outcome</h3>
+            <p className="text-white text-lg leading-relaxed font-medium">{project.outcome}</p>
+          </section>
         </div>
 
-        <div className="flex justify-end gap-4 pt-8 border-t border-white/10">
-          <Button variant="outline" onClick={onClose}>Close File</Button>
-          <Button variant="primary" onClick={() => window.open('https://calendly.com/bluepanda/consultation', '_blank')}>
-            Schedule Consultation
-          </Button>
+        <div className="mt-12 pt-8 border-t border-white/5 flex justify-end">
+          <button
+            onClick={onClose}
+            className="px-8 py-3 bg-white/5 hover:bg-white/10 text-white text-sm font-mono tracking-widest uppercase transition-all rounded"
+          >
+            Close Record
+          </button>
         </div>
       </div>
     </div>
@@ -401,17 +328,17 @@ const HomePage = ({ navigate }) => (
             {
               title: "Infrastructure Stewardship",
               icon: <Cloud className="w-8 h-8 text-cyan-400" />,
-              desc: "Designing, operating, and correcting infrastructure that must remain reliable under real-world conditions — across cloud, servers, and long-running systems."
+              desc: "Designing, operating, and correcting infrastructure that must remain reliable under real-world conditions — across cloud platforms, servers, and long-running systems. The focus is durability, security, and proportional design, not novelty."
             },
             {
               title: "Applied AI Systems",
               icon: <Cpu className="w-8 h-8 text-purple-400" />,
-              desc: "Building applied AI systems where control, privacy, and determinism matter more than novelty — embedding AI into real workflows to reduce cognitive load."
+              desc: "Building applied AI systems where control, privacy, and determinism matter more than experimentation. AI is embedded into real workflows to reduce cognitive load and operational friction — not to replace judgment."
             },
             {
               title: "System Correction & Engineering",
               icon: <History className="w-8 h-8 text-white" />,
-              desc: "Taking responsibility for existing systems that have become fragile, bloated, or hard to reason about — restoring proportionality before adding new complexity."
+              desc: "Taking responsibility for systems that have become fragile, bloated, or difficult to reason about. Restoring clarity and stability before introducing new complexity."
             }
           ].map((item, i) => (
             <div key={i} className="p-8 rounded-xl bg-black/40 border border-white/10 hover:border-cyan-500/30 transition-all group">
@@ -435,48 +362,26 @@ const HomePage = ({ navigate }) => (
         <div className="text-center mb-4">
           <h2 className="text-2xl font-mono text-white tracking-widest uppercase mb-4">Project Success Stories</h2>
         </div>
-        <p className="text-center text-gray-400 text-sm mb-16 max-w-xl mx-auto">
-          Real-world examples demonstrating our problem solving approach and technical expertise.
+        <p className="text-center text-gray-400 text-sm mb-16 max-w-xl mx-auto italic font-light">
+          "These are not demos. They are systems built to survive real-world constraints."
         </p>
 
         <div className="grid md:grid-cols-3 gap-8">
-          {[
-            {
-              title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
-              icon: <Globe className="w-8 h-8 text-cyan-400" />,
-              desc: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity."
-            },
-            {
-              title: "Smriti — AI Context Engine",
-              icon: <Brain className="w-8 h-8 text-purple-400" />,
-              desc: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead."
-            },
-            {
-              title: "Remote Cloud Dashboard — Secure VM Orchestration",
-              icon: <Cloud className="w-8 h-8 text-white" />,
-              desc: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability."
-            }
-          ].map((item, i) => (
+          {caseStudiesData.map((project, i) => (
             <div key={i} className="flex flex-col h-full">
               <div className="p-8 rounded-xl bg-white/5 border border-white/10 flex-grow hover:border-purple-500/30 transition-all group relative overflow-hidden">
                 <div className="mb-6 flex items-start justify-between">
                   <div className="p-3 rounded bg-black/50 border border-white/5 group-hover:border-purple-500/20">
-                    {item.icon}
+                    <project.icon className="w-8 h-8 text-cyan-400" />
                   </div>
                 </div>
-                <h3 className="text-lg font-bold mb-4 text-white leading-tight">{item.title}</h3>
-                <p className="text-gray-400 text-xs leading-relaxed mb-8">{item.desc}</p>
+                <h3 className="text-lg font-bold mb-4 text-white leading-tight">{project.title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed mb-8 line-clamp-3">{project.problem}</p>
                 <div className="mt-auto">
                   <button onClick={() => navigate('projects')} className="text-[10px] font-mono text-gray-500 hover:text-cyan-400 transition-colors flex items-center gap-2 tracking-[0.2em]">
                     VIEW CASE STUDY <ChevronRight className="w-3 h-3" />
                   </button>
                 </div>
-                
-                {item.title.includes("Smriti") && (
-                   <div className="absolute -bottom-10 -right-10 opacity-10 group-hover:opacity-20 transition-opacity">
-                      <Brain className="w-40 h-40" />
-                   </div>
-                )}
               </div>
             </div>
           ))}
@@ -487,426 +392,429 @@ const HomePage = ({ navigate }) => (
 );
 
 const ServicesPage = () => (
-  <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-    <ParticleBackground />
-    <Section className="relative z-10">
-      <h1 className="text-5xl font-bold mb-12 text-center">
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-          CORE CAPABILITIES
-        </span>
-      </h1>
+  <div className="pt-32 pb-20 px-6">
+    <div className="max-w-4xl mx-auto">
+      <FadeIn>
+        <h1 className="text-4xl md:text-5xl font-bold mb-8">Services</h1>
+        <p className="text-xl text-gray-400 mb-16 leading-relaxed">
+          Blue Panda works on systems that need to function reliably over time — not just launch successfully. 
+          The work spans infrastructure, applied AI, and engineering correction, depending on what the problem actually requires.
+        </p>
 
-      <div className="grid gap-12 mb-20">
-        {/* Service 1 */}
-        <div className="glass-panel p-8 rounded-2xl border border-cyan-500/30 glow-box-cyan flex flex-col md:flex-row gap-8 items-center">
-          <div className="p-6 bg-cyan-500/10 rounded-full border border-cyan-500/50">
-            <Zap className="w-12 h-12 text-cyan-400" />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-white">Q Panda Cloud</h2>
-            <p className="text-gray-300 mb-6 text-lg">
-              Next-generation hosting infrastructure that thinks for itself. Our autonomous agents monitor your applications 24/7, predicting traffic spikes and optimizing resources in real-time.
-            </p>
-            <ul className="grid md:grid-cols-2 gap-4 mb-6">
-              <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> Predictive Auto-Scaling
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> Self-Healing Containers
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> AI-Driven Security Audits
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> Zero-Downtime Deployments
-              </li>
-            </ul>
-            <Button variant="outline" onClick={() => window.open('https://qpanda.cloud', '_blank')}>Explore Cloud Plans</Button>
-          </div>
+        <div className="space-y-12">
+          {[
+            {
+              title: "Cloud Infrastructure & DevOps",
+              desc: "Designing and operating secure, resilient cloud systems with an emphasis on uptime, recoverability, and operational clarity. This includes server management, monitoring, security hardening, and long-term maintenance."
+            },
+            {
+              title: "AI Integration & Automation",
+              desc: "Integrating AI into existing systems and workflows in a controlled, privacy-first manner. Emphasis is placed on determinism, data sovereignty, and usefulness — avoiding black-box dependencies and unnecessary complexity."
+            },
+            {
+              title: "Custom Development & Consulting",
+              desc: "Solving long-term technical challenges through careful architecture, refactoring, migration, and system design. Technology choices are pragmatic and context-driven, not trend-led."
+            }
+          ].map((service, i) => (
+            <div key={i} className="p-8 border border-white/5 bg-white/[0.02] rounded-xl">
+              <h3 className="text-2xl font-bold mb-4 text-cyan-400">{service.title}</h3>
+              <p className="text-gray-400 leading-relaxed">{service.desc}</p>
+            </div>
+          ))}
         </div>
 
-        {/* Service 2 */}
-        <div className="glass-panel p-8 rounded-2xl border border-purple-500/30 glow-box-purple flex flex-col md:flex-row gap-8 items-center">
-          <div className="p-6 bg-purple-500/10 rounded-full border border-purple-500/50">
-            <Cpu className="w-12 h-12 text-purple-400" />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-white">AI Infrastructure</h2>
-            <p className="text-gray-300 mb-6 text-lg">
-              Deploy private, secure AI models within your own infrastructure. We specialize in RAG (Retrieval-Augmented Generation) systems that keep your data sovereign.
-            </p>
-            <ul className="grid md:grid-cols-2 gap-4 mb-6">
-              <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Local LLM Deployment
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Private Vector Databases
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Custom Agent Workflows
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Enterprise Data Privacy
-              </li>
-            </ul>
-            <Button variant="outline" onClick={() => window.open('https://bluepanda.cloud', '_blank')}>Consult AI Architect</Button>
+        <div className="mt-24 pt-20 border-t border-white/5">
+          <h2 className="text-2xl font-mono text-white tracking-widest uppercase mb-12">Principles</h2>
+          <div className="grid md:grid-cols-3 gap-12">
+            {[
+              {
+                q: "Why long-term focus matters",
+                a: "Because systems that last reduce risk, cost, and cognitive overhead over time."
+              },
+              {
+                q: "How AI is used responsibly",
+                a: "AI is treated as a tool, not an authority. Control and understanding remain with humans."
+              },
+              {
+                q: "When automation is avoided",
+                a: "When it increases fragility, obscures failure modes, or removes necessary judgment."
+              }
+            ].map((item, i) => (
+              <div key={i}>
+                <h4 className="text-white font-bold mb-4 text-sm uppercase tracking-wider">{item.q}</h4>
+                <p className="text-gray-500 text-sm leading-relaxed">{item.a}</p>
+              </div>
+            ))}
           </div>
         </div>
-
-        {/* Service 3 */}
-        <div className="glass-panel p-8 rounded-2xl border border-white/10 flex flex-col md:flex-row gap-8 items-center">
-          <div className="p-6 bg-white/5 rounded-full border border-white/20">
-            <Server className="w-12 h-12 text-white" />
-          </div>
-          <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-white">Traditional Web Services</h2>
-            <p className="text-gray-300 mb-6 text-lg">
-              The rock-solid foundation we've built our reputation on. Reliable, fast, and secure hosting for businesses that need stability above all else.
-            </p>
-            <ul className="grid md:grid-cols-2 gap-4 mb-6">
-              <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> Managed cPanel Hosting
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> Domain Management
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> Daily Off-site Backups
-              </li>
-              <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> 24/7 Human Support
-              </li>
-            </ul>
-            <Button variant="outline" onClick={() => window.open('https://qpanda.online', '_blank')}>View Hosting Packages</Button>
-          </div>
-        </div>
-      </div>
-
-      <TestimonialsSection />
-      <FAQSection />
-    </Section>
+      </FadeIn>
+    </div>
   </div>
 );
 
 const ProjectsPage = ({ onOpenCaseStudy }) => (
-  <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-    <ParticleBackground />
-    <Section className="relative z-10">
-      <div className="flex items-center gap-4 mb-12">
-        <div className="p-3 border border-cyan-500/30 rounded-lg bg-cyan-500/10">
-          <Database className="w-8 h-8 text-cyan-400" />
+  <div className="pt-32 pb-20 px-6">
+    <div className="max-w-6xl mx-auto">
+      <FadeIn>
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
+          <div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Case Studies</h1>
+            <p className="text-xl text-gray-400 max-w-2xl font-light">
+              Real-world examples of infrastructure stewardship and applied AI.
+            </p>
+          </div>
         </div>
-        <div>
-          <h1 className="text-4xl font-bold mb-2">SYSTEM LOGS</h1>
-          <p className="font-mono text-gray-400 text-sm">&gt; Accessing deployed infrastructure nodes...</p>
-        </div>
-      </div>
 
-      {/* Constellation Graph */}
-      <div className="mb-20">
-        <ConstellationProjects />
-      </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[
+            {
+              title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
+              context: "A repeatedly compromised WordPress website with growing instability and security risk.",
+              problem: "Bloated frontend, expanding attack surface, and unreliable behavior under maintenance and updates.",
+              approach: [
+                "Rebuilt frontend using a deterministic React architecture",
+                "Eliminated unnecessary dynamic surfaces",
+                "Preserved pixel-level visual fidelity while simplifying internals"
+              ],
+              outcome: "Improved stability, reduced attack surface, and a maintainable long-term frontend."
+            },
+            {
+              title: "Smriti — AI Context Engine",
+              context: "AI-assisted coding workflows suffer from context loss and repeated explanation.",
+              problem: "Developers repeatedly reconstruct project context for tools and assistants.",
+              approach: [
+                "Extract and structure project context",
+                "Persist meaningful technical state",
+                "Feed context into AI tools deterministically"
+              ],
+              outcome: "Reduced repetition, lower cognitive overhead, and more reliable AI-assisted development."
+            },
+            {
+              title: "Remote Cloud Dashboard — Secure VM Orchestration",
+              context: "Managing cloud infrastructure securely without exposing control surfaces.",
+              problem: "Traditional dashboards increase attack surface and operational noise.",
+              approach: [
+                "Secure control plane using private networking",
+                "Centralized orchestration and monitoring",
+                "Minimal exposed interfaces"
+              ],
+              outcome: "Clear, secure infrastructure control without unnecessary complexity."
+            }
+          ].map((project, i) => (
+            <div key={i} className="flex flex-col h-full bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden hover:border-cyan-500/20 transition-all group">
+              <div className="p-8 flex flex-col h-full">
+                <h3 className="text-xl font-bold mb-6 text-white leading-tight">{project.title}</h3>
+                
+                <div className="space-y-6 flex-grow">
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-cyan-500/60 block mb-2">Context</span>
+                    <p className="text-sm text-gray-400">{project.context}</p>
+                  </div>
+                  
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-red-400/60 block mb-2">Problem</span>
+                    <p className="text-sm text-gray-400">{project.problem}</p>
+                  </div>
+                  
+                  <div>
+                    <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-purple-400/60 block mb-2">Approach</span>
+                    <ul className="text-xs text-gray-500 space-y-2">
+                      {project.approach.map((step, si) => (
+                        <li key={si} className="flex gap-2">
+                          <span className="text-purple-500/40">•</span>
+                          {step}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
 
-      {/* Detailed Project Grid */}
-      <div>
-        <div className="flex items-center gap-2 mb-8">
-          <div className="w-1 h-6 bg-cyan-500" />
-          <h2 className="text-2xl font-bold font-mono text-white">DETAILED_RECORDS //</h2>
+                <div className="mt-8 pt-6 border-t border-white/5">
+                  <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-green-400/60 block mb-2">Outcome</span>
+                  <p className="text-sm text-gray-300 font-medium">{project.outcome}</p>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-        <ProjectsGrid onProjectClick={onOpenCaseStudy} />
-      </div>
-    </Section>
+      </FadeIn>
+    </div>
   </div>
 );
 
-const AboutPage = () => (
-  <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-    <ParticleBackground />
-    <Section className="relative z-10 max-w-4xl">
-      <h1 className="text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-        THE EVOLUTION
-      </h1>
+// --- About Page ---
+const AboutPage = ({ navigate }) => (
+  <div className="pt-32 pb-20 px-6">
+    <div className="max-w-4xl mx-auto">
+      <FadeIn>
+        <h1 className="text-4xl font-bold mb-8">About</h1>
+        <p className="text-xl text-gray-400 mb-16 leading-relaxed max-w-3xl">
+          Blue Panda has been working with infrastructure and systems since 2013. 
+          The focus has evolved, but the core principle remains the same: 
+          systems should be understandable, stable, and designed for the long term.
+        </p>
 
-      <div className="space-y-12 border-l border-cyan-500/20 ml-4 pl-8">
-        <div className="relative group">
-          <div className="absolute -left-[37px] w-4 h-4 bg-black border-2 border-cyan-500 rounded-full group-hover:bg-cyan-500 group-hover:shadow-[0_0_10px_#00F0FF] transition-all duration-300" />
-          <span className="font-mono text-cyan-400 text-sm mb-2 block">2013 — 2018</span>
-          <h3 className="text-2xl font-bold mb-4">Traditional Infrastructure</h3>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            Web hosting, domain management, and website development. Building foundational relationships with clients who trusted us with their digital presence.
-          </p>
-        </div>
-
-        <div className="relative group">
-          <div className="absolute -left-[37px] w-4 h-4 bg-black border-2 border-purple-500 rounded-full group-hover:bg-purple-500 group-hover:shadow-[0_0_10px_#BF00FF] transition-all duration-300" />
-          <span className="font-mono text-purple-400 text-sm mb-2 block">2018 — 2024</span>
-          <h3 className="text-2xl font-bold mb-4">Expanding Capabilities</h3>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            Server management, technical consulting, and infrastructure optimization. Growing alongside our clients' needs.
-          </p>
-        </div>
-
-        <div className="relative group">
-          <div className="absolute -left-[37px] w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_20px_#00F0FF] animate-pulse" />
-          <span className="font-mono text-cyan-400 text-sm mb-2 block">2025+</span>
-          <h3 className="text-2xl font-bold mb-4 text-white">Quantum Leap</h3>
-          <p className="text-gray-300 leading-relaxed text-lg">
-            Introducing Q Panda - our vision for AI-powered infrastructure. Not just hosting websites, but building systems that predict failures, optimize performance automatically, and provide intelligent support.
-          </p>
-        </div>
-      </div>
-
-      <div className="mt-20">
-        <h2 className="text-3xl font-bold mb-8 text-white">OUR PHILOSOPHY</h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Build systems that anticipate problems before they happen.</p>
+        <div className="grid md:grid-cols-2 gap-20">
+          <div>
+            <h2 className="text-sm font-mono text-cyan-500 tracking-widest uppercase mb-8">Philosophy</h2>
+            <ul className="space-y-6">
+              {[
+                "Proportion before complexity",
+                "Control over novelty",
+                "Stability before scale",
+                "Human responsibility in system design"
+              ].map((item, i) => (
+                <li key={i} className="flex items-center gap-4 group">
+                   <div className="w-1.5 h-1.5 bg-cyan-500 rounded-full group-hover:scale-150 transition-transform" />
+                   <span className="text-gray-300 font-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-          <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Deploy infrastructure that adapts to needs automatically.</p>
-          </div>
-          <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Respect privacy - your data stays yours.</p>
-          </div>
-          <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Ship quality, not just features.</p>
-          </div>
-        </div>
-      </div>
 
-      <div className="mt-20">
-        <h2 className="text-3xl font-bold mb-8 text-white">THE TEAM</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="p-6 bg-black/40 border border-white/10 rounded-xl text-center group hover:border-cyan-500 transition-colors">
-            <div className="w-24 h-24 mx-auto bg-gray-800 rounded-full mb-4 overflow-hidden border-2 border-gray-700 group-hover:border-cyan-500">
-              {/* Placeholder for team image */}
-              <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <User className="w-8 h-8 text-gray-400" />
+          <div>
+            <h2 className="text-sm font-mono text-cyan-500 tracking-widest uppercase mb-8">Founder</h2>
+            <div className="flex items-start gap-6 mb-6">
+              <div className="w-16 h-16 rounded bg-white/5 border border-white/10 flex items-center justify-center text-gray-500">
+                <User className="w-8 h-8" />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">Sachin</h3>
+                <p className="text-xs font-mono text-gray-500 uppercase tracking-widest">Lead Engineer</p>
               </div>
             </div>
-            <h3 className="text-xl font-bold text-white">Sachin</h3>
-            <p className="text-cyan-400 font-mono text-sm mb-2">Founder & Lead Architect</p>
-            <p className="text-gray-300 text-sm">10+ years in infrastructure and DevOps.</p>
-          </div>
-          <div className="p-6 bg-black/40 border border-white/10 rounded-xl text-center group hover:border-purple-500 transition-colors">
-            <div className="w-24 h-24 mx-auto bg-gray-800 rounded-full mb-4 overflow-hidden border-2 border-gray-700 group-hover:border-purple-500">
-              <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
-                <Bot className="w-8 h-8 text-gray-400" />
-              </div>
-            </div>
-            <h3 className="text-xl font-bold text-white">Q-Agent</h3>
-            <p className="text-purple-400 font-mono text-sm mb-2">AI Operations</p>
-            <p className="text-gray-300 text-sm">Automated monitoring and optimization.</p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Blue Panda is led by Sachin, with experience across traditional infrastructure, modern cloud systems, and applied AI. 
+              The work emphasizes judgment, restraint, and long-term thinking over rapid experimentation.
+            </p>
           </div>
         </div>
-      </div>
-    </Section>
+
+        <div className="mt-32 p-12 bg-white/[0.02] border border-white/5 rounded-2xl text-center">
+          <h3 className="text-2xl font-bold mb-6">Let's build for the long term.</h3>
+          <button 
+            onClick={() => navigate('contact')}
+            className="px-10 py-4 border border-cyan-500/30 text-cyan-400 font-mono text-sm uppercase tracking-widest hover:bg-cyan-500/5 transition-all"
+          >
+            Get in touch
+          </button>
+        </div>
+      </FadeIn>
+    </div>
   </div>
 );
 
+// --- Contact Page ---
 const ContactPage = () => {
-  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success
+  const [formState, setFormState] = useState('idle');
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setFormStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
-      setFormStatus('success');
-    }, 1500);
+    setFormState('submitting');
+    setTimeout(() => setFormState('success'), 1500);
   };
 
   return (
-    <div className="relative min-h-screen bg-void text-white pt-24 pb-32 px-4 flex items-center justify-center">
-      <ParticleBackground />
-      <div className="relative z-10 w-full max-w-2xl">
-        <div className="glass-panel p-8 md:p-12 rounded-2xl border border-cyan-500/30 glow-box-cyan">
-          <h1 className="text-4xl font-bold mb-8 text-center">INITIATE CONTACT</h1>
-
-          <div className="mb-8 text-center">
-            <p className="text-gray-300 mb-4">Whether you need traditional hosting, AI infrastructure, or just want to discuss what's possible with intelligent systems.</p>
-            <a href="mailto:sachin@bluepanda.in" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-lg">
-              <Mail className="w-5 h-5" /> sachin@bluepanda.in
-            </a>
+    <div className="pt-32 pb-20 px-6">
+      <div className="max-w-4xl mx-auto">
+        <FadeIn>
+          <div className="mb-16">
+            <h1 className="text-4xl font-bold mb-6">Contact</h1>
+            <p className="text-xl text-gray-400 leading-relaxed max-w-2xl">
+              If you have a system, problem, or idea that needs careful thought rather than a quick pitch, feel free to reach out.
+            </p>
           </div>
 
-          {formStatus === 'success' ? (
-            <div className="text-center py-12 animate-fade-in">
-              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-green-500/20 border border-green-500 mb-6">
-                <CheckCircle2 className="w-8 h-8 text-green-500" />
+          <div className="grid md:grid-cols-2 gap-16">
+            <div>
+              <div className="space-y-12">
+                <div>
+                  <h3 className="text-xs font-mono text-cyan-500 tracking-widest uppercase mb-4">Email Access</h3>
+                  <a href="mailto:sachin@bluepanda.in" className="text-2xl font-light text-white hover:text-cyan-400 transition-colors">
+                    sachin@bluepanda.in
+                  </a>
+                </div>
+                
+                <div>
+                  <h3 className="text-xs font-mono text-cyan-500 tracking-widest uppercase mb-4">Operating Principle</h3>
+                  <p className="text-gray-400 text-sm leading-relaxed italic">
+                    "No required budgets. No forced timelines. Just technical clarity and long-term focus."
+                  </p>
+                </div>
               </div>
-              <h3 className="text-2xl font-bold mb-2">Transmission Received</h3>
-              <p className="text-gray-300">We will establish a connection shortly.</p>
-              <button
-                onClick={() => setFormStatus('idle')}
-                className="mt-8 text-cyan-400 hover:text-white font-mono text-sm underline"
-              >
-                Send another message
-              </button>
             </div>
-          ) : (
-            <form className="space-y-6" onSubmit={handleSubmit}>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div>
-                  <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Your Name</label>
-                  <input required type="text" className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all" placeholder="Enter your name" />
-                </div>
-                <div>
-                  <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Your Email</label>
-                  <input required type="email" className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all" placeholder="Enter your email" />
-                </div>
-              </div>
-              <div>
-                <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Project Details</label>
-                <textarea required className="w-full bg-black/50 border border-white/10 rounded p-3 text-white h-32 focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all resize-none" placeholder="Tell us about your project requirements, timeline, and budget..." />
-              </div>
-              <Button variant="primary" className="w-full justify-center" disabled={formStatus === 'submitting'}>
-                {formStatus === 'submitting' ? (
-                  <span className="flex items-center gap-2"><Activity className="w-4 h-4 animate-spin" /> TRANSMITTING...</span>
-                ) : (
-                  <span className="flex items-center gap-2">SEND TRANSMISSION <ArrowRight className="w-4 h-4" /></span>
-                )}
-              </Button>
-              <p className="text-xs text-gray-500 text-center mt-4">
-                <Lock className="w-3 h-3 inline mr-1" />
-                We respect your privacy. Your data is encrypted and never shared.
-              </p>
-            </form>
-          )}
 
-          <div className="mt-8 pt-8 border-t border-white/10 text-center font-mono text-sm text-gray-500">
-            <p className="mb-4">Prefer to talk directly?</p>
-            <Button variant="outline" className="mx-auto" onClick={() => window.open('https://calendly.com/bluepanda/consultation', '_blank')}>
-              <Activity className="w-4 h-4" /> Schedule a Consultation
-            </Button>
-            <p className="mt-8">Blue Panda Hosting and Designs</p>
-            <p>Operating since 2013</p>
+            <div>
+              {formState === 'success' ? (
+                <div className="p-8 border border-green-500/20 bg-green-500/5 rounded-xl animate-fade-in">
+                  <h4 className="text-green-400 font-bold mb-2">Message Received</h4>
+                  <p className="text-green-500/60 text-sm font-mono">System will respond via email shortly.</p>
+                </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  <div>
+                    <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 mb-2">Name</label>
+                    <input 
+                      required
+                      type="text" 
+                      className="w-full bg-white/[0.02] border border-white/10 rounded p-3 text-gray-300 focus:border-cyan-500/50 outline-none transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 mb-2">Email</label>
+                    <input 
+                      required
+                      type="email" 
+                      className="w-full bg-white/[0.02] border border-white/10 rounded p-3 text-gray-300 focus:border-cyan-500/50 outline-none transition-all"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-[10px] font-mono uppercase tracking-[0.2em] text-gray-500 mb-2">Describe the problem or system</label>
+                    <textarea 
+                      className="w-full bg-white/[0.02] border border-white/10 rounded p-3 text-gray-300 focus:border-cyan-500/50 outline-none transition-all h-32 resize-none"
+                    />
+                  </div>
+                  <button 
+                    type="submit"
+                    disabled={formState === 'submitting'}
+                    className="w-full py-4 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-widest hover:bg-cyan-500/20 transition-all disabled:opacity-50"
+                  >
+                    {formState === 'submitting' ? 'Transmitting...' : 'Send Message'}
+                  </button>
+                </form>
+              )}
+            </div>
           </div>
-        </div>
+        </FadeIn>
       </div>
     </div>
   );
 };
 
 const InfrastructureArchitect = () => {
-  const [projectDesc, setProjectDesc] = useState('');
-  const [loading, setLoading] = useState(false);
-  const [plan, setPlan] = useState(null);
+  const [input, setInput] = useState('');
+  const [depth, setDepth] = useState('auto');
+  const [analyzing, setAnalyzing] = useState(false);
+  const [result, setResult] = useState(null);
 
-  const handleGenerate = async () => {
-    if (!projectDesc.trim()) return;
-    setLoading(true);
-    setPlan(null);
-
-    const systemPrompt = `
-      Act as "Q Panda Architect", a senior innovative DevOps engineer from Blue Panda Hosting. 
-      Analyze the user's project description and provide a structured infrastructure plan.
-      
-      Format the response using Markdown.
-      Use these headers: 
-      ### 🏗 Recommended Tech Stack
-      ### 🚀 Scalability Strategy
-      ### 🛡 Security Measures
-      ### 🐼 Blue Panda Solution
-      
-      Keep the tone professional, technical, yet encouraging.
-      Project Description: ${projectDesc}
-    `;
-
-    const result = await generateGeminiResponse(systemPrompt);
-    setPlan(result);
-    setLoading(false);
+  const handleAnalyze = () => {
+    if (!input.trim()) return;
+    setAnalyzing(true);
+    setResult(null);
+    
+    // Simulate architectural reasoning
+    setTimeout(() => {
+      setAnalyzing(false);
+      setResult({
+        reasoning: "Based on the provided constraints, the system requires a decoupled architecture focusing on data sovereignty and proportional scaling.",
+        suggestions: [
+          "Implement Tailscale-based private overlay for control plane security.",
+          "Use deterministic state management for frontend synchronization.",
+          "Adopt a 'security-by-default' stance by minimizing public surface area."
+        ],
+        assumptions: [
+          "Uptime requirements exceed 99.9%",
+          "Internal team possesses basic Linux proficiency",
+          "Privacy is a non-negotiable constraint"
+        ],
+        tradeoffs: "Higher initial configuration overhead in exchange for significantly reduced long-term maintenance risk."
+      });
+    }, 2000);
   };
 
   return (
-    <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-      <ParticleBackground />
-      <Section className="relative z-10">
+    <div className="pt-32 pb-20 px-6">
+      <div className="max-w-4xl mx-auto">
         <FadeIn>
-          <div className="text-center max-w-3xl mx-auto mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-purple-900/30 border border-purple-500/50 text-purple-300 text-sm font-bold mb-6 font-mono">
-              <Sparkles className="w-4 h-4" /> POWERED BY GEMINI
-            </div>
-            <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Q PANDA <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">ARCHITECT</span>
-            </h1>
-            <p className="text-xl text-gray-300 font-mono">
-              Describe your project parameters. AI will generate the optimal infrastructure blueprint.
+          <div className="mb-12">
+            <h1 className="text-4xl font-bold mb-4">AI Architect</h1>
+            <p className="text-gray-400 leading-relaxed max-w-2xl">
+              The AI Architect is a reasoning tool that demonstrates how Blue Panda approaches system design. 
+              It is not a product and not a sales mechanism.
             </p>
           </div>
 
-          <div className="max-w-4xl mx-auto glass-panel rounded-2xl border border-purple-500/30 overflow-hidden glow-box-purple">
-            <div className="p-1 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500"></div>
-            <div className="p-8 md:p-12">
-              <div className="mb-8">
-                <label className="block text-sm font-bold text-purple-300 mb-2 font-mono uppercase">Project Parameters</label>
-                <textarea
-                  value={projectDesc}
-                  onChange={(e) => setProjectDesc(e.target.value)}
-                  placeholder="Describe your project here..."
-                  className="w-full h-32 p-4 rounded-xl bg-black/50 border border-purple-500/30 text-white focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none font-mono mb-2"
-                />
-                <div className="text-xs text-gray-500 font-mono space-y-1">
-                  <p className="font-bold text-purple-400">Try these examples:</p>
-                  <p className="cursor-pointer hover:text-white transition-colors" onClick={() => setProjectDesc("E-commerce site expecting 10K daily visitors with peaks during sales.")}>"E-commerce site expecting 10K daily visitors..."</p>
-                  <p className="cursor-pointer hover:text-white transition-colors" onClick={() => setProjectDesc("Internal RAG system for searching 50,000 PDF documents securely.")}>"Internal RAG system for searching 50,000 PDF documents..."</p>
+          <div className="bg-white/[0.02] border border-white/5 rounded-2xl p-8 mb-8">
+            <div className="mb-6">
+              <label className="block text-xs font-mono uppercase tracking-widest text-cyan-500/60 mb-3">System Context / Problem Statement</label>
+              <textarea
+                value={input}
+                onChange={(e) => setInput(e.target.value)}
+                placeholder="Describe the system, problem, or constraint you are working with. Technical precision is optional — clarity of intent is enough."
+                className="w-full h-40 bg-black/40 border border-white/10 rounded-lg p-4 text-gray-300 focus:border-cyan-500/50 outline-none transition-all resize-none"
+              />
+            </div>
+
+            <div className="flex flex-wrap items-center justify-between gap-6">
+              <div className="flex items-center gap-4">
+                <span className="text-xs font-mono text-gray-500 uppercase tracking-widest">Depth Selector:</span>
+                <div className="flex bg-black/60 p-1 rounded border border-white/5">
+                  {['overview', 'detailed', 'auto'].map((d) => (
+                    <button
+                      key={d}
+                      onClick={() => setDepth(d.toLowerCase())}
+                      className={`px-4 py-1 text-[10px] font-mono uppercase tracking-widest transition-all rounded ${
+                        depth === d.toLowerCase() ? 'bg-cyan-500/20 text-cyan-400' : 'text-gray-600 hover:text-gray-400'
+                      }`}
+                    >
+                      {d}
+                    </button>
+                  ))}
                 </div>
               </div>
 
-              <Button
-                variant="gradient"
-                onClick={handleGenerate}
-                disabled={loading || !projectDesc.trim()}
-                className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-600 border-none"
+              <button
+                onClick={handleAnalyze}
+                disabled={analyzing || !input.trim()}
+                className="px-8 py-3 bg-cyan-500/10 border border-cyan-500/30 text-cyan-400 font-mono text-xs uppercase tracking-[0.2em] hover:bg-cyan-500/20 disabled:opacity-30 disabled:cursor-not-allowed transition-all"
               >
-                {loading ? (
-                  <>
-                    <Activity className="w-4 h-4 animate-spin" /> PROCESSING...
-                  </>
-                ) : (
-                  <>
-                    <Sparkles className="w-4 h-4" /> GENERATE BLUEPRINT
-                  </>
-                )}
-              </Button>
-
-              {/* Result Area */}
-              {(plan || loading) && (
-                <div className="mt-12 border-t border-white/10 pt-8 animate-fade-in">
-                  {loading ? (
-                    <div className="space-y-4 max-w-2xl mx-auto opacity-50">
-                      <div className="h-4 bg-purple-900/30 rounded w-3/4 animate-pulse"></div>
-                      <div className="h-4 bg-purple-900/30 rounded w-full animate-pulse"></div>
-                      <div className="h-4 bg-purple-900/30 rounded w-5/6 animate-pulse"></div>
-                    </div>
-                  ) : (
-                    <div className="prose prose-invert max-w-none">
-                      {plan.split('###').map((section, index) => {
-                        if (!section.trim()) return null;
-                        const [title, ...content] = section.split('\n');
-                        return (
-                          <div key={index} className="mb-8 p-6 rounded-xl bg-black/30 border border-purple-500/20">
-                            <h3 className="text-xl font-bold text-purple-300 mb-4 flex items-center gap-2 font-mono uppercase">
-                              {title.includes('Stack') && <Database className="w-5 h-5" />}
-                              {title.includes('Scalability') && <Activity className="w-5 h-5" />}
-                              {title.includes('Security') && <Shield className="w-5 h-5" />}
-                              {title.includes('Blue Panda') && <Cloud className="w-5 h-5" />}
-                              {title}
-                            </h3>
-                            <div className="text-gray-300 leading-relaxed whitespace-pre-wrap font-mono text-sm">
-                              {content.join('\n').trim()}
-                            </div>
-                          </div>
-                        );
-                      })}
-                    </div>
-                  )}
-                </div>
-              )}
+                {analyzing ? 'Reasoning...' : 'Initiate Analysis'}
+              </button>
             </div>
           </div>
+
+          {result && (
+            <div className="animate-fade-in space-y-8">
+               <div className="grid md:grid-cols-2 gap-8">
+                  <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
+                    <h4 className="text-xs font-mono text-white tracking-widest uppercase mb-4 opacity-50">Structured Reasoning</h4>
+                    <p className="text-gray-400 text-sm leading-relaxed">{result.reasoning}</p>
+                  </div>
+                  <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
+                    <h4 className="text-xs font-mono text-white tracking-widest uppercase mb-4 opacity-50">Explicit Assumptions</h4>
+                    <ul className="space-y-2">
+                      {result.assumptions.map((a, i) => (
+                        <li key={i} className="text-gray-400 text-sm flex gap-3">
+                          <span className="text-cyan-500/40">•</span>
+                          {a}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+               </div>
+               
+               <div className="p-8 border-l-2 border-cyan-500/20 bg-cyan-500/[0.02]">
+                  <h4 className="text-xs font-mono text-cyan-400 tracking-widest uppercase mb-6">Architectural Suggestions</h4>
+                  <div className="space-y-4">
+                    {result.suggestions.map((s, i) => (
+                      <div key={i} className="flex gap-4 items-start">
+                        <div className="w-6 h-6 rounded bg-cyan-500/10 flex items-center justify-center flex-shrink-0 text-[10px] text-cyan-400 font-mono">
+                          0{i+1}
+                        </div>
+                        <p className="text-gray-300 text-sm leading-relaxed">{s}</p>
+                      </div>
+                    ))}
+                  </div>
+               </div>
+
+               <div className="p-6 bg-white/[0.02] border border-white/5 rounded-xl">
+                  <h4 className="text-xs font-mono text-white tracking-widest uppercase mb-4 opacity-50">Trade-offs and Constraints</h4>
+                  <p className="text-gray-400 text-sm leading-relaxed italic">"{result.tradeoffs}"</p>
+               </div>
+            </div>
+          )}
         </FadeIn>
-      </Section>
+      </div>
     </div>
   );
 };
