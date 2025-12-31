@@ -1,22 +1,22 @@
-# Blue Panda - Quantum Infrastructure Website
+# Blue Panda - Responsible Infrastructure
 
-A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our evolution from traditional hosting to AI-powered quantum infrastructure.
+A professional web presence for Blue Panda, showcasing resilient systems across infrastructure, applied AI, and custom engineering.
 
 ## 🌟 Features
 
-- **Superposition Design Theme**: Dark mode with neon accents, particle backgrounds, and glitch effects
-- **AI Infrastructure Architect**: Powered by Gemini API for intelligent infrastructure planning
-- **Interactive Project Showcase**: Detailed case studies with metrics and tech stacks
-- **Responsive Navigation**: Bottom navigation bar with tooltips and system menu overlay
-- **Content-Rich Pages**: Services, Projects, About, Contact, and AI Architect
+- **Superposition Design Theme**: Dark mode with neon accents, particle backgrounds, and glitch effects.
+- **AI Architect Tool**: A reasoning tool powered by the Google Gemini API to demonstrate a thoughtful approach to system design.
+- **Detailed Case Studies**: Real-world examples of completed projects, each with context, problem, approach, and outcome.
+- **Component-Based Architecture**: The frontend is built with modular and reusable React components.
+- **Six Core Pages**: Home, Services, Case Studies, AI Architect, About, and Contact.
 
 ## 🚀 Tech Stack
 
 - **Framework**: React 18 with Vite
-- **Styling**: Tailwind CSS with custom animations
+- **Styling**: Tailwind CSS
 - **Icons**: Lucide React
 - **AI Integration**: Google Gemini API
-- **Deployment**: Static build ready for any hosting platform
+- **Deployment**: Ready for static hosting platforms like Netlify or Render.
 
 ## 📦 Installation
 
@@ -37,39 +37,35 @@ npm run preview
 ## 🎨 Project Structure
 
 ```
-qpanda/
+blue-panda-site/
 ├── src/
-│   ├── App.jsx                      # Main application with routing
-│   ├── SuperpositionComponents.jsx  # Reusable UI components
-│   └── index.css                    # Global styles and animations
-├── public/                          # Static assets
-├── index.html                       # Entry HTML
-└── vite.config.js                   # Vite configuration
+│   ├── components/              # Reusable UI components for each page
+│   ├── App.jsx                  # Main application component with routing
+│   └── ...
+├── public/                      # Static assets
+├── .env.local                   # Local environment variables (create this file)
+└── vite.config.js               # Vite configuration
 ```
-
-## 🌐 Pages
-
-- **Home**: Hero section with quantum-themed branding
-- **Services**: Q Panda Cloud, AI Infrastructure, Traditional Web Services
-- **Projects**: Real project showcase with case study modals
-- **About**: Company evolution timeline and team
-- **AI Architect**: Gemini-powered infrastructure blueprint generator
-- **Contact**: Contact form with Calendly integration
 
 ## 🔑 Environment Variables
 
-To use the AI Architect feature, you'll need a Gemini API key. Update the API key in `src/App.jsx`:
+To use the AI Architect feature, you will need a Google Gemini API key.
 
-```javascript
-const apiKey = "YOUR_GEMINI_API_KEY";
+1.  Create a new file named `.env.local` in the root of the project.
+2.  Add your API key to this file as follows:
+
 ```
+VITE_GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+```
+
+**Note:** Vite requires environment variables that are exposed to the browser to be prefixed with `VITE_`.
 
 ## 📝 License
 
-© 2013-2025 Blue Panda Hosting and Designs. All rights reserved.
+© 2013-2024 Blue Panda. All rights reserved.
 
 ## 🐼 About Blue Panda
 
-Operating since 2013, Blue Panda has evolved from traditional web hosting to pioneering quantum-ready infrastructure with AI-powered autonomous systems.
+Blue Panda has been working with infrastructure and systems since 2013. The focus has evolved, but the core principle remains the same: systems should be understandable, stable, and designed for the long term.
 
 **Contact**: sachin@bluepanda.in
