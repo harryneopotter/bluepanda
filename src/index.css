@@ -89,6 +89,15 @@
     .font-mono {
         font-family: 'JetBrains Mono', monospace;
     }
+
+    /* Mobile: Add bottom padding to clear the fixed floating nav (approx 80px + breathing room) */
+    @media (max-width: 768px) {
+
+        main,
+        .page-content {
+            padding-bottom: 96px;
+        }
+    }
 }
 
 @layer utilities {

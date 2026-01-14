@@ -768,13 +768,13 @@ export const BottomNav = ({ currentPage, setPage }) => {
     ];
 
     return (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-5xl px-4">
-            <div className="glass-panel rounded-full px-8 py-5 flex justify-between items-center shadow-2xl shadow-brand-primary/10 border border-white/60 backdrop-blur-xl">
+        <div className="fixed bottom-6 left-0 right-0 z-50 flex justify-center px-4">
+            <div className="glass-panel rounded-full px-4 md:px-8 py-4 md:py-5 flex justify-between items-center gap-1 md:gap-2 shadow-2xl shadow-brand-primary/10 border border-white/60 backdrop-blur-xl w-full max-w-[calc(100vw-2rem)] md:max-w-5xl">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => setPage(item.id)}
-                        className={`relative group flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-300 ${currentPage === item.id
+                        className={`relative group flex items-center justify-center gap-1 md:gap-3 px-2 md:px-4 py-2 rounded-full transition-all duration-300 min-w-0 ${currentPage === item.id
                             ? 'text-brand-primary bg-brand-primary/10'
                             : 'text-muted hover:text-white'
                             }`}
@@ -785,8 +785,8 @@ export const BottomNav = ({ currentPage, setPage }) => {
                             {item.label}
                         </span>
 
-                        {item.icon}
-                        <span className={`text-lg font-mono font-bold ${currentPage === item.id ? 'block' : 'hidden lg:block'}`}>
+                        <span className="w-5 h-5 md:w-6 md:h-6 flex-shrink-0">{React.cloneElement(item.icon, { className: 'w-full h-full' })}</span>
+                        <span className={`text-xs md:text-lg font-mono font-bold truncate ${currentPage === item.id ? 'block max-w-[60px] md:max-w-none' : 'hidden lg:block'}`}>
                             {item.label}
                         </span>
                         {currentPage === item.id && (

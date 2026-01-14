@@ -64,6 +64,7 @@ const PageWrapper = ({ children }) => {
 
   return (
     <motion.div
+      className="page-content"
       initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       exit={prefersReducedMotion ? {} : { opacity: 0, y: -20 }}
