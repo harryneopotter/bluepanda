@@ -644,7 +644,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
     const projects = [
         {
             status: "live",
-            title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
+            title: "Almaha Foods",
             description: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity.",
             tags: ["React", "Security", "Deterministic"],
             type: "web",
@@ -657,7 +657,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "live",
-            title: "Teacher Website",
+            title: "Telegram CMS Website",
             description: "A mobile-first content management system built for a creative educator. Solves accessibility constraints by allowing full website management via a Telegram bot. Features auto-processing of PDFs and images, real-time lead generation, and runs on GCP free tier.",
             tags: ["Next.js 14", "Telegram Bot", "GCP Cloud Functions", "Firestore"],
             type: "web",
@@ -670,7 +670,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "live",
-            title: "Remote Cloud Dashboard — Secure VM Orchestration",
+            title: "GCP Remote Dashboard",
             description: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability.",
             tags: ["Node.js", "Docker", "Tailscale", "GCP"],
             type: "cloud",
@@ -683,7 +683,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "development",
-            title: "Smriti — AI Context Engine",
+            title: "Smriti",
             description: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead.",
             tags: ["Python (AST)", "TypeScript", "Semantic Analysis", "Automation"],
             type: "ai",

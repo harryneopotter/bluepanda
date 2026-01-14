@@ -423,7 +423,7 @@ const HomePage = ({ navigate }) => (
             Services
           </Button>
           <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/20 hover:border-brand-accent hover:text-brand-accent">
-            Case Studies
+            Projects
           </Button>
           <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/20 hover:border-purple-500 hover:text-purple-400">
             AI Architect Demo
@@ -469,6 +469,8 @@ const HomePage = ({ navigate }) => (
           </Button>
         </div>
       </div>
+
+      <TestimonialsSection />
 
     </div>
   </PageWrapper>
