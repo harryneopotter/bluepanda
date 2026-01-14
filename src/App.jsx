@@ -113,7 +113,7 @@ const LoadingScreen = ({ onComplete }) => {
 // --- Shared Components with Framer Motion ---
 const Section = ({ children, className = "" }) => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const isInView = useInView(ref, { once: false, margin: "-100px" });
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -396,7 +396,7 @@ const HomePage = ({ navigate }) => (
           <HologramPanda />
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="mb-6 relative">
+        <motion.div variants={fadeInUp} className="-mt-8 -mb-4 relative">
           <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs md:text-lg tracking-widest uppercase">
             Infrastructure Excellence Since 2013
           </span>
@@ -422,13 +422,13 @@ const HomePage = ({ navigate }) => (
           <Button onClick={() => navigate('services')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
             Services
           </Button>
-          <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/20 hover:border-brand-accent hover:text-brand-accent">
+          <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
             Projects
           </Button>
-          <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/20 hover:border-purple-500 hover:text-purple-400">
+          <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
             AI Architect Demo
           </Button>
-          <Button onClick={() => navigate('about')} variant="outline" className="justify-center border-white/20 hover:border-white hover:text-white">
+          <Button onClick={() => navigate('about')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
             About
           </Button>
         </motion.div>
@@ -470,7 +470,7 @@ const HomePage = ({ navigate }) => (
         </div>
       </div>
 
-      <TestimonialsSection />
+      {/* Client Transmissions Moved to Services Page */}
 
     </div>
   </PageWrapper>
@@ -612,6 +612,9 @@ const ServicesPage = () => (
       </div>
 
       <PrinciplesSection />
+
+      {/* Client Transmissions */}
+      <TestimonialsSection />
     </Section>
   </div>
 );
@@ -706,12 +709,12 @@ const AboutPage = () => (
         </div>
       </div>
 
+      {/* 
       <div className="mt-20">
         <h2 className="text-3xl font-bold mb-8 text-white">THE TEAM</h2>
         <div className="grid md:grid-cols-3 gap-6">
           <div className="p-6 bg-black/40 border border-white/10 rounded-xl text-center group hover:border-cyan-500 transition-colors">
             <div className="w-24 h-24 mx-auto bg-gray-800 rounded-full mb-4 overflow-hidden border-2 border-gray-700 group-hover:border-cyan-500">
-              {/* Placeholder for team image */}
               <div className="w-full h-full bg-gradient-to-br from-gray-700 to-gray-900 flex items-center justify-center">
                 <User className="w-8 h-8 text-gray-400" />
               </div>
@@ -732,6 +735,7 @@ const AboutPage = () => (
           </div>
         </div>
       </div>
+       */}
     </Section>
   </div>
 );
@@ -799,15 +803,15 @@ const ContactPage = () => {
                   <span className="flex items-center gap-2">SEND TRANSMISSION <ArrowRight className="w-4 h-4" /></span>
                 )}
               </Button>
-              <p className="text-xs text-gray-500 text-center mt-4">
-                <Lock className="w-3 h-3 inline mr-1" />
+              <p className="text-lg text-white font-medium text-center mt-4">
+                <Lock className="w-5 h-5 inline mr-2" />
                 We respect your privacy. Your data is encrypted and never shared.
               </p>
             </form>
           )}
 
-          <div className="mt-8 pt-8 border-t border-white/10 text-center font-mono text-sm text-gray-500">
-            <p className="mb-4">Prefer to talk directly?</p>
+          <div className="mt-8 pt-8 border-t border-white/10 text-center font-mono text-lg text-white">
+            <p className="mb-4 text-white font-bold">Prefer to talk directly?</p>
             <Button variant="outline" className="mx-auto" onClick={() => window.open('https://calendly.com/bluepanda/consultation', '_blank')}>
               <Activity className="w-4 h-4" /> Schedule a Consultation
             </Button>
