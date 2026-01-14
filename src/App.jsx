@@ -152,7 +152,7 @@ const Button = ({ children, variant = 'primary', className = "", ...props }) => 
 
   return (
     <button
-      className={`px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2 ${variants[variant]} ${className}`}
+      className={`px-6 py-3 rounded-lg transition-all duration-300 flex items-center gap-2 ${variants[variant]} ${className} disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none`}
       {...props}
     >
       {children}
@@ -397,7 +397,7 @@ const HomePage = ({ navigate }) => (
         </motion.div>
 
         <motion.div variants={fadeInUp} className="mb-6 relative">
-          <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-lg tracking-widest uppercase">
+          <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs md:text-lg tracking-widest uppercase">
             Infrastructure Excellence Since 2013
           </span>
         </motion.div>
