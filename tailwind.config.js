@@ -32,6 +32,5 @@ export default {
             base: ['1.125rem', { lineHeight: '1.75rem' }], // 18px
         }
     },
-},
-plugins: [],
+    plugins: [],
 }

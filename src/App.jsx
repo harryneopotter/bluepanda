@@ -9,12 +9,9 @@ import {
   CheckCircle2,
   ArrowRight,
   Activity,
-  ArrowRight,
   Bot,
-  CheckCircle2,
   ChevronRight,
   Code2,
-  Cpu,
   Database,
   Download,
   ExternalLink,
@@ -24,13 +21,9 @@ import {
   Lightbulb,
   Lock,
   Mail,
-  Menu,
-  Server,
-  Shield,
   Sparkles,
   Terminal,
   User,
-  X,
   Zap
 } from 'lucide-react';
 import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav, HologramPanda, ServicesGrid, FeaturedProjects } from './SuperpositionComponents';

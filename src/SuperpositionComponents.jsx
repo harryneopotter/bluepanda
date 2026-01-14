@@ -206,7 +206,6 @@ export const ServicesGrid = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.2, duration: 0.5 }}
-                    transition={{ delay: idx * 0.2, duration: 0.5 }}
                     className={`interactive-card p-8 rounded-2xl bg-surface/40 border border-white/10 ${service.glow} flex flex-col gap-6 backdrop-blur-sm group hover:bg-surface/60 transition-colors cursor-pointer`}
                 >
                     <div className="w-16 h-16 rounded-full bg-surface border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
