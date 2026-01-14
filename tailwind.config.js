@@ -26,11 +26,11 @@ export default {
                     400: 'var(--brand-accent)',
                     500: 'var(--brand-accent)',
                 }
+            },
+            fontSize: {
+                base: ['1.125rem', { lineHeight: '1.75rem' }], // 18px
             }
         },
-        fontSize: {
-            base: ['1.125rem', { lineHeight: '1.75rem' }], // 18px
-        }
     },
     plugins: [],
 }
