@@ -1025,7 +1025,7 @@ const InfrastructureArchitect = () => {
                               {title.includes('Practical') && <CheckCircle2 className="w-5 h-5" />}
                               {title}
                             </h3>
-                            <div className="text-gray-300 leading-relaxed whitespace-pre-wrap font-mono text-sm">
+                            <div className="text-white/90 leading-6 whitespace-pre-wrap font-mono text-base">
                               {content.join('\n').trim()}
                             </div>
                           </div>
