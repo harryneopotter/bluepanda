@@ -12,7 +12,21 @@ export const caseStudiesData = {
         impact: "Removes friction for users with mobility constraints, enables independent website management. Built to serve, not scale - focused on accessibility, simplicity, and dignity over features.",
         githubUrl: "https://github.com/harryneopotter/telegram-cms-website-public"
     },
-    "GCP Remote Dashboard": {
+    "Almaha Foods — Frontend Deconstruction & Security Hardening": {
+        challenge: "Almaha Foods’ WordPress website was repeatedly compromised due to plugin vulnerabilities and unmanaged attack surface. Despite being a relatively simple marketing site, it required frequent recovery, patching, and monitoring — creating operational risk and instability. The client needed a long-term fix without changing the visual design.",
+        solution: "Rebuilt the site as a deterministic React frontend, removing WordPress entirely from the public surface. The new architecture preserves pixel-perfect design fidelity while eliminating dynamic CMS vectors, plugins, and server-side execution from the frontend. Content delivery was simplified and locked down for predictability and safety.",
+        techStack: ["React", "Security Hardening", "Deterministic Frontend"],
+        keyFeatures: [
+            "Deterministic React frontend (no runtime CMS execution)",
+            "Complete removal of WordPress and plugin attack surface",
+            "Static asset delivery with controlled deployment pipeline",
+            "Design parity with original site (no visual regression)",
+            "Simplified hosting and monitoring model"
+        ],
+        impact: "Eliminated repeated security incidents by removing the root cause rather than patching symptoms. The site is now stable, predictable, and low-maintenance — optimized for long-term reliability instead of short-term fixes. A security-first outcome achieved through reduction, not complexity.",
+        liveUrl: "https://bhaiyaji.co.in"
+    },
+    "Remote Cloud Dashboard — Secure VM Orchestration": {
         challenge: "Need for efficient remote monitoring and management of Google Cloud Platform resources without constant manual checking.",
         solution: "Built a comprehensive dashboard for real-time GCP resource monitoring and management with automated alerts and insights.",
         techStack: ["React", "GCP APIs", "Cloud Functions", "Real-time monitoring"],
@@ -25,7 +39,7 @@ export const caseStudiesData = {
         impact: "Streamlined GCP resource management, reduced manual monitoring time, improved cost visibility.",
         githubUrl: "https://github.com/harryneopotter/gcp-remote-dashboard"
     },
-    "Smriti": {
+    "Smriti — AI Context Engine": {
         challenge: "Frustration with repeatedly providing project context to AI assistants across different tools. Context is a commodity - every new AI chat session requires re-pasting file trees, dependencies, and project structure. Different tools (Copilot, Cursor, Windsurf) each want context in their own format.",
         solution: "Automated context generation and management system that walks repos, generates structured context files, and auto-initializes for different AI tools. Evolved through 4 versions from basic script to semantic AST analysis.",
         techStack: ["Python (ast parsing)", "TypeScript (ts-morph for semantic analysis)", "SHA256 hashing for change detection", "AST parsing for semantic layer"],
