@@ -405,7 +405,7 @@ const HomePage = ({ navigate }) => (
 
         <motion.div variants={fadeInUp} className="mt-4 mb-4 relative">
           <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs md:text-lg tracking-widest uppercase">
-            Infrastructure Excellence Since 2013
+            Problem-solving, not service selling.
           </span>
         </motion.div>
 
@@ -417,15 +417,12 @@ const HomePage = ({ navigate }) => (
 
         <motion.div variants={fadeInUp} className="text-lg md:text-xl text-gray-300 max-w-3xl mb-12 font-mono leading-relaxed space-y-4 text-left md:text-center mx-auto">
           <p>
-            We design resilient systems across infrastructure, applied AI, and custom engineering — focused on long-term stability, security, and clarity.
-          </p>
-          <p className="text-cyan-400">
-            Problem-solving, not service selling.
+            We design and maintain resilient infrastructure, applied systems, and custom engineering — focused on long-term stability, clarity, and reliability.
           </p>
         </motion.div>
 
         {/* Navigation Buttons (Affordances) */}
-        <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl mb-24">
+        <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-5 gap-4 w-full max-w-5xl mb-24">
           <Button onClick={() => navigate('services')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             Services
           </Button>
@@ -437,6 +434,9 @@ const HomePage = ({ navigate }) => (
           </Button>
           <Button onClick={() => navigate('about')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             About
+          </Button>
+          <Button onClick={() => navigate('contact')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
+            Contact
           </Button>
         </motion.div>
       </motion.div>
@@ -794,13 +794,25 @@ const ContactPage = () => {
               </button>
             </div>
           ) : (
-            <form className="space-y-6" onSubmit={handleSubmit}>
+            <form
+              className="space-y-6"
+              onSubmit={handleSubmit}
+              name="contact"
+              method="POST"
+              data-netlify="true"
+              netlify-honeypot="bot-field"
+            >
+              <input type="hidden" name="form-name" value="contact" />
+              <div hidden>
+                <input name="bot-field" />
+              </div>
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Your Name</label>
                   <input
                     required
                     type="text"
+                    name="name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
@@ -812,6 +824,7 @@ const ContactPage = () => {
                   <input
                     required
                     type="email"
+                    name="email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
@@ -822,7 +835,8 @@ const ContactPage = () => {
               <div>
                 <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Project Details</label>
                 <textarea
-                  required
+                  required // Optional in prompt but good practice, user said 'optional' in text but usually good to keep unless explicitly told to remove 'required' attr. Wait, user said "Problem description (optional)".
+                  name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                   className="w-full bg-black/50 border border-white/10 rounded p-3 text-white h-32 focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all resize-none"
@@ -1108,7 +1122,7 @@ const Footer = ({ navigate }) => (
             <span className="font-mono text-cyan-400 font-bold tracking-widest text-xl">BLUE PANDA</span>
           </div>
           <p className="text-gray-300 text-xl leading-relaxed">
-            Responsible infrastructure, applied AI, and system correction since 2013.
+            Responsible infrastructure, applied systems, and system correction since 2013.
           </p>
         </div>
 
@@ -1155,7 +1169,7 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
   const menuItems = [
     { id: 'home', label: 'HOME' },
     { id: 'services', label: 'SERVICES' },
-    { id: 'projects', label: 'CASE STUDIES' },
+    { id: 'projects', label: 'PROJECTS' },
     { id: 'about', label: 'ABOUT' },
     { id: 'architect', label: 'AI ARCHITECT' },
     { id: 'contact', label: 'CONTACT' },

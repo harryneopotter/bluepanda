@@ -229,19 +229,19 @@ export const FeaturedProjects = ({ navigate }) => {
     const projects = [
         {
             title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
-            desc: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity.",
+            desc: "Rebuilt a repeatedly compromised WordPress site into a secure, deterministic React frontend.",
             tech: ["React", "Security"],
             color: "border-brand-primary/50"
         },
         {
             title: "Smriti — AI Context Engine",
-            desc: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead.",
+            desc: "A tool for extracting and structuring project context for AI coding assistants.",
             tech: ["Python", "AST", "AI"],
             color: "border-brand-accent/50"
         },
         {
             title: "Remote Cloud Dashboard — Secure VM Orchestration",
-            desc: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability.",
+            desc: "A secure, low-friction platform for managing remote cloud infrastructure using Tailscale.",
             tech: ["Node.js", "Docker", "Tailscale"],
             color: "border-brand-primary/50"
         }
@@ -644,8 +644,8 @@ export const ProjectsGrid = ({ onProjectClick }) => {
     const projects = [
         {
             status: "live",
-            title: "Almaha Foods",
-            description: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity.",
+            title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
+            description: "Rebuilt a repeatedly compromised WordPress site into a secure, deterministic React frontend.",
             tags: ["React", "Security", "Deterministic"],
             type: "web",
             metrics: [
@@ -670,8 +670,8 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "live",
-            title: "GCP Remote Dashboard",
-            description: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability.",
+            title: "Remote Cloud Dashboard — Secure VM Orchestration",
+            description: "A secure, low-friction platform for managing remote cloud infrastructure using Tailscale.",
             tags: ["Node.js", "Docker", "Tailscale", "GCP"],
             type: "cloud",
             metrics: [
@@ -683,8 +683,8 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "development",
-            title: "Smriti",
-            description: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead.",
+            title: "Smriti — AI Context Engine",
+            description: "A tool for extracting and structuring project context for AI coding assistants.",
             tags: ["Python (AST)", "TypeScript", "Semantic Analysis", "Automation"],
             type: "ai",
             metrics: [
@@ -762,7 +762,7 @@ export const BottomNav = ({ currentPage, setPage }) => {
     const navItems = [
         { id: 'home', label: 'Home', icon: <Home className="w-6 h-6" /> },
         { id: 'services', label: 'Services', icon: <Zap className="w-6 h-6" /> },
-        { id: 'projects', label: 'Case Studies', icon: <Code2 className="w-6 h-6" /> },
+        { id: 'projects', label: 'Projects', icon: <Code2 className="w-6 h-6" /> },
         { id: 'about', label: 'About', icon: <User className="w-6 h-6" /> },
         { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-6 h-6" /> },
         { id: 'contact', label: 'Contact', icon: <Mail className="w-6 h-6" /> },
