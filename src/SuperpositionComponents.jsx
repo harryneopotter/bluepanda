@@ -185,7 +185,7 @@ export const ServicesGrid = () => {
         },
         {
             title: "Applied AI Systems",
-            icon: <BrainCircuit className="w-8 h-8 text-brand-accent" />,
+            icon: <Cpu className="w-8 h-8 text-brand-accent" />,
             desc: "Building applied AI systems where control, privacy, and determinism matter more than novelty — embedding AI into real workflows to reduce cognitive load.",
             glow: "shadow-[0_0_30px_rgba(191,0,255,0.15)]"
         },
@@ -206,7 +206,8 @@ export const ServicesGrid = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: idx * 0.2, duration: 0.5 }}
-                    className={`p-8 rounded-2xl bg-surface/40 border border-white/10 ${service.glow} flex flex-col gap-6 backdrop-blur-sm group hover:bg-surface/60 transition-colors`}
+                    transition={{ delay: idx * 0.2, duration: 0.5 }}
+                    className={`interactive-card p-8 rounded-2xl bg-surface/40 border border-white/10 ${service.glow} flex flex-col gap-6 backdrop-blur-sm group hover:bg-surface/60 transition-colors cursor-pointer`}
                 >
                     <div className="w-16 h-16 rounded-full bg-surface border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
                         {service.icon}
@@ -508,7 +509,7 @@ export const ConstellationProjects = () => {
     }, [hoveredNode, isModalHovered]);
 
     return (
-        <div className="relative w-full h-[600px] bg-surface/50 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
+        <div className="relative w-full h-[400px] md:h-[600px] bg-surface/50 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
             <div className="absolute top-4 left-4 z-10">
                 <h2 className="text-xl font-mono text-brand-primary flex items-center gap-2">
                     <Activity className="w-4 h-4" /> DEPLOYED_SYSTEMS_LOG //
@@ -574,7 +575,7 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                 boxShadow: '0 25px 50px -12px rgba(0, 240, 230, 0.25)'
             }}
             style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
-            className="group relative bg-surface/40 border border-gray-200 dark:border-white/10 rounded-xl p-6 hover:border-brand-primary transition-all duration-500 overflow-hidden backdrop-blur-sm cursor-pointer"
+            className="interactive-card group relative bg-surface/40 border border-gray-200 dark:border-white/10 rounded-xl p-6 hover:border-brand-primary transition-all duration-500 overflow-hidden backdrop-blur-sm cursor-pointer flex flex-col"
         >
             {/* Hover Gradient */}
             <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-transparent to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -589,52 +590,51 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                     </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-brand-primary transition-colors font-mono">
-                    {project.title}
-                </h3>
-                <p className="text-muted text-sm mb-6 leading-relaxed flex-grow">
-                    {project.description}
-                </p>
-
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3">
                     {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2 py-1 bg-surface border border-gray-200 dark:border-white/10 rounded text-muted font-mono">
-                            #{tag}
+                        <span key={tag} className="text-[10px] px-2 py-0.5 bg-surface border border-gray-200 dark:border-white/10 rounded text-muted font-mono uppercase tracking-wide">
+                            {tag}
                         </span>
                     ))}
                 </div>
+
+                <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-brand-primary transition-colors font-mono">
+                    {project.title}
+                </h3>
+                <p className="text-muted text-sm mb-6 leading-relaxed flex-grow font-sans text-base">
+                    {project.description}
+                </p>
 
                 {/* Metrics / Outcomes */}
                 {project.metrics && (
                     <div className="grid grid-cols-2 gap-2 mb-6">
                         {project.metrics.map((metric, idx) => (
-                            <div key={idx} className="bg-brand-primary/5 border border-brand-primary/20 rounded p-2 text-center">
+                            <div key={idx} className="bg-brand-primary/10 border border-brand-primary/30 rounded p-2 text-center group-hover:bg-brand-primary/20 transition-colors">
                                 <span className="block text-brand-primary font-bold text-sm">{metric.value}</span>
-                                <span className="block text-muted text-[10px] uppercase tracking-wider">{metric.label}</span>
+                                <span className="block text-white/70 text-[10px] uppercase tracking-wider">{metric.label}</span>
                             </div>
                         ))}
                     </div>
                 )}
 
-                <button
-                    onClick={() => onProjectClick && onProjectClick(project)}
-                    className="flex items-center gap-2 text-sm text-brand-primary hover:text-primary transition-colors font-mono group/link"
-                >
-                    <FileText className="w-4 h-4 group-hover/link:text-brand-primary" />
-                    <span>CASE_STUDY</span>
-                </button>
-                {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors font-mono group/link" aria-label={`View ${project.title} source code on GitHub`}>
-                        <Github className="w-4 h-4 group-hover/link:text-brand-primary" />
-                        <span>SOURCE_CODE</span>
-                    </a>
-                )}
-                {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-brand-primary hover:text-brand-primary/80 transition-colors font-mono group/link" aria-label={`Visit ${project.title} live site`}>
-                        <ExternalLink className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
-                        <span>INITIATE_LINK</span>
-                    </a>
-                )}
+                <div className="flex gap-3 mt-auto">
+                    <button
+                        onClick={() => onProjectClick && onProjectClick(project)}
+                        className="flex-1 py-2 rounded border border-brand-primary/30 bg-brand-primary/5 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2"
+                    >
+                        <FileText className="w-3 h-3" /> Case Study
+                    </button>
+                    {project.githubUrl && (
+                        <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-white/20 hover:border-white/50 text-muted hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="Source Code">
+                            <Github className="w-3 h-3" /> Code
+                        </a>
+                    )}
+                    {project.liveUrl && (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-brand-primary/50 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="View Live">
+                            <ExternalLink className="w-3 h-3" /> Live
+                        </a>
+                    )}
+                </div>
             </div>
         </motion.div>
     );

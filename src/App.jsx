@@ -8,23 +8,30 @@ import {
   Shield,
   CheckCircle2,
   ArrowRight,
-  Mail,
-  Globe,
-  Zap,
   Activity,
-  Lock,
-  Sparkles,
+  ArrowRight,
   Bot,
-  Database,
-  Cloud,
-  Moon,
-  Sun,
-  Github,
+  CheckCircle2,
+  ChevronRight,
   Code2,
+  Cpu,
+  Database,
+  Download,
   ExternalLink,
-  User,
   FileText,
-  Lightbulb
+  Github,
+  Globe,
+  Lightbulb,
+  Lock,
+  Mail,
+  Menu,
+  Server,
+  Shield,
+  Sparkles,
+  Terminal,
+  User,
+  X,
+  Zap
 } from 'lucide-react';
 import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav, HologramPanda, ServicesGrid, FeaturedProjects } from './SuperpositionComponents';
 import { AI } from './services/ai';
@@ -418,17 +425,17 @@ const HomePage = ({ navigate }) => (
         </motion.div>
 
         {/* Navigation Buttons (Affordances) */}
-        <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl">
-          <Button onClick={() => navigate('services')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
+        <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl mb-24">
+          <Button onClick={() => navigate('services')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             Services
           </Button>
-          <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
+          <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             Projects
           </Button>
-          <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
+          <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             AI Architect Demo
           </Button>
-          <Button onClick={() => navigate('about')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
+          <Button onClick={() => navigate('about')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             About
           </Button>
         </motion.div>
@@ -742,6 +749,7 @@ const AboutPage = () => (
 
 const ContactPage = () => {
   const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success
+  const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -750,6 +758,11 @@ const ContactPage = () => {
     setTimeout(() => {
       setFormStatus('success');
     }, 1500);
+  };
+
+  const handleReset = () => {
+    setFormData({ name: '', email: '', message: '' });
+    setFormStatus('idle');
   };
 
   return (
@@ -774,7 +787,7 @@ const ContactPage = () => {
               <h3 className="text-2xl font-bold mb-2">Transmission Received</h3>
               <p className="text-gray-300">We will establish a connection shortly.</p>
               <button
-                onClick={() => setFormStatus('idle')}
+                onClick={handleReset}
                 className="mt-8 text-cyan-400 hover:text-white font-mono text-sm underline"
               >
                 Send another message
@@ -785,18 +798,38 @@ const ContactPage = () => {
               <div className="grid md:grid-cols-2 gap-6">
                 <div>
                   <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Your Name</label>
-                  <input required type="text" className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all" placeholder="Enter your name" />
+                  <input
+                    required
+                    type="text"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
+                    placeholder="Enter your name"
+                  />
                 </div>
                 <div>
                   <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Your Email</label>
-                  <input required type="email" className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all" placeholder="Enter your email" />
+                  <input
+                    required
+                    type="email"
+                    value={formData.email}
+                    onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                    className="w-full bg-black/50 border border-white/10 rounded p-3 text-white focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all"
+                    placeholder="Enter your email"
+                  />
                 </div>
               </div>
               <div>
                 <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Project Details</label>
-                <textarea required className="w-full bg-black/50 border border-white/10 rounded p-3 text-white h-32 focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all resize-none" placeholder="Describe the problem or system..." />
+                <textarea
+                  required
+                  value={formData.message}
+                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                  className="w-full bg-black/50 border border-white/10 rounded p-3 text-white h-32 focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all resize-none"
+                  placeholder="Describe the problem or system..."
+                />
               </div>
-              <Button variant="primary" className="w-full justify-center" disabled={formStatus === 'submitting'}>
+              <Button variant="primary" className="w-full justify-center btn-hover" disabled={formStatus === 'submitting'}>
                 {formStatus === 'submitting' ? (
                   <span className="flex items-center gap-2"><Activity className="w-4 h-4 animate-spin" /> TRANSMITTING...</span>
                 ) : (
@@ -1003,6 +1036,25 @@ const InfrastructureArchitect = () => {
               {/* Result Area */}
               {(plan || loading) && (
                 <div className="mt-12 border-t border-white/10 pt-8 animate-fade-in">
+                  <div className="flex justify-between items-center mb-6">
+                    <h3 className="text-xl font-bold text-white uppercase tracking-wider font-mono">Blueprint Output</h3>
+                    {plan && (
+                      <button
+                        onClick={() => {
+                          const blob = new Blob([plan], { type: 'text/markdown' });
+                          const url = URL.createObjectURL(blob);
+                          const a = document.createElement('a');
+                          a.href = url;
+                          a.download = 'blue-panda-blueprint.md';
+                          a.click();
+                        }}
+                        className="flex items-center gap-2 text-sm text-purple-400 hover:text-white transition-colors"
+                      >
+                        <Download className="w-4 h-4" /> Download .MD
+                      </button>
+                    )}
+                  </div>
+
                   {loading ? (
                     <div className="space-y-4 max-w-2xl mx-auto opacity-50">
                       <div className="h-4 bg-purple-900/30 rounded w-3/4 animate-pulse"></div>
@@ -1025,7 +1077,7 @@ const InfrastructureArchitect = () => {
                               {title.includes('Practical') && <CheckCircle2 className="w-5 h-5" />}
                               {title}
                             </h3>
-                            <div className="text-white/90 leading-6 whitespace-pre-wrap font-mono text-base">
+                            <div className="text-white/90 leading-6 whitespace-pre-wrap font-sans text-lg">
                               {content.join('\n').trim()}
                             </div>
                           </div>
@@ -1055,19 +1107,19 @@ const Footer = ({ navigate }) => (
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
             <span className="font-mono text-cyan-400 font-bold tracking-widest text-xl">BLUE PANDA</span>
           </div>
-          <p className="text-gray-400 text-xl leading-relaxed">
+          <p className="text-gray-300 text-xl leading-relaxed">
             Responsible infrastructure, applied AI, and system correction since 2013.
           </p>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h3 className="font-mono text-white font-bold mb-4 uppercase text-xl">Quick Links</h3>
-          <ul className="space-y-2 text-xl">
-            <li><button onClick={() => navigate('services')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Services</button></li>
-            <li><button onClick={() => navigate('projects')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Projects</button></li>
-            <li><button onClick={() => navigate('about')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">About Us</button></li>
-            <li><button onClick={() => navigate('architect')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">AI Architect</button></li>
+          <h3 className="font-mono text-white font-bold mb-6 uppercase text-xl">Quick Links</h3>
+          <ul className="space-y-4 text-xl">
+            <li><button onClick={() => navigate('services')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">Services</button></li>
+            <li><button onClick={() => navigate('projects')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">Projects</button></li>
+            <li><button onClick={() => navigate('about')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">About Us</button></li>
+            <li><button onClick={() => navigate('architect')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">AI Architect</button></li>
           </ul>
         </div>
 
@@ -1134,7 +1186,7 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
           </button>
         </div>
 
-        <nav className="flex-1 flex flex-col gap-6">
+        <nav className="flex-1 flex flex-col gap-8 justify-center">
           {menuItems.map((item) => (
             <button
               key={item.id}
@@ -1142,7 +1194,7 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
                 navigate(item.id);
                 onClose();
               }}
-              className="text-left text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 hover:from-cyan-400 hover:to-white transition-all duration-300 font-mono group flex items-center gap-4"
+              className="text-left text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-gray-500 to-gray-700 hover:from-cyan-400 hover:to-white transition-all duration-300 font-mono group flex items-center gap-4 py-2"
               aria-label={`Navigate to ${item.label}`}
             >
               <span className="text-sm text-cyan-500 opacity-0 group-hover:opacity-100 transition-opacity">&gt;</span>
