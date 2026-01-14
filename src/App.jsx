@@ -392,11 +392,11 @@ const HomePage = ({ navigate }) => (
         animate="visible"
       >
         {/* Panda Hologram - The Core Artifact */}
-        <motion.div variants={fadeInUp} className="mb-6">
+        <motion.div variants={fadeInUp} className="mb-0">
           <HologramPanda />
         </motion.div>
 
-        <motion.div variants={fadeInUp} className="-mt-8 -mb-4 relative">
+        <motion.div variants={fadeInUp} className="mt-4 mb-4 relative">
           <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs md:text-lg tracking-widest uppercase">
             Infrastructure Excellence Since 2013
           </span>
