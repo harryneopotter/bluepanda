@@ -760,17 +760,17 @@ export const ProjectsGrid = ({ onProjectClick }) => {
 // --- Bottom Navigation ---
 export const BottomNav = ({ currentPage, setPage }) => {
     const navItems = [
-        { id: 'home', label: 'Home', icon: <Home className="w-5 h-5" /> },
-        { id: 'services', label: 'Services', icon: <Zap className="w-5 h-5" /> },
-        { id: 'projects', label: 'Projects_', icon: <Code2 className="w-5 h-5" /> },
-        { id: 'about', label: 'About', icon: <User className="w-5 h-5" /> },
-        { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-5 h-5" /> },
-        { id: 'contact', label: 'Contact', icon: <Mail className="w-5 h-5" /> },
+        { id: 'home', label: 'Home', icon: <Home className="w-6 h-6" /> },
+        { id: 'services', label: 'Services', icon: <Zap className="w-6 h-6" /> },
+        { id: 'projects', label: 'Projects_', icon: <Code2 className="w-6 h-6" /> },
+        { id: 'about', label: 'About', icon: <User className="w-6 h-6" /> },
+        { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-6 h-6" /> },
+        { id: 'contact', label: 'Contact', icon: <Mail className="w-6 h-6" /> },
     ];
 
     return (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
-            <div className="glass-panel rounded-full px-8 py-5 flex justify-between items-center shadow-2xl shadow-brand-primary/10 border border-white/30 backdrop-blur-xl">
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-5xl px-4">
+            <div className="glass-panel rounded-full px-8 py-5 flex justify-between items-center shadow-2xl shadow-brand-primary/10 border border-white/60 backdrop-blur-xl">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
@@ -787,7 +787,7 @@ export const BottomNav = ({ currentPage, setPage }) => {
                         </span>
 
                         {item.icon}
-                        <span className={`text-base font-mono font-bold ${currentPage === item.id ? 'block' : 'hidden lg:block'}`}>
+                        <span className={`text-lg font-mono font-bold ${currentPage === item.id ? 'block' : 'hidden lg:block'}`}>
                             {item.label}
                         </span>
                         {currentPage === item.id && (
