@@ -1076,10 +1076,9 @@ const Footer = ({ navigate }) => (
           <h3 className="font-mono text-white font-bold mb-4 uppercase text-xl">Contact</h3>
           <ul className="space-y-2 text-xl">
             <li>
-              <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                sachin@bluepanda.in
-              </a>
+              <button onClick={() => navigate('contact')} className="w-12 h-12 rounded-full border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:bg-cyan-500/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all">
+                <Mail className="w-6 h-6" />
+              </button>
             </li>
 
           </ul>
@@ -1091,9 +1090,7 @@ const Footer = ({ navigate }) => (
         <p className="text-gray-500 text-xl font-mono">
           © 2013-2025 Blue Panda Hosting and Designs. All rights reserved.
         </p>
-        <p className="text-gray-500 text-xl font-mono">
-          Operating since 2013 • Quantum-Ready Infrastructure
-        </p>
+
       </div>
     </div>
   </footer>

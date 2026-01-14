@@ -760,38 +760,38 @@ export const ProjectsGrid = ({ onProjectClick }) => {
 // --- Bottom Navigation ---
 export const BottomNav = ({ currentPage, setPage }) => {
     const navItems = [
-        { id: 'home', label: 'Home', icon: <Home className="w-4 h-4" /> },
-        { id: 'services', label: 'Services', icon: <Zap className="w-4 h-4" /> },
-        { id: 'projects', label: 'Projects_', icon: <Code2 className="w-4 h-4" /> },
-        { id: 'about', label: 'About', icon: <User className="w-4 h-4" /> },
-        { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-4 h-4" /> },
-        { id: 'contact', label: 'Contact :: Initiate', icon: <Mail className="w-4 h-4" /> },
+        { id: 'home', label: 'Home', icon: <Home className="w-5 h-5" /> },
+        { id: 'services', label: 'Services', icon: <Zap className="w-5 h-5" /> },
+        { id: 'projects', label: 'Projects_', icon: <Code2 className="w-5 h-5" /> },
+        { id: 'about', label: 'About', icon: <User className="w-5 h-5" /> },
+        { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-5 h-5" /> },
+        { id: 'contact', label: 'Contact', icon: <Mail className="w-5 h-5" /> },
     ];
 
     return (
-        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
-            <div className="glass-panel rounded-full px-6 py-4 flex justify-between items-center shadow-2xl shadow-brand-primary/10">
+        <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-4xl px-4">
+            <div className="glass-panel rounded-full px-8 py-5 flex justify-between items-center shadow-2xl shadow-brand-primary/10 border border-white/30 backdrop-blur-xl">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => setPage(item.id)}
-                        className={`relative group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${currentPage === item.id
+                        className={`relative group flex items-center gap-3 px-4 py-2 rounded-full transition-all duration-300 ${currentPage === item.id
                             ? 'text-brand-primary bg-brand-primary/10'
-                            : 'text-muted hover:text-primary'
+                            : 'text-muted hover:text-white'
                             }`}
                         aria-label={`Navigate to ${item.label}`}
                     >
                         {/* Tooltip */}
-                        <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-surface/90 text-brand-primary text-xs font-mono px-2 py-1 rounded border border-brand-primary/30 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                        <span className="absolute -top-14 left-1/2 transform -translate-x-1/2 bg-surface/90 text-white text-sm font-mono px-3 py-1.5 rounded border border-white/30 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50 shadow-lg">
                             {item.label}
                         </span>
 
                         {item.icon}
-                        <span className={`text-sm font-mono font-bold ${currentPage === item.id ? 'block' : 'hidden md:block'}`}>
+                        <span className={`text-base font-mono font-bold ${currentPage === item.id ? 'block' : 'hidden lg:block'}`}>
                             {item.label}
                         </span>
                         {currentPage === item.id && (
-                            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-brand-primary shadow-[0_0_10px_#00F0FF]" />
+                            <span className="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-1/3 h-0.5 bg-brand-primary shadow-[0_0_10px_#00F0FF]" />
                         )}
                     </button>
                 ))}
