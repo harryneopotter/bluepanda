@@ -762,7 +762,7 @@ export const BottomNav = ({ currentPage, setPage }) => {
     const navItems = [
         { id: 'home', label: 'Home', icon: <Home className="w-6 h-6" /> },
         { id: 'services', label: 'Services', icon: <Zap className="w-6 h-6" /> },
-        { id: 'projects', label: 'Projects_', icon: <Code2 className="w-6 h-6" /> },
+        { id: 'projects', label: 'Case Studies', icon: <Code2 className="w-6 h-6" /> },
         { id: 'about', label: 'About', icon: <User className="w-6 h-6" /> },
         { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-6 h-6" /> },
         { id: 'contact', label: 'Contact', icon: <Mail className="w-6 h-6" /> },
