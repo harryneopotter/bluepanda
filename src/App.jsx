@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef, lazy, Suspense } from 'react';
+import { motion, AnimatePresence, useInView, useReducedMotion } from 'framer-motion';
 import {
   Menu,
   X,
@@ -24,7 +25,52 @@ import {
   User,
   FileText
 } from 'lucide-react';
-import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav } from './SuperpositionComponents';
+import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav, HologramPanda, ServicesGrid, FeaturedProjects } from './SuperpositionComponents';
+
+// ============================================
+// FRAMER MOTION ANIMATION VARIANTS
+// ============================================
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.6, ease: [0.2, 0.9, 0.2, 1] }
+  }
+};
+
+const staggerContainer = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.2
+    }
+  }
+};
+
+const cardHover = {
+  scale: 1.02,
+  boxShadow: '0 0 30px rgba(0, 240, 230, 0.4)',
+  transition: { duration: 0.3 }
+};
+
+// Page transition wrapper
+const PageWrapper = ({ children }) => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={prefersReducedMotion ? {} : { opacity: 0, y: -20 }}
+      transition={{ duration: 0.4, ease: "easeInOut" }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 import { caseStudiesData } from './caseStudiesData';
 
 // --- API Helper ---
@@ -86,18 +132,38 @@ const LoadingScreen = ({ onComplete }) => {
   );
 };
 
-// --- Shared Components ---
-const Section = ({ children, className = "" }) => (
-  <section className={`max-w-7xl mx-auto px-6 py-20 ${className}`}>
-    {children}
-  </section>
-);
+// --- Shared Components with Framer Motion ---
+const Section = ({ children, className = "" }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const prefersReducedMotion = useReducedMotion();
 
-const FadeIn = ({ children, delay = 0 }) => (
-  <div className="animate-fade-in" style={{ animationDelay: `${delay}ms` }}>
-    {children}
-  </div>
-);
+  return (
+    <motion.section
+      ref={ref}
+      initial={prefersReducedMotion ? {} : "hidden"}
+      animate={isInView ? "visible" : "hidden"}
+      variants={fadeInUp}
+      className={`max-w-7xl mx-auto px-6 py-20 ${className}`}
+    >
+      {children}
+    </motion.section>
+  );
+};
+
+const FadeIn = ({ children, delay = 0 }) => {
+  const prefersReducedMotion = useReducedMotion();
+
+  return (
+    <motion.div
+      initial={prefersReducedMotion ? {} : { opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: delay / 1000, ease: [0.2, 0.9, 0.2, 1] }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 const Button = ({ children, variant = 'primary', className = "", ...props }) => {
   const variants = {
@@ -336,68 +402,151 @@ const CaseStudyModal = ({ project, onClose }) => {
 // --- Pages ---
 
 const HomePage = ({ navigate }) => (
-  <div className="relative min-h-screen bg-void text-white overflow-hidden">
-    <ParticleBackground />
+  <PageWrapper>
+    <div className="relative min-h-screen bg-void text-white overflow-hidden">
+      <ParticleBackground />
 
-    {/* Top Bar */}
+      {/* Hero Section */}
+      <motion.div
+        className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4 pt-20"
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+      >
+        {/* Panda Hologram - The Core Artifact */}
+        <motion.div variants={fadeInUp} className="mb-6">
+          <HologramPanda />
+        </motion.div>
 
+        <motion.div variants={fadeInUp} className="mb-6 relative">
+          <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs tracking-widest uppercase">
+            Infrastructure Excellence Since 2013
+          </span>
+        </motion.div>
 
-    {/* Hero Section */}
-    <div className="relative z-10 flex flex-col items-center justify-center min-h-screen text-center px-4">
-      <div className="mb-8 relative">
-        <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-purple-600 rounded-lg blur opacity-20 animate-pulse"></div>
-        <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs tracking-widest uppercase">
-          Infrastructure Excellence Since 2013
-        </span>
+        <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl font-bold mb-6 tracking-tight leading-tight max-w-5xl">
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-cyan-100 to-gray-400">
+            Blue Panda — Responsible Infrastructure for the Long Term
+          </span>
+        </motion.h1>
+
+        <motion.div variants={fadeInUp} className="text-lg md:text-xl text-gray-300 max-w-3xl mb-12 font-mono leading-relaxed space-y-4 text-left md:text-center mx-auto">
+          <p>
+            We design resilient systems across infrastructure, applied AI, and custom engineering — focused on long-term stability, security, and clarity.
+          </p>
+          <p className="text-cyan-400">
+            Problem-solving, not service selling.
+          </p>
+        </motion.div>
+
+        {/* Navigation Buttons (Affordances) */}
+        <motion.div variants={fadeInUp} className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl">
+          <Button onClick={() => navigate('services')} variant="outline" className="justify-center border-white/20 hover:border-cyan-500 hover:text-cyan-400">
+            Services
+          </Button>
+          <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/20 hover:border-brand-accent hover:text-brand-accent">
+            Case Studies
+          </Button>
+          <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/20 hover:border-purple-500 hover:text-purple-400">
+            AI Architect Demo
+          </Button>
+          <Button onClick={() => navigate('about')} variant="outline" className="justify-center border-white/20 hover:border-white hover:text-white">
+            About
+          </Button>
+        </motion.div>
+      </motion.div>
+
+      {/* WHAT WE DO Section */}
+      <div className="relative z-10 py-32 bg-black/20 backdrop-blur-sm border-t border-white/5">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold mb-4">WHAT WE DO</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto" />
+        </motion.div>
+        <ServicesGrid />
       </div>
 
-      <h1 className="text-5xl md:text-8xl font-bold mb-6 tracking-tight leading-none">
-        <GlitchText text="BUILDING TOMORROW'S" />
-        <br />
-        <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-white to-purple-500 glow-text-cyan">
-          INFRASTRUCTURE
-        </span>
-      </h1>
+      {/* PROJECT SUCCESS STORIES Section */}
+      <div className="relative z-10 py-32 border-t border-white/5">
+        <motion.div
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
+          <h2 className="text-3xl font-bold mb-4">PROJECT SUCCESS STORIES</h2>
+          <div className="w-24 h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent mx-auto" />
+        </motion.div>
+        <FeaturedProjects />
 
-      <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mb-12 font-mono">
-        From traditional hosting to <span className="text-cyan-400">quantum-powered</span> AI systems.
-      </p>
-
-      <div className="flex flex-col md:flex-row gap-6">
-        <Button onClick={() => navigate('projects')} variant="primary" className="text-lg px-8 py-4">
-          <Code2 className="w-5 h-5" /> View Our Work
-        </Button>
-        <Button onClick={() => navigate('contact')} variant="outline" className="text-lg px-8 py-4">
-          <Mail className="w-5 h-5" /> Get In Touch
-        </Button>
+        <div className="text-center mt-12">
+          <Button onClick={() => navigate('projects')} variant="outline" className="mx-auto">
+            View All Projects <ArrowRight className="w-4 h-4" />
+          </Button>
+        </div>
       </div>
+
     </div>
-
-    {/* Monolith Services Section */}
-    <div className="relative z-10 pb-32">
-      <div className="text-center mb-12">
-        <h2 className="text-2xl font-mono text-cyan-400 tracking-widest uppercase mb-2">Capabilities</h2>
-        <div className="w-24 h-1 bg-gradient-to-r from-transparent via-cyan-500 to-transparent mx-auto" />
-      </div>
-      <MonolithSection />
-      <div className="text-center mt-12">
-        <Button onClick={() => navigate('services')} variant="outline" className="mx-auto">
-          Explore All Services <ArrowRight className="w-4 h-4" />
-        </Button>
-      </div>
-    </div>
-  </div>
+  </PageWrapper>
 );
+
+// --- Principles Section ---
+const PrinciplesSection = () => {
+  const principles = [
+    {
+      q: "Why long-term focus matters",
+      a: "Because systems that last reduce risk, cost, and cognitive overhead over time."
+    },
+    {
+      q: "How AI is used responsibly",
+      a: "AI is treated as a tool, not an authority. Control and understanding remain with humans."
+    },
+    {
+      q: "When automation is avoided",
+      a: "When it increases fragility, obscures failure modes, or removes necessary judgment."
+    }
+  ];
+
+  return (
+    <Section className="relative z-10 max-w-3xl">
+      <h2 className="text-3xl font-bold mb-12 text-center font-mono text-purple-400">CORE_PRINCIPLES //</h2>
+      <div className="space-y-6">
+        {principles.map((p, i) => (
+          <div key={i} className="p-6 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+            <h3 className="text-xl font-bold text-white mb-3 flex items-start gap-3">
+              <span className="text-cyan-500 font-mono">&gt;</span>
+              {p.q}
+            </h3>
+            <p className="text-gray-300 pl-8 leading-relaxed">
+              {p.a}
+            </p>
+          </div>
+        ))}
+      </div>
+    </Section>
+  );
+};
 
 const ServicesPage = () => (
   <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-    <ParticleBackground />
+    <Suspense fallback={<div className="three-fallback fixed inset-0 z-0" />}>
+      <ParticleBackground />
+    </Suspense>
     <Section className="relative z-10">
-      <h1 className="text-5xl font-bold mb-12 text-center">
+      <h1 className="text-5xl font-bold mb-6 text-center">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
           CORE CAPABILITIES
         </span>
       </h1>
+      <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16 leading-relaxed">
+        Blue Panda works on systems that need to function reliably over time — not just launch successfully. The work spans infrastructure, applied AI, and engineering correction, depending on what the problem actually requires.
+      </p>
 
       <div className="grid gap-12 mb-20">
         {/* Service 1 */}
@@ -406,25 +555,24 @@ const ServicesPage = () => (
             <Zap className="w-12 h-12 text-cyan-400" />
           </div>
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-white">Q Panda Cloud</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">Cloud Infrastructure & DevOps</h2>
             <p className="text-gray-300 mb-6 text-lg">
-              Next-generation hosting infrastructure that thinks for itself. Our autonomous agents monitor your applications 24/7, predicting traffic spikes and optimizing resources in real-time.
+              Designing and operating secure, resilient cloud systems with an emphasis on uptime, recoverability, and operational clarity. This includes server management, monitoring, security hardening, and long-term maintenance.
             </p>
             <ul className="grid md:grid-cols-2 gap-4 mb-6">
               <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> Predictive Auto-Scaling
+                <CheckCircle2 className="w-4 h-4" /> Server Management
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> Self-Healing Containers
+                <CheckCircle2 className="w-4 h-4" /> Security Hardening
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> AI-Driven Security Audits
+                <CheckCircle2 className="w-4 h-4" /> Monitoring
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
-                <CheckCircle2 className="w-4 h-4" /> Zero-Downtime Deployments
+                <CheckCircle2 className="w-4 h-4" /> Long-term Maintenance
               </li>
             </ul>
-            <Button variant="outline" onClick={() => window.open('https://qpanda.cloud', '_blank')}>Explore Cloud Plans</Button>
           </div>
         </div>
 
@@ -434,25 +582,24 @@ const ServicesPage = () => (
             <Cpu className="w-12 h-12 text-purple-400" />
           </div>
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-white">AI Infrastructure</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">AI Integration & Automation</h2>
             <p className="text-gray-300 mb-6 text-lg">
-              Deploy private, secure AI models within your own infrastructure. We specialize in RAG (Retrieval-Augmented Generation) systems that keep your data sovereign.
+              Integrating AI into existing systems and workflows in a controlled, privacy-first manner. Emphasis is placed on determinism, data sovereignty, and usefulness — avoiding black-box dependencies.
             </p>
             <ul className="grid md:grid-cols-2 gap-4 mb-6">
               <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Local LLM Deployment
+                <CheckCircle2 className="w-4 h-4" /> Privacy-First
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Private Vector Databases
+                <CheckCircle2 className="w-4 h-4" /> Data Sovereignty
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Custom Agent Workflows
+                <CheckCircle2 className="w-4 h-4" /> Determinism
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
-                <CheckCircle2 className="w-4 h-4" /> Enterprise Data Privacy
+                <CheckCircle2 className="w-4 h-4" /> Controlled Workflows
               </li>
             </ul>
-            <Button variant="outline" onClick={() => window.open('https://bluepanda.cloud', '_blank')}>Consult AI Architect</Button>
           </div>
         </div>
 
@@ -462,46 +609,46 @@ const ServicesPage = () => (
             <Server className="w-12 h-12 text-white" />
           </div>
           <div className="flex-1">
-            <h2 className="text-3xl font-bold mb-4 text-white">Traditional Web Services</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">Custom Development & Consulting</h2>
             <p className="text-gray-300 mb-6 text-lg">
-              The rock-solid foundation we've built our reputation on. Reliable, fast, and secure hosting for businesses that need stability above all else.
+              Solving long-term technical challenges through careful architecture, refactoring, migration, and system design. Technology choices are pragmatic and context-driven, not trend-led.
             </p>
             <ul className="grid md:grid-cols-2 gap-4 mb-6">
               <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> Managed cPanel Hosting
+                <CheckCircle2 className="w-4 h-4" /> Careful Architecture
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> Domain Management
+                <CheckCircle2 className="w-4 h-4" /> Legacy Refactoring
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> Daily Off-site Backups
+                <CheckCircle2 className="w-4 h-4" /> System Migration
               </li>
               <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
-                <CheckCircle2 className="w-4 h-4" /> 24/7 Human Support
+                <CheckCircle2 className="w-4 h-4" /> Pragmatic Design
               </li>
             </ul>
-            <Button variant="outline" onClick={() => window.open('https://qpanda.online', '_blank')}>View Hosting Packages</Button>
           </div>
         </div>
       </div>
 
-      <TestimonialsSection />
-      <FAQSection />
+      <PrinciplesSection />
     </Section>
   </div>
 );
 
 const ProjectsPage = ({ onOpenCaseStudy }) => (
   <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-    <ParticleBackground />
+    <Suspense fallback={<div className="three-fallback fixed inset-0 z-0" />}>
+      <ParticleBackground />
+    </Suspense>
     <Section className="relative z-10">
       <div className="flex items-center gap-4 mb-12">
         <div className="p-3 border border-cyan-500/30 rounded-lg bg-cyan-500/10">
           <Database className="w-8 h-8 text-cyan-400" />
         </div>
         <div>
-          <h1 className="text-4xl font-bold mb-2">SYSTEM LOGS</h1>
-          <p className="font-mono text-gray-400 text-sm">&gt; Accessing deployed infrastructure nodes...</p>
+          <h1 className="text-4xl font-bold mb-2">CASE STUDIES</h1>
+          <p className="font-mono text-gray-400 text-sm">&gt; Systems built to survive real-world constraints.</p>
         </div>
       </div>
 
@@ -524,7 +671,9 @@ const ProjectsPage = ({ onOpenCaseStudy }) => (
 
 const AboutPage = () => (
   <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
-    <ParticleBackground />
+    <Suspense fallback={<div className="three-fallback fixed inset-0 z-0" />}>
+      <ParticleBackground />
+    </Suspense>
     <Section className="relative z-10 max-w-4xl">
       <h1 className="text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
         THE EVOLUTION
@@ -552,9 +701,9 @@ const AboutPage = () => (
         <div className="relative group">
           <div className="absolute -left-[37px] w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_20px_#00F0FF] animate-pulse" />
           <span className="font-mono text-cyan-400 text-sm mb-2 block">2025+</span>
-          <h3 className="text-2xl font-bold mb-4 text-white">Quantum Leap</h3>
+          <h3 className="text-2xl font-bold mb-4 text-white">Responsible Infrastructure</h3>
           <p className="text-gray-300 leading-relaxed text-lg">
-            Introducing Q Panda - our vision for AI-powered infrastructure. Not just hosting websites, but building systems that predict failures, optimize performance automatically, and provide intelligent support.
+            Blue Panda has been working with infrastructure and systems since 2013. The focus has evolved, but the core principle remains the same: systems should be understandable, stable, and designed for the long term.
           </p>
         </div>
       </div>
@@ -563,16 +712,16 @@ const AboutPage = () => (
         <h2 className="text-3xl font-bold mb-8 text-white">OUR PHILOSOPHY</h2>
         <div className="grid md:grid-cols-2 gap-6">
           <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Build systems that anticipate problems before they happen.</p>
+            <p className="text-gray-300 font-mono">&gt; Proportion before complexity</p>
           </div>
           <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Deploy infrastructure that adapts to needs automatically.</p>
+            <p className="text-gray-300 font-mono">&gt; Control over novelty</p>
           </div>
           <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Respect privacy - your data stays yours.</p>
+            <p className="text-gray-300 font-mono">&gt; Stability before scale</p>
           </div>
           <div className="p-6 bg-black/40 border border-white/10 rounded-xl">
-            <p className="text-gray-300 font-mono">&gt; Ship quality, not just features.</p>
+            <p className="text-gray-300 font-mono">&gt; Human responsibility in system design</p>
           </div>
         </div>
       </div>
@@ -589,7 +738,7 @@ const AboutPage = () => (
             </div>
             <h3 className="text-xl font-bold text-white">Sachin</h3>
             <p className="text-cyan-400 font-mono text-sm mb-2">Founder & Lead Architect</p>
-            <p className="text-gray-300 text-sm">10+ years in infrastructure and DevOps.</p>
+            <p className="text-gray-300 text-sm">Experience across traditional infrastructure, modern cloud systems, and applied AI. Work emphasizes judgment, restraint, and long-term thinking.</p>
           </div>
           <div className="p-6 bg-black/40 border border-white/10 rounded-xl text-center group hover:border-purple-500 transition-colors">
             <div className="w-24 h-24 mx-auto bg-gray-800 rounded-full mb-4 overflow-hidden border-2 border-gray-700 group-hover:border-purple-500">
@@ -627,7 +776,7 @@ const ContactPage = () => {
           <h1 className="text-4xl font-bold mb-8 text-center">INITIATE CONTACT</h1>
 
           <div className="mb-8 text-center">
-            <p className="text-gray-300 mb-4">Whether you need traditional hosting, AI infrastructure, or just want to discuss what's possible with intelligent systems.</p>
+            <p className="text-gray-300 mb-4">If you have a system, problem, or idea that needs careful thought rather than a quick pitch, feel free to reach out.</p>
             <a href="mailto:sachin@bluepanda.in" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-lg">
               <Mail className="w-5 h-5" /> sachin@bluepanda.in
             </a>
@@ -661,7 +810,7 @@ const ContactPage = () => {
               </div>
               <div>
                 <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Project Details</label>
-                <textarea required className="w-full bg-black/50 border border-white/10 rounded p-3 text-white h-32 focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all resize-none" placeholder="Tell us about your project requirements, timeline, and budget..." />
+                <textarea required className="w-full bg-black/50 border border-white/10 rounded p-3 text-white h-32 focus:border-cyan-500 focus:outline-none focus:shadow-[0_0_10px_rgba(0,240,255,0.2)] transition-all resize-none" placeholder="Describe the problem or system..." />
               </div>
               <Button variant="primary" className="w-full justify-center" disabled={formStatus === 'submitting'}>
                 {formStatus === 'submitting' ? (
@@ -695,6 +844,7 @@ const InfrastructureArchitect = () => {
   const [projectDesc, setProjectDesc] = useState('');
   const [loading, setLoading] = useState(false);
   const [plan, setPlan] = useState(null);
+  const [depth, setDepth] = useState('auto');
 
   const handleGenerate = async () => {
     if (!projectDesc.trim()) return;
@@ -702,7 +852,7 @@ const InfrastructureArchitect = () => {
     setPlan(null);
 
     const systemPrompt = `
-      Act as "Q Panda Architect", a senior innovative DevOps engineer from Blue Panda Hosting. 
+      Act as "Blue Panda Architect". Depth Mode: ${depth}.
       Analyze the user's project description and provide a structured infrastructure plan.
       
       Format the response using Markdown.
@@ -731,10 +881,10 @@ const InfrastructureArchitect = () => {
               <Sparkles className="w-4 h-4" /> POWERED BY GEMINI
             </div>
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Q PANDA <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">ARCHITECT</span>
+              AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">ARCHITECT</span>
             </h1>
             <p className="text-xl text-gray-300 font-mono">
-              Describe your project parameters. AI will generate the optimal infrastructure blueprint.
+              The AI Architect is a reasoning tool that demonstrates how Blue Panda approaches system design. It is not a product and not a sales mechanism.
             </p>
           </div>
 
@@ -742,18 +892,35 @@ const InfrastructureArchitect = () => {
             <div className="p-1 bg-gradient-to-r from-purple-600 via-pink-600 to-orange-500"></div>
             <div className="p-8 md:p-12">
               <div className="mb-8">
-                <label className="block text-sm font-bold text-purple-300 mb-2 font-mono uppercase">Project Parameters</label>
+                <label className="block text-sm font-bold text-purple-300 mb-2 font-mono uppercase">Describe the system, problem, or constraint</label>
                 <textarea
                   value={projectDesc}
                   onChange={(e) => setProjectDesc(e.target.value)}
                   placeholder="Describe your project here..."
                   className="w-full h-32 p-4 rounded-xl bg-black/50 border border-purple-500/30 text-white focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none font-mono mb-2"
                 />
-                <div className="text-xs text-gray-500 font-mono space-y-1">
+                <div className="text-xs text-gray-500 font-mono space-y-1 mb-6">
                   <p className="font-bold text-purple-400">Try these examples:</p>
                   <p className="cursor-pointer hover:text-white transition-colors" onClick={() => setProjectDesc("E-commerce site expecting 10K daily visitors with peaks during sales.")}>"E-commerce site expecting 10K daily visitors..."</p>
                   <p className="cursor-pointer hover:text-white transition-colors" onClick={() => setProjectDesc("Internal RAG system for searching 50,000 PDF documents securely.")}>"Internal RAG system for searching 50,000 PDF documents..."</p>
                 </div>
+
+                <div className="mb-8">
+                  <label className="block text-sm font-bold text-purple-300 mb-2 font-mono uppercase">Analysis Depth</label>
+                  <div className="flex gap-4">
+                    {['overview', 'detailed', 'auto'].map((mode) => (
+                      <button
+                        key={mode}
+                        onClick={() => setDepth(mode)}
+                        className={`px-4 py-2 rounded-lg font-mono text-sm uppercase transition-all ${depth === mode ? 'bg-purple-600 text-white shadow-[0_0_15px_#BF00FF]' : 'bg-black/40 text-gray-400 hover:text-white border border-white/10'}`}
+                      >
+                        {mode}
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <p className="text-sm text-gray-400 italic mb-6">Clarity and density matter more than verbosity.</p>
               </div>
 
               <Button
@@ -827,7 +994,7 @@ const Footer = ({ navigate }) => (
             <span className="font-mono text-cyan-400 font-bold tracking-widest">BLUE PANDA</span>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Building tomorrow's infrastructure today. From traditional hosting to quantum-powered AI systems.
+            Responsible infrastructure, applied AI, and system correction since 2013.
           </p>
         </div>
 

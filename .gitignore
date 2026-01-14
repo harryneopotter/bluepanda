@@ -22,13 +22,19 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
+.not-needed/
 
 # Documentation (except README.md)
 docs/
 *.md
 !README.md
-!current-issues.txt
+final-home.md
+homepage-changes-analysis.md
+current-issues.txt
+final-home-panda.jpg
+panda-artifact.png
+pages-content.md
+
 
 # Environment and config
 .env
@@ -40,5 +46,6 @@ docs/
 *ENHANCED*
 *NEW_*
 .monorepo.*
-
-!PROGRESS.md
+/v2-issues
+PROGRESS.md
+redesign.md

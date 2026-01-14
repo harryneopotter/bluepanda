@@ -6,7 +6,28 @@ export default {
     ],
     darkMode: 'class', // Enables the dark mode toggle
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                void: 'var(--bg-main)',
+                surface: 'var(--bg-surface)',
+                primary: 'var(--text-primary)',
+                accent: 'var(--text-accent)',
+                brand: {
+                    primary: 'var(--brand-primary)',
+                    accent: 'var(--brand-accent)',
+                },
+                cyan: {
+                    DEFAULT: 'var(--brand-primary)', // Mapping for backward compatibility
+                    400: 'var(--brand-primary)',
+                    500: 'var(--brand-primary)',
+                },
+                purple: {
+                    DEFAULT: 'var(--brand-accent)', // Mapping for backward compatibility
+                    400: 'var(--brand-accent)',
+                    500: 'var(--brand-accent)',
+                }
+            }
+        },
     },
     plugins: [],
 }

@@ -1,5 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Zap, Cpu, Server, Globe, Shield, Activity, Sparkles, Code2, Database, ExternalLink, Github, ArrowRight, Home, Briefcase, User, Mail, Terminal, FileText } from 'lucide-react';
+import { motion, useReducedMotion } from 'framer-motion';
+import { Zap, Cpu, Server, Globe, Shield, Activity, Sparkles, Code2, Database, ExternalLink, Github, ArrowRight, Home, Briefcase, User, Mail, Terminal, FileText, BrainCircuit, Wrench, Factory } from 'lucide-react';
+import pandaHologram from './assets/panda-hologram.png';
 
 // --- Particle Background ---
 export const ParticleBackground = () => {
@@ -19,6 +21,14 @@ export const ParticleBackground = () => {
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
+        // Detect theme
+        const getThemeColors = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            return isDark
+                ? { primary: '#00F0FF', secondary: '#BF00FF' }  // Dark mode: cyan/purple
+                : { primary: '#174EA6', secondary: '#FBBC04' }; // Light mode: blue/yellow
+        };
+
         class Particle {
             constructor() {
                 this.x = Math.random() * canvas.width;
@@ -26,14 +36,14 @@ export const ParticleBackground = () => {
                 this.size = Math.random() * 2;
                 this.speedX = Math.random() * 0.5 - 0.25;
                 this.speedY = Math.random() * 0.5 - 0.25;
-                this.color = Math.random() > 0.5 ? '#00F0FF' : '#BF00FF'; // Cyan or Purple
+                const colors = getThemeColors();
+                this.color = Math.random() > 0.5 ? colors.primary : colors.secondary;
             }
 
             update(mouseX, mouseY) {
                 this.x += this.speedX;
                 this.y += this.speedY;
 
-                // Mouse attraction
                 const dx = mouseX - this.x;
                 const dy = mouseY - this.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
@@ -65,6 +75,12 @@ export const ParticleBackground = () => {
 
         initParticles();
 
+        // Re-init on theme change
+        const observer = new MutationObserver(() => {
+            initParticles();
+        });
+        observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
         let mouseX = 0;
         let mouseY = 0;
 
@@ -87,6 +103,7 @@ export const ParticleBackground = () => {
         return () => {
             window.removeEventListener('resize', resizeCanvas);
             cancelAnimationFrame(animationFrameId);
+            observer.disconnect();
         };
     }, []);
 
@@ -95,61 +112,256 @@ export const ParticleBackground = () => {
 
 // --- Glitch Text ---
 export const GlitchText = ({ text, className = "" }) => (
-    <div className={`glitch-wrapper inline-block ${className}`}>
-        <span className="glitch font-bold text-white relative z-10" data-text={text}>
-            {text}
-        </span>
-    </div>
+    <span
+        className={`glitch font-bold text-primary relative inline-block ${className}`}
+        data-text={text}
+        style={{
+            textShadow: '2px 0 #ff00de, -2px 0 #00F0E6',
+            animation: 'glitch-skew 1s infinite linear alternate-reverse'
+        }}
+    >
+        {text}
+    </span>
 );
 
-// --- Monolith Services ---
-export const MonolithSection = () => {
+// --- Hologram Panda ---
+export const HologramPanda = () => {
+    return (
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="relative w-64 h-64 md:w-96 md:h-96 mx-auto mb-12 flex items-center justify-center"
+        >
+            <motion.div
+                animate={{
+                    y: [0, -20, 0],
+                    opacity: [0.8, 1, 0.8],
+                }}
+                transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }}
+                className="relative z-10 w-full h-full"
+            >
+                <div className="absolute inset-0 bg-cyan-500/20 blur-3xl rounded-full scale-75 animate-pulse" />
+                <img
+                    src={pandaHologram}
+                    alt="Blue Panda Hologram"
+                    className="relative z-10 w-full h-full object-contain filter drop-shadow-[0_0_15px_rgba(0,240,255,0.3)]"
+                />
+            </motion.div>
+
+            {/* Holographic Base Ring */}
+            <motion.div
+                animate={{
+                    rotate: 360,
+                    scale: [1, 1.05, 1],
+                    opacity: [0.3, 0.6, 0.3]
+                }}
+                transition={{
+                    rotate: { duration: 20, repeat: Infinity, ease: "linear" },
+                    scale: { duration: 3, repeat: Infinity, ease: "easeInOut" },
+                    opacity: { duration: 3, repeat: Infinity, ease: "easeInOut" }
+                }}
+                className="absolute bottom-0 w-[120%] h-[20%] rounded-[100%] border border-brand-primary/30 bg-brand-primary/5 blur-sm"
+            />
+
+            {/* Holographic Scanlines */}
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/10 to-transparent z-20 pointer-events-none animate-scanline" />
+        </motion.div>
+    );
+};
+
+// --- Services Grid (What We Do) ---
+export const ServicesGrid = () => {
     const services = [
         {
-            title: "Q PANDA CLOUD",
-            icon: <Zap className="w-8 h-8 text-cyan" />,
-            desc: "Intelligent Hosting",
-            color: "border-cyan",
-            glow: "glow-box-cyan"
+            title: "Infrastructure Stewardship",
+            icon: <Server className="w-8 h-8 text-brand-primary" />,
+            desc: "Designing, operating, and correcting infrastructure that must remain reliable under real-world conditions — across cloud, servers, and long-running systems.",
+            glow: "shadow-[0_0_30px_rgba(0,240,255,0.15)]"
         },
         {
-            title: "AI INFRASTRUCTURE",
-            icon: <Cpu className="w-8 h-8 text-neon-purple" />,
-            desc: "Privacy-first Systems",
-            color: "border-purple-500",
-            glow: "glow-box-purple"
+            title: "Applied AI Systems",
+            icon: <BrainCircuit className="w-8 h-8 text-brand-accent" />,
+            desc: "Building applied AI systems where control, privacy, and determinism matter more than novelty — embedding AI into real workflows to reduce cognitive load.",
+            glow: "shadow-[0_0_30px_rgba(191,0,255,0.15)]"
         },
         {
-            title: "TRADITIONAL WEB",
-            icon: <Server className="w-8 h-8 text-white" />,
-            desc: "Reliable Hosting",
-            color: "border-white",
-            glow: "shadow-lg shadow-white/20"
+            title: "System Correction & Engineering",
+            icon: <Wrench className="w-8 h-8 text-white" />,
+            desc: "Taking responsibility for existing systems that have become fragile, bloated, or hard to reason about — restoring proportionality before adding new complexity.",
+            glow: "shadow-[0_0_30px_rgba(255,255,255,0.1)]"
         }
     ];
 
     return (
-        <div className="flex flex-col md:flex-row justify-center gap-8 px-4 py-20 relative z-10">
+        <div className="grid md:grid-cols-3 gap-8 relative z-10 w-full max-w-7xl mx-auto px-6">
             {services.map((service, idx) => (
-                <div
+                <motion.div
                     key={idx}
-                    className={`group relative w-full md:w-64 h-96 bg-black/50 border ${service.color} transition-all duration-500 hover:w-full md:hover:w-80 hover:bg-black/80 ${service.glow} flex flex-col items-center justify-center overflow-hidden cursor-pointer backdrop-blur-sm`}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.2, duration: 0.5 }}
+                    className={`p-8 rounded-2xl bg-surface/40 border border-white/10 ${service.glow} flex flex-col gap-6 backdrop-blur-sm group hover:bg-surface/60 transition-colors`}
                 >
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/80" />
-                    <div className="relative z-10 flex flex-col items-center text-center p-6 transition-transform duration-500 group-hover:scale-110">
-                        <div className="mb-6 p-4 border border-white/10 rounded-full bg-white/5">
+                    <div className="w-16 h-16 rounded-full bg-surface border border-white/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                        {service.icon}
+                    </div>
+                    <div>
+                        <h3 className="text-xl font-bold font-mono text-primary mb-4">{service.title}</h3>
+                        <p className="text-muted leading-relaxed">
+                            {service.desc}
+                        </p>
+                    </div>
+                </motion.div>
+            ))}
+        </div>
+    );
+};
+
+// --- Featured Projects (Success Stories) ---
+export const FeaturedProjects = () => {
+    const projects = [
+        {
+            title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
+            desc: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity.",
+            tech: ["React", "Security"],
+            color: "border-brand-primary/50"
+        },
+        {
+            title: "Smriti — AI Context Engine",
+            desc: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead.",
+            tech: ["Python", "AST", "AI"],
+            color: "border-brand-accent/50"
+        },
+        {
+            title: "Remote Cloud Dashboard — Secure VM Orchestration",
+            desc: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability.",
+            tech: ["Node.js", "Docker", "Tailscale"],
+            color: "border-brand-primary/50"
+        }
+    ];
+
+    return (
+        <div className="space-y-8 relative z-10 w-full max-w-5xl mx-auto px-6">
+            {projects.map((project, idx) => (
+                <motion.div
+                    key={idx}
+                    initial={{ opacity: 0, x: idx % 2 === 0 ? -50 : 50 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6 }}
+                    className={`p-8 rounded-xl bg-surface/30 border ${project.color} hover:bg-surface/50 transition-colors relative overflow-hidden group`}
+                >
+                    <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
+                        <div className="flex-1">
+                            <h3 className="text-2xl font-bold text-primary mb-3 font-mono">{project.title}</h3>
+                            <p className="text-muted text-lg leading-relaxed mb-4">
+                                {project.desc}
+                            </p>
+                            <div className="flex gap-2">
+                                {project.tech.map((t, i) => (
+                                    <span key={i} className="text-xs font-mono px-2 py-1 rounded bg-surface border border-white/10 text-muted">
+                                        {t}
+                                    </span>
+                                ))}
+                            </div>
+                        </div>
+                        <div className="hidden md:flex items-center justify-center w-12 h-12 rounded-full border border-white/10 group-hover:border-primary group-hover:scale-110 transition-all">
+                            <ArrowRight className="w-5 h-5 text-muted group-hover:text-primary" />
+                        </div>
+                    </div>
+                </motion.div>
+            ))}
+        </div>
+    );
+};
+
+// --- Monolith Services with Framer Motion ---
+export const MonolithSection = () => {
+
+    const services = [
+        {
+            title: "Q PANDA CLOUD",
+            icon: <Zap className="w-8 h-8 text-brand-primary" />,
+            desc: "Intelligent Hosting",
+            color: "border-brand-primary",
+            glow: "glow-box-cyan"
+        },
+        {
+            title: "AI INFRASTRUCTURE",
+            icon: <Cpu className="w-8 h-8 text-brand-accent" />,
+            desc: "Privacy-first Systems",
+            color: "border-brand-accent",
+            glow: "glow-box-purple"
+        },
+        {
+            title: "TRADITIONAL WEB",
+            icon: <Server className="w-8 h-8 text-primary" />,
+            desc: "Reliable Hosting",
+            color: "border-gray-300 dark:border-white",
+            glow: "shadow-lg"
+        }
+    ];
+
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.15
+            }
+        }
+    };
+
+    const cardVariants = {
+        hidden: { opacity: 0, y: 30, scale: 0.95 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            transition: { duration: 0.5, ease: [0.2, 0.9, 0.2, 1] }
+        }
+    };
+
+    return (
+        <motion.div
+            className="flex flex-col md:flex-row justify-center gap-8 px-4 py-20 relative z-10"
+            variants={containerVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-50px" }}
+        >
+            {services.map((service, idx) => (
+                <motion.div
+                    key={idx}
+                    variants={cardVariants}
+                    whileHover={{
+                        scale: 1.05,
+                        boxShadow: '0 0 40px rgba(0, 240, 230, 0.3)',
+                    }}
+                    className={`group relative w-full md:w-64 h-96 bg-surface/50 border ${service.color} ${service.glow} flex flex-col items-center justify-center overflow-hidden cursor-pointer backdrop-blur-sm shadow-lg hover:bg-surface/80 transition-colors duration-300`}
+                >
+                    {/* Gradient overlay - theme aware */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-white/80 dark:to-black/80" />
+                    <div className="relative z-10 flex flex-col items-center text-center p-6">
+                        <div className="mb-6 p-4 border border-gray-200 dark:border-white/10 rounded-full bg-surface">
                             {service.icon}
                         </div>
-                        <h3 className="text-2xl font-bold font-mono text-white mb-2 tracking-widest">{service.title}</h3>
-                        <p className="text-gray-300 font-mono text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
+                        <h3 className="text-2xl font-bold font-mono text-primary mb-2 tracking-widest">{service.title}</h3>
+                        <p className="text-muted font-mono text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 transform translate-y-4 group-hover:translate-y-0">
                             {service.desc}
                         </p>
                     </div>
                     {/* Scanline effect */}
-                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/5 to-transparent h-1 w-full animate-pulse pointer-events-none" style={{ top: '50%' }} />
-                </div>
+                    <div className="absolute inset-0 bg-gradient-to-b from-transparent via-brand-primary/5 to-transparent h-1 w-full animate-pulse pointer-events-none" style={{ top: '50%' }} />
+                </motion.div>
             ))}
-        </div>
+        </motion.div>
     );
 };
 
@@ -184,6 +396,19 @@ export const ConstellationProjects = () => {
         window.addEventListener('resize', resizeCanvas);
         resizeCanvas();
 
+        // Theme-aware colors
+        const getThemeColors = () => {
+            const isDark = document.documentElement.classList.contains('dark');
+            return {
+                lineColor: isDark ? 'rgba(0, 240, 255, 0.2)' : 'rgba(23, 78, 166, 0.15)',
+                nodeStroke: isDark ? '#00F0FF' : '#174EA6',
+                nodeFill: isDark ? '#050505' : '#FFFFFF',
+                nodeHover: isDark ? '#00F0FF' : '#174EA6',
+                glowColor: isDark ? '#00F0FF' : '#174EA6',
+                labelColor: isDark ? '#FFFFFF' : '#202124'
+            };
+        };
+
         // Scale coordinates to canvas size
         const getScaledCoords = (node) => {
             const scaleX = canvas.width / 1000;
@@ -192,10 +417,11 @@ export const ConstellationProjects = () => {
         };
 
         const drawGraph = () => {
+            const colors = getThemeColors();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
             // Draw connections
-            ctx.strokeStyle = 'rgba(0, 240, 255, 0.2)';
+            ctx.strokeStyle = colors.lineColor;
             ctx.lineWidth = 1;
             ctx.beginPath();
             projects.forEach((node, i) => {
@@ -217,14 +443,14 @@ export const ConstellationProjects = () => {
 
                 // Glow
                 if (isHovered) {
-                    ctx.shadowColor = '#00F0FF';
+                    ctx.shadowColor = colors.glowColor;
                     ctx.shadowBlur = 20;
                 } else {
                     ctx.shadowBlur = 0;
                 }
 
-                ctx.fillStyle = isHovered ? '#00F0FF' : '#050505';
-                ctx.strokeStyle = '#00F0FF';
+                ctx.fillStyle = isHovered ? colors.nodeHover : colors.nodeFill;
+                ctx.strokeStyle = colors.nodeStroke;
                 ctx.lineWidth = 2;
 
                 ctx.beginPath();
@@ -233,7 +459,8 @@ export const ConstellationProjects = () => {
                 ctx.stroke();
 
                 // Label
-                ctx.fillStyle = '#fff';
+                ctx.shadowBlur = 0;
+                ctx.fillStyle = colors.labelColor;
                 ctx.font = '12px JetBrains Mono';
                 ctx.textAlign = 'center';
                 ctx.fillText(node.label, x, y + 25);
@@ -280,9 +507,9 @@ export const ConstellationProjects = () => {
     }, [hoveredNode, isModalHovered]);
 
     return (
-        <div className="relative w-full h-[600px] bg-black/50 border border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
+        <div className="relative w-full h-[600px] bg-surface/50 border border-gray-200 dark:border-white/10 rounded-xl overflow-hidden backdrop-blur-sm">
             <div className="absolute top-4 left-4 z-10">
-                <h2 className="text-xl font-mono text-cyan flex items-center gap-2">
+                <h2 className="text-xl font-mono text-brand-primary flex items-center gap-2">
                     <Activity className="w-4 h-4" /> DEPLOYED_SYSTEMS_LOG //
                 </h2>
             </div>
@@ -291,7 +518,7 @@ export const ConstellationProjects = () => {
             {/* Holographic Modal Overlay */}
             {hoveredNode && (
                 <div
-                    className="absolute bottom-8 right-8 w-80 bg-black/90 border border-cyan p-6 backdrop-blur-md glow-box-cyan animate-pulse-neon z-20"
+                    className="absolute bottom-8 right-8 w-80 bg-surface/90 border border-brand-primary p-6 backdrop-blur-md glow-box-cyan animate-pulse-neon z-20"
                     onMouseEnter={() => {
                         setIsModalHovered(true);
                         if (hoverTimeoutRef.current) clearTimeout(hoverTimeoutRef.current);
@@ -301,16 +528,16 @@ export const ConstellationProjects = () => {
                         setHoveredNode(null);
                     }}
                 >
-                    <div className="flex justify-between items-start mb-4 border-b border-white/10 pb-2">
-                        <h3 className="text-lg font-bold text-white font-mono">{hoveredNode.label}</h3>
-                        <span className="text-xs text-cyan border border-cyan px-2 py-0.5 rounded">{hoveredNode.type}</span>
+                    <div className="flex justify-between items-start mb-4 border-b border-gray-200 dark:border-white/10 pb-2">
+                        <h3 className="text-lg font-bold text-primary font-mono">{hoveredNode.label}</h3>
+                        <span className="text-xs text-brand-primary border border-brand-primary px-2 py-0.5 rounded">{hoveredNode.type}</span>
                     </div>
-                    <div className="space-y-2 font-mono text-sm text-gray-300">
+                    <div className="space-y-2 font-mono text-sm text-muted">
                         <p>&gt; Status: Active</p>
                         <p>&gt; Uptime: 99.99%</p>
                         <p>&gt; Region: Global</p>
                     </div>
-                    <button className="mt-4 w-full py-2 bg-cyan/10 border border-cyan text-cyan hover:bg-cyan hover:text-black transition-colors font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
+                    <button className="mt-4 w-full py-2 bg-brand-primary/10 border border-brand-primary text-brand-primary hover:bg-brand-primary hover:text-white transition-colors font-bold text-sm uppercase tracking-wider flex items-center justify-center gap-2">
                         Access Node <ArrowRight className="w-4 h-4" />
                     </button>
                 </div>
@@ -319,12 +546,14 @@ export const ConstellationProjects = () => {
     );
 };
 
-// --- Project Card (Superposition Style) ---
+// --- Project Card with 3D Tilt Effect ---
 export const ProjectCard = ({ project, index, onProjectClick }) => {
+    const prefersReducedMotion = useReducedMotion();
+
     const icons = {
-        ai: <Cpu className="w-6 h-6 text-neon-purple" />,
-        cloud: <Zap className="w-6 h-6 text-cyan" />,
-        web: <Globe className="w-6 h-6 text-white" />,
+        ai: <Cpu className="w-6 h-6 text-brand-accent" />,
+        cloud: <Zap className="w-6 h-6 text-brand-primary" />,
+        web: <Globe className="w-6 h-6 text-primary" />,
     };
 
     const statusColors = {
@@ -334,16 +563,24 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
     };
 
     return (
-        <div
-            className="group relative bg-black/40 border border-white/10 rounded-xl p-6 hover:border-cyan hover:shadow-[0_0_20px_rgba(0,240,255,0.1)] transition-all duration-500 overflow-hidden backdrop-blur-sm"
-            style={{ animation: `slide-up 0.5s ease-out forwards ${index * 0.1}s`, opacity: 0 }}
+        <motion.div
+            initial={prefersReducedMotion ? {} : { opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.5, ease: [0.2, 0.9, 0.2, 1] }}
+            whileHover={prefersReducedMotion ? {} : {
+                scale: 1.03,
+                boxShadow: '0 25px 50px -12px rgba(0, 240, 230, 0.25)'
+            }}
+            style={{ transformStyle: 'preserve-3d', perspective: 1000 }}
+            className="group relative bg-surface/40 border border-gray-200 dark:border-white/10 rounded-xl p-6 hover:border-brand-primary transition-all duration-500 overflow-hidden backdrop-blur-sm cursor-pointer"
         >
             {/* Hover Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-br from-cyan/5 via-transparent to-purple/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-br from-brand-primary/5 via-transparent to-brand-accent/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
             <div className="relative z-10 flex flex-col h-full">
                 <div className="flex justify-between items-start mb-4">
-                    <div className="p-3 bg-white/5 rounded-lg group-hover:scale-110 transition-transform duration-300 border border-white/5 group-hover:border-cyan/30">
+                    <div className="p-3 bg-surface rounded-lg group-hover:scale-110 transition-transform duration-300 border border-gray-200 dark:border-white/5 group-hover:border-brand-primary/30">
                         {icons[project.type]}
                     </div>
                     <span className={`text-xs font-mono font-bold px-3 py-1 rounded-full border ${statusColors[project.status]} uppercase tracking-wider`}>
@@ -351,16 +588,16 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                     </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-cyan transition-colors font-mono">
+                <h3 className="text-xl font-bold text-primary mb-2 group-hover:text-brand-primary transition-colors font-mono">
                     {project.title}
                 </h3>
-                <p className="text-gray-300 text-sm mb-6 leading-relaxed flex-grow">
+                <p className="text-muted text-sm mb-6 leading-relaxed flex-grow">
                     {project.description}
                 </p>
 
                 <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag) => (
-                        <span key={tag} className="text-xs px-2 py-1 bg-white/5 border border-white/10 rounded text-gray-300 font-mono">
+                        <span key={tag} className="text-xs px-2 py-1 bg-surface border border-gray-200 dark:border-white/10 rounded text-muted font-mono">
                             #{tag}
                         </span>
                     ))}
@@ -370,9 +607,9 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                 {project.metrics && (
                     <div className="grid grid-cols-2 gap-2 mb-6">
                         {project.metrics.map((metric, idx) => (
-                            <div key={idx} className="bg-cyan-500/5 border border-cyan-500/20 rounded p-2 text-center">
-                                <span className="block text-cyan-400 font-bold text-sm">{metric.value}</span>
-                                <span className="block text-gray-500 text-[10px] uppercase tracking-wider">{metric.label}</span>
+                            <div key={idx} className="bg-brand-primary/5 border border-brand-primary/20 rounded p-2 text-center">
+                                <span className="block text-brand-primary font-bold text-sm">{metric.value}</span>
+                                <span className="block text-muted text-[10px] uppercase tracking-wider">{metric.label}</span>
                             </div>
                         ))}
                     </div>
@@ -380,31 +617,43 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
 
                 <button
                     onClick={() => onProjectClick && onProjectClick(project)}
-                    className="flex items-center gap-2 text-sm text-cyan hover:text-white transition-colors font-mono group/link"
+                    className="flex items-center gap-2 text-sm text-brand-primary hover:text-primary transition-colors font-mono group/link"
                 >
-                    <FileText className="w-4 h-4 group-hover/link:text-cyan" />
+                    <FileText className="w-4 h-4 group-hover/link:text-brand-primary" />
                     <span>CASE_STUDY</span>
                 </button>
                 {project.githubUrl && (
-                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-gray-500 hover:text-white transition-colors font-mono group/link" aria-label={`View ${project.title} source code on GitHub`}>
-                        <Github className="w-4 h-4 group-hover/link:text-cyan" />
+                    <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-muted hover:text-primary transition-colors font-mono group/link" aria-label={`View ${project.title} source code on GitHub`}>
+                        <Github className="w-4 h-4 group-hover/link:text-brand-primary" />
                         <span>SOURCE_CODE</span>
                     </a>
                 )}
                 {project.liveUrl && (
-                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-cyan hover:text-cyan/80 transition-colors font-mono group/link" aria-label={`Visit ${project.title} live site`}>
+                    <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-sm text-brand-primary hover:text-brand-primary/80 transition-colors font-mono group/link" aria-label={`Visit ${project.title} live site`}>
                         <ExternalLink className="w-4 h-4 group-hover/link:scale-110 transition-transform" />
                         <span>INITIATE_LINK</span>
                     </a>
                 )}
             </div>
-        </div>
-
+        </motion.div>
     );
 };
 // --- Projects Grid ---
 export const ProjectsGrid = ({ onProjectClick }) => {
     const projects = [
+        {
+            status: "live",
+            title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
+            description: "Rebuilt a repeatedly compromised WordPress website into a deterministic React frontend, eliminating attack surface while preserving pixel-perfect visual fidelity.",
+            tags: ["React", "Security", "Deterministic"],
+            type: "web",
+            metrics: [
+                { label: "Attack Surface", value: "Zero" },
+                { label: "Stability", value: "100%" }
+            ],
+            liveUrl: "https://bhaiyaji.co.in",
+            buttons: ["CASE_STUDY", "INITIATE_LINK"]
+        },
         {
             status: "live",
             title: "Teacher Website",
@@ -420,8 +669,8 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "live",
-            title: "GCP Remote Dashboard",
-            description: "A Node.js dashboard for managing remote Docker containers via Tailscale SSH, allowing secure orchestration of Google Cloud Platform VMs from any location. Features centralized VM control, secure access, and instant status/log management.",
+            title: "Remote Cloud Dashboard — Secure VM Orchestration",
+            description: "A secure, low-friction control layer for managing remote cloud infrastructure using Tailscale-based access and custom observability.",
             tags: ["Node.js", "Docker", "Tailscale", "GCP"],
             type: "cloud",
             metrics: [
@@ -433,13 +682,13 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "development",
-            title: "Smriti",
-            description: "Automated context management system for AI development. Walks repositories to generate structured context files (AST-parsed) and auto-initializes for tools like Cursor and Windsurf. Eliminates the friction of re-pasting file trees and dependencies.",
+            title: "Smriti — AI Context Engine",
+            description: "An internal tool designed to extract, structure, and persist project context for AI coding assistants — reducing repetition and cognitive overhead.",
             tags: ["Python (AST)", "TypeScript", "Semantic Analysis", "Automation"],
             type: "ai",
             metrics: [
                 { label: "Context", value: "Automated" },
-                { label: "Tokens", value: "Optimized" }
+                { label: "Cognitive Load", value: "Reduced" }
             ],
             githubUrl: "#",
             buttons: ["CASE_STUDY", "SOURCE_CODE"]
@@ -520,19 +769,19 @@ export const BottomNav = ({ currentPage, setPage }) => {
 
     return (
         <div className="fixed bottom-8 left-1/2 transform -translate-x-1/2 z-50 w-full max-w-2xl px-4">
-            <div className="glass-panel rounded-full px-6 py-4 flex justify-between items-center shadow-2xl shadow-cyan/10">
+            <div className="glass-panel rounded-full px-6 py-4 flex justify-between items-center shadow-2xl shadow-brand-primary/10">
                 {navItems.map((item) => (
                     <button
                         key={item.id}
                         onClick={() => setPage(item.id)}
                         className={`relative group flex items-center gap-2 px-4 py-2 rounded-full transition-all duration-300 ${currentPage === item.id
-                            ? 'text-cyan bg-cyan/10'
-                            : 'text-gray-400 hover:text-white'
+                            ? 'text-brand-primary bg-brand-primary/10'
+                            : 'text-muted hover:text-primary'
                             }`}
                         aria-label={`Navigate to ${item.label}`}
                     >
                         {/* Tooltip */}
-                        <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-black/90 text-cyan text-xs font-mono px-2 py-1 rounded border border-cyan/30 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
+                        <span className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-surface/90 text-brand-primary text-xs font-mono px-2 py-1 rounded border border-brand-primary/30 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-50">
                             {item.label}
                         </span>
 
@@ -541,7 +790,7 @@ export const BottomNav = ({ currentPage, setPage }) => {
                             {item.label}
                         </span>
                         {currentPage === item.id && (
-                            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-cyan shadow-[0_0_10px_#00F0FF]" />
+                            <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1/2 h-0.5 bg-brand-primary shadow-[0_0_10px_#00F0FF]" />
                         )}
                     </button>
                 ))}
