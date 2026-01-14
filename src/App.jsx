@@ -23,7 +23,8 @@ import {
   Code2,
   ExternalLink,
   User,
-  FileText
+  FileText,
+  Lightbulb
 } from 'lucide-react';
 import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav, HologramPanda, ServicesGrid, FeaturedProjects } from './SuperpositionComponents';
 import { AI } from './services/ai';
