@@ -26,6 +26,7 @@ import {
   FileText
 } from 'lucide-react';
 import { ParticleBackground, GlitchText, MonolithSection, ConstellationProjects, ProjectsGrid, BottomNav, HologramPanda, ServicesGrid, FeaturedProjects } from './SuperpositionComponents';
+import { AI } from './services/ai';
 
 // ============================================
 // FRAMER MOTION ANIMATION VARIANTS
@@ -73,31 +74,7 @@ const PageWrapper = ({ children }) => {
 };
 import { caseStudiesData } from './caseStudiesData';
 
-// --- API Helper ---
-const generateGeminiResponse = async (prompt) => {
-  const apiKey = "AIzaSyDNfBg9aNBaLUV-POjTgFKjK2HWUm86x4Y";
-  const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`;
 
-  const payload = {
-    contents: [{ parts: [{ text: prompt }] }]
-  };
-
-  try {
-    const response = await fetch(url, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(payload)
-    });
-
-    if (!response.ok) throw new Error('API Error');
-
-    const data = await response.json();
-    return data.candidates?.[0]?.content?.parts?.[0]?.text || "Sorry, I couldn't generate a plan right now.";
-  } catch (error) {
-    console.error(error);
-    return "Error connecting to Q Panda Intelligence. Please try again.";
-  }
-};
 
 // --- Loading Screen ---
 const LoadingScreen = ({ onComplete }) => {
@@ -419,7 +396,7 @@ const HomePage = ({ navigate }) => (
         </motion.div>
 
         <motion.div variants={fadeInUp} className="mb-6 relative">
-          <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-xs tracking-widest uppercase">
+          <span className="relative px-4 py-1 rounded-full border border-cyan-500/30 bg-black/50 text-cyan-400 font-mono text-lg tracking-widest uppercase">
             Infrastructure Excellence Since 2013
           </span>
         </motion.div>
@@ -483,7 +460,7 @@ const HomePage = ({ navigate }) => (
           <h2 className="text-3xl font-bold mb-4">PROJECT SUCCESS STORIES</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent mx-auto" />
         </motion.div>
-        <FeaturedProjects />
+        <FeaturedProjects navigate={navigate} />
 
         <div className="text-center mt-12">
           <Button onClick={() => navigate('projects')} variant="outline" className="mx-auto">
@@ -852,21 +829,40 @@ const InfrastructureArchitect = () => {
     setPlan(null);
 
     const systemPrompt = `
-      Act as "Blue Panda Architect". Depth Mode: ${depth}.
-      Analyze the user's project description and provide a structured infrastructure plan.
+      Role: You are the "Blue Panda Architect". 
+      Tone: A calm senior engineer explaining thinking out loud. Honest, restrained, no hype, no sales.
       
-      Format the response using Markdown.
-      Use these headers: 
-      ### 🏗 Recommended Tech Stack
-      ### 🚀 Scalability Strategy
-      ### 🛡 Security Measures
-      ### 🐼 Blue Panda Solution
-      
-      Keep the tone professional, technical, yet encouraging.
+      User Control - Density Mode: ${depth}
+      ${depth === 'overview' ? 'Focus on problem definition, intent, and high-level implications. Plain English.' : ''}
+      ${depth === 'detailed' ? 'Dense, technical output. Minimal framing. No hand-holding.' : ''}
+      ${depth === 'auto' ? 'Infer the required density based on the query complexity (e.g., code snippets = detailed, vague ideas = overview).' : ''}
+
+      Instructions:
+      1. Silently infer context: Is this greenfield or legacy? Cost-sensitive or reliability-critical?
+      2. Structure your response EXACTLY as follows (use Markdown headers):
+
+      ### 1. Plain-English Summary
+      (What kind of system is this? What is known vs. unknown? No assumptions.)
+
+      ### 2. What This Means for You
+      (Practical implications, risks, tradeoffs. No jargon.)
+
+      ### 3. Recommended Architecture
+      (Technical details appropriate to the selected density.)
+
+      ### 4. Scalability & Growth
+      (How this adapts over time. Acknowledge uncertainty.)
+
+      ### 5. Security & Reliability Baseline
+      (What is assumed as minimum standard.)
+
+      ### 6. Practical Approach
+      (Phased thinking. Migration safety. No execution promises.)
+
       Project Description: ${projectDesc}
     `;
 
-    const result = await generateGeminiResponse(systemPrompt);
+    const result = await AI.generateBlueprint(systemPrompt);
     setPlan(result);
     setLoading(false);
   };
@@ -957,10 +953,12 @@ const InfrastructureArchitect = () => {
                         return (
                           <div key={index} className="mb-8 p-6 rounded-xl bg-black/30 border border-purple-500/20">
                             <h3 className="text-xl font-bold text-purple-300 mb-4 flex items-center gap-2 font-mono uppercase">
-                              {title.includes('Stack') && <Database className="w-5 h-5" />}
+                              {title.includes('Summary') && <FileText className="w-5 h-5" />}
+                              {title.includes('Means for You') && <Lightbulb className="w-5 h-5" />}
+                              {title.includes('Architecture') && <Cpu className="w-5 h-5" />}
                               {title.includes('Scalability') && <Activity className="w-5 h-5" />}
                               {title.includes('Security') && <Shield className="w-5 h-5" />}
-                              {title.includes('Blue Panda') && <Cloud className="w-5 h-5" />}
+                              {title.includes('Practical') && <CheckCircle2 className="w-5 h-5" />}
                               {title}
                             </h3>
                             <div className="text-gray-300 leading-relaxed whitespace-pre-wrap font-mono text-sm">
@@ -991,17 +989,17 @@ const Footer = ({ navigate }) => (
         <div>
           <div className="flex items-center gap-2 mb-4">
             <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-            <span className="font-mono text-cyan-400 font-bold tracking-widest">BLUE PANDA</span>
+            <span className="font-mono text-cyan-400 font-bold tracking-widest text-xl">BLUE PANDA</span>
           </div>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p className="text-gray-400 text-xl leading-relaxed">
             Responsible infrastructure, applied AI, and system correction since 2013.
           </p>
         </div>
 
         {/* Quick Links */}
         <div>
-          <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Quick Links</h3>
-          <ul className="space-y-2 text-sm">
+          <h3 className="font-mono text-white font-bold mb-4 uppercase text-xl">Quick Links</h3>
+          <ul className="space-y-2 text-xl">
             <li><button onClick={() => navigate('services')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Services</button></li>
             <li><button onClick={() => navigate('projects')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">Projects</button></li>
             <li><button onClick={() => navigate('about')} className="text-gray-400 hover:text-cyan-400 transition-colors text-left">About Us</button></li>
@@ -1011,8 +1009,8 @@ const Footer = ({ navigate }) => (
 
         {/* Contact */}
         <div>
-          <h3 className="font-mono text-white font-bold mb-4 uppercase text-sm">Contact</h3>
-          <ul className="space-y-2 text-sm">
+          <h3 className="font-mono text-white font-bold mb-4 uppercase text-xl">Contact</h3>
+          <ul className="space-y-2 text-xl">
             <li>
               <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors flex items-center gap-2">
                 <Mail className="w-4 h-4" />
@@ -1026,10 +1024,10 @@ const Footer = ({ navigate }) => (
 
       {/* Bottom Bar */}
       <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-        <p className="text-gray-500 text-sm font-mono">
+        <p className="text-gray-500 text-xl font-mono">
           © 2013-2025 Blue Panda Hosting and Designs. All rights reserved.
         </p>
-        <p className="text-gray-500 text-sm font-mono">
+        <p className="text-gray-500 text-xl font-mono">
           Operating since 2013 • Quantum-Ready Infrastructure
         </p>
       </div>
@@ -1095,7 +1093,7 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
         <div className="mt-auto pt-8 border-t border-white/10">
           <p className="text-gray-500 font-mono text-sm mb-4">EXTERNAL LINKS</p>
           <div className="flex gap-4">
-            <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="GitHub">
+            <a href="https://github.com/harryneopotter" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="GitHub">
               <Github className="w-6 h-6" />
             </a>
             <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Email">
@@ -1131,10 +1129,10 @@ const App = () => {
       <div className="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-40 pointer-events-none">
         <div className="flex items-center gap-2 pointer-events-auto cursor-pointer" onClick={() => navigate('home')} role="button" aria-label="Go to Home">
           <div className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse" />
-          <span className="font-mono text-cyan-400 font-bold tracking-widest glow-text-cyan shadow-black drop-shadow-md">BLUE PANDA</span>
+          <span className="font-mono text-cyan-400 font-bold tracking-widest glow-text-cyan shadow-black drop-shadow-md text-xl">BLUE PANDA</span>
         </div>
         <div className="flex items-center gap-4 pointer-events-auto">
-          <div className="font-mono text-xs text-cyan-400/60 hidden md:block bg-black/50 px-3 py-1 rounded border border-cyan-500/20 backdrop-blur-sm">
+          <div className="font-mono text-base text-cyan-400/60 hidden md:block bg-black/50 px-3 py-1 rounded border border-cyan-500/20 backdrop-blur-sm">
             SYSTEM STATUS: STABLE
           </div>
           <button
@@ -1160,7 +1158,7 @@ const App = () => {
       <Footer navigate={navigate} />
 
       {/* Floating Bottom Navigation */}
-      {/* <BottomNav currentPage={page} setPage={navigate} />*/}
+      <BottomNav currentPage={page} setPage={navigate} />
     </div>
   );
 };

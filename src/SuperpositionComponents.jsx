@@ -131,7 +131,7 @@ export const HologramPanda = () => {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1, ease: "easeOut" }}
-            className="relative w-64 h-64 md:w-96 md:h-96 mx-auto mb-12 flex items-center justify-center"
+            className="relative w-64 h-64 md:w-96 md:h-96 mx-auto mb-6 flex items-center justify-center"
         >
             <motion.div
                 animate={{
@@ -224,7 +224,7 @@ export const ServicesGrid = () => {
 };
 
 // --- Featured Projects (Success Stories) ---
-export const FeaturedProjects = () => {
+export const FeaturedProjects = ({ navigate }) => {
     const projects = [
         {
             title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
@@ -255,7 +255,8 @@ export const FeaturedProjects = () => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    className={`p-8 rounded-xl bg-surface/30 border ${project.color} hover:bg-surface/50 transition-colors relative overflow-hidden group`}
+                    onClick={() => navigate && navigate('projects')}
+                    className={`p-8 rounded-xl bg-surface/30 border ${project.color} hover:bg-surface/50 transition-colors relative overflow-hidden group cursor-pointer`}
                 >
                     <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
                         <div className="flex-1">

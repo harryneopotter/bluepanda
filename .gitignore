@@ -34,9 +34,10 @@ current-issues.txt
 final-home-panda.jpg
 panda-artifact.png
 pages-content.md
-
+!ai-architect.md
 
 # Environment and config
+env
 .env
 .env.*
 
