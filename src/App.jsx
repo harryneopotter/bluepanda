@@ -105,7 +105,7 @@ const LoadingScreen = ({ onComplete }) => {
         />
       </div>
       <div className="text-sm animate-pulse">
-        INITIALIZING QUANTUM CORE :: {Math.min(100, Math.floor(progress))}%
+        INITIALIZING CORE SYSTEM :: {Math.min(100, Math.floor(progress))}%
       </div>
     </div>
   );
@@ -206,12 +206,12 @@ const TestimonialsSection = () => {
 const FAQSection = () => {
   const faqs = [
     {
-      q: "What makes 'Quantum-Ready' hosting different?",
-      a: "Our infrastructure is built on containerized microservices that are optimized for high-throughput parallel processing, mimicking quantum superposition states for maximum efficiency."
+      q: "What makes resilient hosting different?",
+      a: "Our infrastructure is built on containerized microservices optimized for high-throughput parallel processing and predictable operations."
     },
     {
       q: "Do you offer migration services?",
-      a: "Yes. Our 'Q-Agent' can autonomously scan your existing infrastructure and propose a migration plan, which our human architects then verify and execute."
+      a: "Yes. Our 'Q-Agent' can assist by scanning your existing infrastructure and proposing a migration plan, which our human architects then verify and execute."
     },
     {
       q: "Is my data secure with AI agents?",
@@ -450,7 +450,7 @@ const HomePage = ({ navigate }) => (
         <ServicesGrid />
       </div>
 
-      {/* PROJECT SUCCESS STORIES Section */}
+      {/* CASE STUDIES Section */}
       <div className="relative z-10 py-32 border-t border-white/5">
         <motion.div
           className="text-center mb-16"
@@ -459,7 +459,7 @@ const HomePage = ({ navigate }) => (
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
-          <h2 className="text-3xl font-bold mb-4">PROJECT SUCCESS STORIES</h2>
+          <h2 className="text-3xl font-bold mb-4">CASE STUDIES</h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-brand-accent to-transparent mx-auto" />
         </motion.div>
         <FeaturedProjects navigate={navigate} />
@@ -522,7 +522,7 @@ const ServicesPage = () => (
     <Section className="relative z-10">
       <h1 className="text-5xl font-bold mb-6 text-center">
         <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-purple-500">
-          CORE CAPABILITIES
+          PROBLEM DOMAINS
         </span>
       </h1>
       <p className="text-xl text-gray-300 text-center max-w-3xl mx-auto mb-16 leading-relaxed">
@@ -538,7 +538,7 @@ const ServicesPage = () => (
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-4 text-white">Cloud Infrastructure & DevOps</h2>
             <p className="text-gray-300 mb-6 text-lg">
-              Designing and operating secure, resilient cloud systems with an emphasis on uptime, recoverability, and operational clarity. This includes server management, monitoring, security hardening, and long-term maintenance.
+              Problem: systems that are fragile or unclear under real-world load. Approach: design and operate secure, resilient cloud systems with emphasis on uptime and recoverability. Outcome: stable operations with clear ownership, monitoring, and maintenance.
             </p>
             <ul className="grid md:grid-cols-2 gap-4 mb-6">
               <li className="flex items-center gap-2 text-sm font-mono text-cyan-300">
@@ -565,7 +565,7 @@ const ServicesPage = () => (
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-4 text-white">AI Integration & Automation</h2>
             <p className="text-gray-300 mb-6 text-lg">
-              Integrating AI into existing systems and workflows in a controlled, privacy-first manner. Emphasis is placed on determinism, data sovereignty, and usefulness — avoiding black-box dependencies.
+              Problem: AI added without control or clarity. Approach: integrate AI into existing systems in a controlled, privacy-first way. Outcome: deterministic workflows, data sovereignty, and useful automation without black-box dependencies.
             </p>
             <ul className="grid md:grid-cols-2 gap-4 mb-6">
               <li className="flex items-center gap-2 text-sm font-mono text-purple-300">
@@ -592,7 +592,7 @@ const ServicesPage = () => (
           <div className="flex-1">
             <h2 className="text-3xl font-bold mb-4 text-white">Custom Development & Consulting</h2>
             <p className="text-gray-300 mb-6 text-lg">
-              Solving long-term technical challenges through careful architecture, refactoring, migration, and system design. Technology choices are pragmatic and context-driven, not trend-led.
+              Problem: systems that are bloated, brittle, or hard to change. Approach: careful architecture, refactoring, migration, and system design. Outcome: pragmatic systems that stay understandable and maintainable over time.
             </p>
             <ul className="grid md:grid-cols-2 gap-4 mb-6">
               <li className="flex items-center gap-2 text-sm font-mono text-gray-300">
@@ -645,7 +645,7 @@ const ProjectsPage = ({ onOpenCaseStudy }) => (
       <div>
         <div className="flex items-center gap-2 mb-8">
           <div className="w-1 h-6 bg-cyan-500" />
-          <h2 className="text-2xl font-bold font-mono text-white">DETAILED_RECORDS //</h2>
+          <h2 className="text-2xl font-bold font-mono text-white">CASE_STUDIES //</h2>
         </div>
         <ProjectsGrid onProjectClick={onOpenCaseStudy} />
       </div>
@@ -660,7 +660,7 @@ const AboutPage = () => (
     </Suspense>
     <Section className="relative z-10 max-w-4xl">
       <h1 className="text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">
-        THE EVOLUTION
+        THE HISTORY
       </h1>
 
       <div className="space-y-12 border-l border-cyan-500/20 ml-4 pl-8">
@@ -687,7 +687,7 @@ const AboutPage = () => (
           <span className="font-mono text-cyan-400 text-sm mb-2 block">2025+</span>
           <h3 className="text-2xl font-bold mb-4 text-white">Responsible Infrastructure</h3>
           <p className="text-gray-300 leading-relaxed text-lg">
-            Blue Panda has been working with infrastructure and systems since 2013. The focus has evolved, but the core principle remains the same: systems should be understandable, stable, and designed for the long term.
+            Blue Panda has worked on infrastructure and systems since 2013. The focus shifts with client needs, but the principle stays the same: systems should be understandable, stable, and designed for the long term.
           </p>
         </div>
       </div>
@@ -742,21 +742,38 @@ const AboutPage = () => (
 );
 
 const ContactPage = () => {
-  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success
+  const [formStatus, setFormStatus] = useState('idle'); // idle, submitting, success, error
+  const [formError, setFormError] = useState('');
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setFormStatus('submitting');
-    // Simulate API call
-    setTimeout(() => {
+    setFormError('');
+
+    try {
+      const response = await fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error(await response.text());
+      }
+
       setFormStatus('success');
-    }, 1500);
+    } catch (error) {
+      console.error('Contact form error:', error);
+      setFormStatus('error');
+      setFormError('We could not send your message. Please try again or email directly.');
+    }
   };
 
   const handleReset = () => {
     setFormData({ name: '', email: '', message: '' });
     setFormStatus('idle');
+    setFormError('');
   };
 
   return (
@@ -767,7 +784,7 @@ const ContactPage = () => {
           <h1 className="text-4xl font-bold mb-8 text-center">INITIATE CONTACT</h1>
 
           <div className="mb-8 text-center">
-            <p className="text-gray-300 mb-4">If you have a system, problem, or idea that needs careful thought rather than a quick pitch, feel free to reach out.</p>
+            <p className="text-gray-300 mb-4">If you have a system, problem, or idea that needs careful thought, feel free to reach out.</p>
             <a href="mailto:sachin@bluepanda.in" className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 font-mono text-lg">
               <Mail className="w-5 h-5" /> sachin@bluepanda.in
             </a>
@@ -827,9 +844,8 @@ const ContactPage = () => {
                 </div>
               </div>
               <div>
-                <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Project Details</label>
+                <label className="block font-mono text-xs text-cyan-400 mb-2 uppercase">Describe the problem (optional)</label>
                 <textarea
-                  required // Optional in prompt but good practice, user said 'optional' in text but usually good to keep unless explicitly told to remove 'required' attr. Wait, user said "Problem description (optional)".
                   name="message"
                   value={formData.message}
                   onChange={(e) => setFormData({ ...formData, message: e.target.value })}
@@ -837,6 +853,9 @@ const ContactPage = () => {
                   placeholder="Describe the problem or system..."
                 />
               </div>
+              {formStatus === 'error' && (
+                <p className="text-sm text-red-300 font-mono">{formError}</p>
+              )}
               <Button variant="primary" className="w-full justify-center btn-hover" disabled={formStatus === 'submitting'}>
                 {formStatus === 'submitting' ? (
                   <span className="flex items-center gap-2"><Activity className="w-4 h-4 animate-spin" /> TRANSMITTING...</span>
@@ -985,7 +1004,7 @@ const InfrastructureArchitect = () => {
               AI <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">ARCHITECT</span>
             </h1>
             <p className="text-xl text-gray-300 font-mono">
-              The AI Architect is a reasoning tool that demonstrates how Blue Panda approaches system design. It is not a product and not a sales mechanism.
+              The AI Architect is a thinking demonstration of how Blue Panda approaches system design. It is not a product and not a sales funnel.
             </p>
           </div>
 

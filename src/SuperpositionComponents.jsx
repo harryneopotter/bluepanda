@@ -180,19 +180,19 @@ export const ServicesGrid = () => {
         {
             title: "Infrastructure Stewardship",
             icon: <Server className="w-8 h-8 text-brand-primary" />,
-            desc: "Designing, operating, and correcting infrastructure that must remain reliable under real-world conditions — across cloud, servers, and long-running systems.",
+            desc: "Problem: unstable or unclear infrastructure. Outcome: reliable systems across cloud, servers, and long-running services that stay understandable.",
             glow: "shadow-[0_0_30px_rgba(0,240,255,0.15)]"
         },
         {
             title: "Applied AI Systems",
             icon: <Cpu className="w-8 h-8 text-brand-accent" />,
-            desc: "Building applied AI systems where control, privacy, and determinism matter more than novelty — embedding AI into real workflows to reduce cognitive load.",
+            desc: "Problem: AI added without control. Outcome: applied AI systems that stay privacy-first, deterministic, and useful inside real workflows.",
             glow: "shadow-[0_0_30px_rgba(191,0,255,0.15)]"
         },
         {
             title: "System Correction & Engineering",
             icon: <Wrench className="w-8 h-8 text-white" />,
-            desc: "Taking responsibility for existing systems that have become fragile, bloated, or hard to reason about — restoring proportionality before adding new complexity.",
+            desc: "Problem: fragile or bloated systems. Outcome: restored proportionality and clarity before any new complexity is added.",
             glow: "shadow-[0_0_30px_rgba(255,255,255,0.1)]"
         }
     ];

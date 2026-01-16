@@ -13,6 +13,7 @@
     "@react-three/fiber": "^9.4.2",
     "framer-motion": "^12.23.25",
     "lucide-react": "^0.454.0",
+    "nodemailer": "^7.0.12",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
     "three": "^0.181.2"

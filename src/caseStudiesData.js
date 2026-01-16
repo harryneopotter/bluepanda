@@ -13,8 +13,8 @@ export const caseStudiesData = {
         githubUrl: "https://github.com/harryneopotter/telegram-cms-website-public"
     },
     "Almaha Foods — Frontend Deconstruction & Security Hardening": {
-        challenge: "Almaha Foods’ WordPress website was repeatedly compromised due to plugin vulnerabilities and unmanaged attack surface. Despite being a relatively simple marketing site, it required frequent recovery, patching, and monitoring — creating operational risk and instability. The client needed a long-term fix without changing the visual design.",
-        solution: "Rebuilt the site as a deterministic React frontend, removing WordPress entirely from the public surface. The new architecture preserves pixel-perfect design fidelity while eliminating dynamic CMS vectors, plugins, and server-side execution from the frontend. Content delivery was simplified and locked down for predictability and safety.",
+        challenge: "Context: a simple marketing site with recurring compromises. Constraint: keep the exact visual design while removing the attack surface.",
+        solution: "What was done: rebuilt as a deterministic React frontend and removed WordPress from the public surface. Static delivery and a locked-down pipeline replaced plugin-driven runtime behavior.",
         techStack: ["React", "Security Hardening", "Deterministic Frontend"],
         keyFeatures: [
             "Deterministic React frontend (no runtime CMS execution)",
@@ -23,7 +23,7 @@ export const caseStudiesData = {
             "Design parity with original site (no visual regression)",
             "Simplified hosting and monitoring model"
         ],
-        impact: "Eliminated repeated security incidents by removing the root cause rather than patching symptoms. The site is now stable, predictable, and low-maintenance — optimized for long-term reliability instead of short-term fixes. A security-first outcome achieved through reduction, not complexity.",
+        impact: "Outcome: repeated incidents stopped and the site became stable, predictable, and low-maintenance without a redesign.",
         liveUrl: "https://bhaiyaji.co.in"
     },
     "Remote Cloud Dashboard — Secure VM Orchestration": {
