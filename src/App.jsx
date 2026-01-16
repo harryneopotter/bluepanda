@@ -369,7 +369,7 @@ const CaseStudyModal = ({ project, onClose }) => {
 
         <div className="flex justify-end gap-4 pt-8 border-t border-white/10">
           <Button variant="outline" onClick={onClose}>Close File</Button>
-          <Button variant="primary" onClick={() => window.open('https://calendly.com/bluepanda/consultation', '_blank')}>
+          <Button variant="primary" onClick={() => window.open('https://calendly.com/bluepandasolutions/30min', '_blank')}>
             Schedule Consultation
           </Button>
         </div>
@@ -872,7 +872,7 @@ const ContactPage = () => {
 
           <div className="mt-8 pt-8 border-t border-white/10 text-center font-mono text-lg text-white">
             <p className="mb-4 text-white font-bold">Prefer to talk directly?</p>
-            <Button variant="outline" className="mx-auto" onClick={() => window.open('https://calendly.com/bluepanda/consultation', '_blank')}>
+            <Button variant="outline" className="mx-auto" onClick={() => window.open('https://calendly.com/bluepandasolutions/30min', '_blank')}>
               <Activity className="w-4 h-4" /> Schedule a Consultation
             </Button>
             <p className="mt-8">Blue Panda Hosting and Designs</p>
