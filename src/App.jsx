@@ -81,8 +81,18 @@ import { caseStudiesData } from './caseStudiesData';
 // --- Loading Screen ---
 const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
-
+  
+  // Bot and crawler detection
+  const isBot = /bot|googlebot|crawler|spider|curl|wget|slurp|bingbot|yandexbot|duckduckbot|baiduspider|facebot|ia_archiver/i.test(navigator.userAgent);
+  const isScreenReader = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  
+  // Skip loading for bots or screen readers
   useEffect(() => {
+    if (isBot || isScreenReader) {
+      onComplete();
+      return;
+    }
+    
     const interval = setInterval(() => {
       setProgress(prev => {
         if (prev >= 100) {
@@ -94,7 +104,7 @@ const LoadingScreen = ({ onComplete }) => {
       });
     }, 100);
     return () => clearInterval(interval);
-  }, [onComplete]);
+  }, [onComplete, isBot, isScreenReader]);
 
   return (
     <div className="fixed inset-0 bg-black z-50 flex flex-col items-center justify-center text-cyan-400 font-mono">
