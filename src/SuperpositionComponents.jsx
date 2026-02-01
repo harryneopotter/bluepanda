@@ -643,6 +643,19 @@ export const ProjectsGrid = ({ onProjectClick }) => {
     const projects = [
         {
             status: "live",
+            title: "Nobius Content Bot — Self-Healing CMS via Telegram",
+            description: "A Telegram bot that lets non-technical clients edit their website by texting. Paired with an auto-fixer bot that detects build failures and repairs them autonomously. Zero manual intervention.",
+            tags: ["Node.js", "Telegram Bot", "GitHub API", "Netlify", "AI Auto-Repair"],
+            type: "ai",
+            metrics: [
+                { label: "Editable Sections", value: "60+" },
+                { label: "Deployments", value: "Self-Healing" }
+            ],
+            githubUrl: "https://github.com/harryneopotter/nobius-telegram-bot",
+            buttons: ["CASE_STUDY", "SOURCE_CODE"]
+        },
+        {
+            status: "live",
             title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
             description: "Rebuilt a repeatedly compromised WordPress site into a secure, deterministic React frontend.",
             tags: ["React", "Security", "Deterministic"],
@@ -743,19 +756,6 @@ export const ProjectsGrid = ({ onProjectClick }) => {
                 { label: "Prototyping", value: "Rapid" }
             ],
             githubUrl: "#",
-            buttons: ["CASE_STUDY", "SOURCE_CODE"]
-        },
-        {
-            status: "live",
-            title: "Nobius Content Bot — Self-Healing CMS via Telegram",
-            description: "A Telegram bot that lets non-technical clients edit their website by texting. Paired with an auto-fixer bot that detects build failures and repairs them autonomously. Zero manual intervention.",
-            tags: ["Node.js", "Telegram Bot", "GitHub API", "Netlify", "AI Auto-Repair"],
-            type: "ai",
-            metrics: [
-                { label: "Editable Sections", value: "60+" },
-                { label: "Deployments", value: "Self-Healing" }
-            ],
-            githubUrl: "https://github.com/harryneopotter/nobius-telegram-bot",
             buttons: ["CASE_STUDY", "SOURCE_CODE"]
         }
     ];
