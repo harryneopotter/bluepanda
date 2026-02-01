@@ -115,5 +115,20 @@ export const caseStudiesData = {
         impact: "Improved team productivity and project visibility with AI-driven automation.",
         githubUrl: "https://github.com/harryneopotter/PandaBanana",
         liveUrl: "https://banana.bluepanda.cloud/"
+    },
+    "Nobius Content Bot — Self-Healing CMS via Telegram": {
+        challenge: "Client needed to update website content regularly but every change required code editing, GitHub commits, and hoping the build wouldn't break. A headline change shouldn't need a developer. And when builds failed at 2 AM from a misplaced quote, manual intervention was required.",
+        solution: "Built a two-bot ecosystem: a Content Bot that lets non-technical users edit 60+ website sections via Telegram conversation, and an Auto-Fixer Bot that detects build failures, analyzes errors with AI, and applies fixes autonomously. Zero code knowledge required, zero manual intervention needed.",
+        techStack: ["Node.js 20.x", "Telegram Bot API", "GitHub API (Octokit)", "Netlify API", "AI-powered error analysis", "PM2"],
+        keyFeatures: [
+            "60+ editable content sections via Telegram commands",
+            "Auto-commit to GitHub with real-time build monitoring",
+            "AI-powered auto-fixer for build failures",
+            "Multi-user support with role-based access",
+            "Guardrails: max 50 lines changed, single file, 3 attempts max",
+            "Self-healing deployment pipeline"
+        ],
+        impact: "Client's reaction: 'Fuck bro, this is INSANELY easy!' Website updates went from developer-dependent to fully autonomous. Build failures auto-repair in minutes. Developer sleeps through the night.",
+        githubUrl: "https://github.com/harryneopotter/nobius-telegram-bot"
     }
 };
