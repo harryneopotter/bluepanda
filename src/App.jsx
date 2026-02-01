@@ -1192,7 +1192,7 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
   const menuItems = [
     { id: 'home', label: 'HOME' },
     { id: 'services', label: 'SERVICES' },
-    { id: 'case-studies', label: 'Cases' },
+    { id: 'case-studies', label: 'CASES' },
     { id: 'about', label: 'ABOUT' },
     { id: 'architect', label: 'AI ARCHITECT' },
     { id: 'contact', label: 'CONTACT' },
