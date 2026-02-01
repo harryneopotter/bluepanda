@@ -255,7 +255,7 @@ export const FeaturedProjects = ({ navigate }) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    onClick={() => navigate && navigate('projects')}
+                    onClick={() => navigate && navigate('case-studies')}
                     className={`p-8 rounded-xl bg-surface/30 border ${project.color} hover:bg-surface/50 transition-colors relative overflow-hidden group cursor-pointer`}
                 >
                     <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
@@ -774,7 +774,7 @@ export const BottomNav = ({ currentPage, setPage }) => {
     const navItems = [
         { id: 'home', label: 'Home', icon: <Home className="w-6 h-6" /> },
         { id: 'services', label: 'Services', icon: <Zap className="w-6 h-6" /> },
-        { id: 'projects', label: 'Projects', icon: <Code2 className="w-6 h-6" /> },
+        { id: 'case-studies', label: 'Case Studies', icon: <Code2 className="w-6 h-6" /> },
         { id: 'about', label: 'About', icon: <User className="w-6 h-6" /> },
         { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-6 h-6" /> },
         { id: 'contact', label: 'Contact', icon: <Mail className="w-6 h-6" /> },
