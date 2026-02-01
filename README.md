@@ -8,7 +8,7 @@ A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our e
 - **AI Infrastructure Architect**: Powered by Gemini API for intelligent infrastructure planning
 - **Interactive Case Study Showcase**: Detailed case studies with metrics and tech stacks
 - **Responsive Navigation**: Bottom navigation bar with tooltips and system menu overlay
-- **Content-Rich Pages**: Services, Projects, About, Contact, and AI Architect
+- **Content-Rich Pages**: Services, Case Studies, About, Contact, and AI Architect
 
 ## 🚀 Tech Stack
 
