@@ -623,11 +623,15 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                     >
                         <FileText className="w-3 h-3" /> Case Study
                     </button>
-                    {project.githubUrl && (
+                    {project.githubUrl ? (
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-white/20 hover:border-white/50 text-muted hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="Source Code">
                             <Github className="w-3 h-3" /> Code
                         </a>
-                    )}
+                    ) : project.liveUrl ? (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-brand-primary/50 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="View Website">
+                            <Globe className="w-3 h-3" /> Website
+                        </a>
+                    ) : null}
                     {project.liveUrl && (
                         <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-brand-primary/50 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="View Live">
                             <ExternalLink className="w-3 h-3" /> Live
