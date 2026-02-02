@@ -24,7 +24,8 @@ export const caseStudiesData = {
             "Simplified hosting and monitoring model"
         ],
         impact: "Outcome: repeated incidents stopped and the site became stable, predictable, and low-maintenance without a redesign.",
-        liveUrl: "https://almahafoods.com"
+        liveUrl: "https://almahafoods.com",
+        linkText: "Live Website"
     },
     "Remote Cloud Dashboard — Secure VM Orchestration": {
         challenge: "Need for efficient remote monitoring and management of Google Cloud Platform resources without constant manual checking.",
@@ -100,7 +101,8 @@ export const caseStudiesData = {
         ],
         impact: "Turned developer rage into usable product. Good tools don't come from planning - they come from pain and refusing to repeat it. Journey from desperate fix to typed, structured, maintainable product.",
         githubUrl: "https://github.com/harryneopotter/Codex-webui",
-        liveUrl: "https://codex-webui-ts.hnpart.xyz"
+        liveUrl: "https://codex-webui-ts.hnpart.xyz",
+        linkText: "Live Website"
     },
     "PandaBanana": {
         challenge: "Need for efficient project management and collaboration tool tailored for development teams.",
@@ -114,7 +116,8 @@ export const caseStudiesData = {
         ],
         impact: "Improved team productivity and project visibility with AI-driven automation.",
         githubUrl: "https://github.com/harryneopotter/PandaBanana",
-        liveUrl: "https://banana.bluepanda.cloud/"
+        liveUrl: "https://banana.bluepanda.cloud/",
+        linkText: "Live Demo"
     },
     "Nobius Content Bot — Self-Healing CMS via Telegram": {
         challenge: "Client needed to update website content regularly but every change required code editing, GitHub commits, and hoping the build wouldn't break. A headline change shouldn't need a developer. And when builds failed at 2 AM from a misplaced quote, manual intervention was required.",
@@ -129,6 +132,7 @@ export const caseStudiesData = {
             "Self-healing deployment pipeline"
         ],
         impact: "Client's reaction: 'Fuck bro, this is INSANELY easy!' Website updates went from developer-dependent to fully autonomous. Build failures auto-repair in minutes. Developer sleeps through the night.",
-        liveUrl: "https://nobius.audio"
+        liveUrl: "https://nobius.audio",
+        linkText: "Live Website"
     }
 };
