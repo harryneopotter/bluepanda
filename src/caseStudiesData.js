@@ -129,6 +129,6 @@ export const caseStudiesData = {
             "Self-healing deployment pipeline"
         ],
         impact: "Client's reaction: 'Fuck bro, this is INSANELY easy!' Website updates went from developer-dependent to fully autonomous. Build failures auto-repair in minutes. Developer sleeps through the night.",
-        githubUrl: "https://github.com/harryneopotter/nobius-telegram-bot"
+        liveUrl: "https://nobius.audio"
     }
 };
