@@ -24,7 +24,7 @@ export const caseStudiesData = {
             "Simplified hosting and monitoring model"
         ],
         impact: "Outcome: repeated incidents stopped and the site became stable, predictable, and low-maintenance without a redesign.",
-        liveUrl: "https://bhaiyaji.co.in"
+        liveUrl: "https://almahafoods.com"
     },
     "Remote Cloud Dashboard — Secure VM Orchestration": {
         challenge: "Need for efficient remote monitoring and management of Google Cloud Platform resources without constant manual checking.",
