@@ -759,7 +759,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
         },
         {
             status: "development",
-            title: "Bajaj Sports — Quotation Intelligence & Catalog Recovery",
+            title: "Legacy Retail — Quotation Intelligence & Catalog Recovery",
             description: "A VLM-powered document extraction pipeline that transforms 491 historical PDFs into a queryable pricing memory. Features intelligent quotation MVP with autocomplete, last-sold price context, and full audit trails.",
             tags: ["FastAPI", "SQLite", "Sarvam AI Vision", "VLM", "OCR"],
             type: "ai",
