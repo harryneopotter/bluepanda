@@ -134,5 +134,35 @@ export const caseStudiesData = {
         impact: "Client's reaction: 'Fuck bro, this is INSANELY easy!' Website updates went from developer-dependent to fully autonomous. Build failures auto-repair in minutes. Developer sleeps through the night.",
         liveUrl: "https://nobius.audio",
         linkText: "Live Website"
+    },
+    "Bajaj Sports — Quotation Intelligence & Catalog Recovery": {
+        challenge: "A 75-year-running physical retail business needed to digitize decades of messy purchase records and invoices scattered across PDFs and spreadsheets. Their quotation process was entirely manual—sales teams spent hours searching for historical prices, risking misquotes and lost deals. Legacy OCR broke on complex invoice structures, and data was cluttered with GST fragments and address noise.",
+        solution: "Built an agentic four-step pipeline (Classify → Extract → Verify → Merge) that transforms raw documents into a clean, queryable pricing memory. Migrated to Sarvam AI Vision (VLM) for structural fidelity, with fallback patterns and full provenance tracking. Implemented a quotation MVP with client/product autocomplete showing last-sold prices, GST computation, and PDF generation. Production data remains frozen until post-demo approval.",
+        techStack: ["FastAPI", "SQLite", "HTML/JS verification UI", "Sarvam AI Vision (VLM)", "OCR + heuristics fallback", "PDF generation"],
+        keyFeatures: [
+            "VLM-powered document extraction with structural fidelity",
+            "Human-in-the-loop verification with provenance tracking",
+            "Client/product autocomplete with pricing intelligence",
+            "Last-sold price context at quote time",
+            "PDF quote generation",
+            "Production data frozen until post-demo signoff"
+        ],
+        impact: "Cleaned and verified 1,250+ product catalog rows from 491 historical PDFs. Cut average quote assembly time by over 40%. Full audit trails enable faster dispute resolution and build merchant trust.",
+        status: "In Development"
+    },
+    "WhatsApp Lead Management — Recovering Lost Ad Leads": {
+        challenge: "A small business receiving ~130 leads daily through WhatsApp (100 from Meta ads, 30 from Google). Their 2-3 person team could only follow up on ~20% of Meta leads—80 leads per day went cold with no tracking, no systematic follow-up, and no visibility into why deals were lost. They were wasting 80% of paid ad spend with zero conversion insights.",
+        solution: "Built an end-to-end lead management platform with automated capture from WhatsApp Business API webhooks, a 5-stage workflow (Fresh → Estimate Sent → Followup → PO Received → Closed), and timed follow-up sequences (Day 0, Day 3, Day 7). Implemented automated win/loss research that asks customers why they didn't convert. Manager dashboard provides real-time pipeline visibility, team performance metrics, and exportable audit logs.",
+        techStack: ["FastAPI (Python)", "React + TypeScript", "SQLite/PostgreSQL", "WhatsApp Business API", "SMTP/email", "JWT auth", "PM2"],
+        keyFeatures: [
+            "Real-time lead ingestion from WhatsApp Business API",
+            "5-stage workflow with automated status transitions",
+            "Timed multi-touch follow-ups (Day 0, Day 3, Day 7, Day 14)",
+            "Automated win/loss research surveys",
+            "Round-robin lead assignment with role-based access",
+            "Manager + Agent dashboards with full audit trail"
+        ],
+        impact: "Projected recovery of 50-60% of currently lost leads. Estimated +20-35% uplift in recovered leads. Reduced time-to-first-response from hours to under 30 seconds. Win/loss analysis reveals why customers don't convert—enabling data-driven pricing and targeting.",
+        status: "In Development"
     }
 };

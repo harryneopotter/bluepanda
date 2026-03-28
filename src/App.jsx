@@ -368,7 +368,7 @@ const CaseStudyModal = ({ project, onClose }) => {
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Live Website
+                      {caseStudy.linkText || 'Live Website'}
                     </a>
                   )}
                 </div>
