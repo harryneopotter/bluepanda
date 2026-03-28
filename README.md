@@ -12,7 +12,7 @@ A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our e
 
 ## 🚀 Tech Stack
 
-- **Framework**: React 18 with Vite
+- **Framework**: React 19 with Vite
 - **Styling**: Tailwind CSS with custom animations
 - **Icons**: Lucide React
 - **AI Integration**: Google Gemini API
