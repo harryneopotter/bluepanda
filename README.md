@@ -1,6 +1,6 @@
-# Blue Panda - Quantum Infrastructure Website
+# Blue Panda - Resilient Infrastructure Website
 
-A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our evolution from traditional hosting to AI-powered quantum infrastructure.
+A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our evolution from traditional hosting to AI-powered resilient infrastructure.
 
 ## 🌟 Features
 
@@ -49,7 +49,7 @@ qpanda/
 
 ## 🌐 Pages
 
-- **Home**: Hero section with quantum-themed branding
+- **Home**: Hero section with AI-themed branding
 - **Services**: Q Panda Cloud, AI Infrastructure, Traditional Web Services
 - **Projects**: Real project showcase with case study modals
 - **About**: Company evolution timeline and team
@@ -70,6 +70,6 @@ const apiKey = "YOUR_GEMINI_API_KEY";
 
 ## 🐼 About Blue Panda
 
-Operating since 2013, Blue Panda has evolved from traditional web hosting to pioneering quantum-ready infrastructure with AI-powered autonomous systems.
+Operating since 2013, Blue Panda has evolved from traditional web hosting to pioneering resilient cloud infrastructure with AI-powered autonomous systems.
 
 **Contact**: sachin@bluepanda.in
