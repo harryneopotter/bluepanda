@@ -131,7 +131,7 @@ export const caseStudiesData = {
             "Guardrails: max 50 lines changed, single file, 3 attempts max",
             "Self-healing deployment pipeline"
         ],
-        impact: "Client's reaction: 'Fuck bro, this is INSANELY easy!' Website updates went from developer-dependent to fully autonomous. Build failures auto-repair in minutes. Developer sleeps through the night.",
+        impact: "Client feedback was overwhelmingly positive. Website updates went from developer-dependent to fully autonomous, and build failures now auto-repair in minutes."
         liveUrl: "https://nobius.audio",
         linkText: "Live Website"
     },
