@@ -135,7 +135,7 @@ export const caseStudiesData = {
         liveUrl: "https://nobius.audio",
         linkText: "Live Website"
     },
-    "Bajaj Sports — Quotation Intelligence & Catalog Recovery": {
+    "Legacy Retail — Quotation Intelligence & Catalog Recovery": {
         challenge: "A 75-year-running physical retail business needed to digitize decades of messy purchase records and invoices scattered across PDFs and spreadsheets. Their quotation process was entirely manual—sales teams spent hours searching for historical prices, risking misquotes and lost deals. Legacy OCR broke on complex invoice structures, and data was cluttered with GST fragments and address noise.",
         solution: "Built an agentic four-step pipeline (Classify → Extract → Verify → Merge) that transforms raw documents into a clean, queryable pricing memory. Migrated to Sarvam AI Vision (VLM) for structural fidelity, with fallback patterns and full provenance tracking. Implemented a quotation MVP with client/product autocomplete showing last-sold prices, GST computation, and PDF generation. Production data remains frozen until post-demo approval.",
         techStack: ["FastAPI", "SQLite", "HTML/JS verification UI", "Sarvam AI Vision (VLM)", "OCR + heuristics fallback", "PDF generation"],
