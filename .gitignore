@@ -29,6 +29,7 @@ dist-ssr
 docs/
 *.md
 !README.md
+!.github/copilot-instructions.md
 final-home.md
 homepage-changes-analysis.md
 current-issues.txt
