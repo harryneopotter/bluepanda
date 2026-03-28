@@ -632,11 +632,6 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                             <Globe className="w-3 h-3" /> Website
                         </a>
                     ) : null}
-                    {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-brand-primary/50 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="View Live">
-                            <ExternalLink className="w-3 h-3" /> Live
-                        </a>
-                    )}
                 </div>
             </div>
         </motion.div>
@@ -668,7 +663,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
                 { label: "Attack Surface", value: "Zero" },
                 { label: "Stability", value: "100%" }
             ],
-            liveUrl: "https://bhaiyaji.co.in",
+            liveUrl: "https://almahafoods.com",
             buttons: ["CASE_STUDY", "INITIATE_LINK"]
         },
         {
@@ -761,6 +756,30 @@ export const ProjectsGrid = ({ onProjectClick }) => {
             ],
             githubUrl: "#",
             buttons: ["CASE_STUDY", "SOURCE_CODE"]
+        },
+        {
+            status: "development",
+            title: "Bajaj Sports — Quotation Intelligence & Catalog Recovery",
+            description: "A VLM-powered document extraction pipeline that transforms 491 historical PDFs into a queryable pricing memory. Features intelligent quotation MVP with autocomplete, last-sold price context, and full audit trails.",
+            tags: ["FastAPI", "SQLite", "Sarvam AI Vision", "VLM", "OCR"],
+            type: "ai",
+            metrics: [
+                { label: "Catalog Rows", value: "1,250+" },
+                { label: "Time Savings", value: "40%" }
+            ],
+            buttons: ["CASE_STUDY"]
+        },
+        {
+            status: "development",
+            title: "WhatsApp Lead Management — Recovering Lost Ad Leads",
+            description: "End-to-end lead management platform capturing 130+ daily WhatsApp leads from Meta/Google ads. Features 5-stage workflow, automated follow-ups, win/loss research, and real-time pipeline visibility to recover 80% of previously lost leads.",
+            tags: ["FastAPI", "React", "TypeScript", "WhatsApp API", "SQLite"],
+            type: "ai",
+            metrics: [
+                { label: "Daily Leads", value: "130+" },
+                { label: "Recovery Rate", value: "50-60%" }
+            ],
+            buttons: ["CASE_STUDY"]
         }
     ];
 
