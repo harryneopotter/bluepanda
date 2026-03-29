@@ -255,7 +255,7 @@ export const FeaturedProjects = ({ navigate }) => {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6 }}
-                    onClick={() => navigate && navigate('projects')}
+                    onClick={() => navigate && navigate('case-studies')}
                     className={`p-8 rounded-xl bg-surface/30 border ${project.color} hover:bg-surface/50 transition-colors relative overflow-hidden group cursor-pointer`}
                 >
                     <div className="flex flex-col md:flex-row gap-6 items-start md:items-center justify-between">
@@ -547,6 +547,15 @@ export const ConstellationProjects = () => {
     );
 };
 
+// --- Helper function to validate URLs ---
+const isValidUrl = (url) => {
+    if (!url) return false;
+    if (url === "#") return false;
+    if (url === "") return false;
+    if (url === "javascript:void(0)") return false;
+    return true;
+};
+
 // --- Project Card with 3D Tilt Effect ---
 export const ProjectCard = ({ project, index, onProjectClick }) => {
     const prefersReducedMotion = useReducedMotion();
@@ -623,16 +632,15 @@ export const ProjectCard = ({ project, index, onProjectClick }) => {
                     >
                         <FileText className="w-3 h-3" /> Case Study
                     </button>
-                    {project.githubUrl && (
+                    {isValidUrl(project.githubUrl) ? (
                         <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-white/20 hover:border-white/50 text-muted hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="Source Code">
                             <Github className="w-3 h-3" /> Code
                         </a>
-                    )}
-                    {project.liveUrl && (
-                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-brand-primary/50 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="View Live">
-                            <ExternalLink className="w-3 h-3" /> Live
+                    ) : isValidUrl(project.liveUrl) ? (
+                        <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="flex-1 py-2 rounded border border-brand-primary/50 text-brand-primary hover:bg-brand-primary hover:text-white transition-all text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2" aria-label="View Website">
+                            <Globe className="w-3 h-3" /> Website
                         </a>
-                    )}
+                    ) : null}
                 </div>
             </div>
         </motion.div>
@@ -643,6 +651,19 @@ export const ProjectsGrid = ({ onProjectClick }) => {
     const projects = [
         {
             status: "live",
+            title: "Nobius Content Bot — Self-Healing CMS via Telegram",
+            description: "A Telegram bot that lets non-technical clients edit their website by texting. Paired with an auto-fixer bot that detects build failures and repairs them autonomously. Zero manual intervention.",
+            tags: ["Node.js", "Telegram Bot", "GitHub API", "Netlify", "AI Auto-Repair"],
+            type: "ai",
+            metrics: [
+                { label: "Editable Sections", value: "60+" },
+                { label: "Deployments", value: "Self-Healing" }
+            ],
+            githubUrl: "https://github.com/harryneopotter/nobius-telegram-bot",
+            buttons: ["CASE_STUDY", "SOURCE_CODE"]
+        },
+        {
+            status: "live",
             title: "Almaha Foods — Frontend Deconstruction & Security Hardening",
             description: "Rebuilt a repeatedly compromised WordPress site into a secure, deterministic React frontend.",
             tags: ["React", "Security", "Deterministic"],
@@ -651,7 +672,7 @@ export const ProjectsGrid = ({ onProjectClick }) => {
                 { label: "Attack Surface", value: "Zero" },
                 { label: "Stability", value: "100%" }
             ],
-            liveUrl: "https://bhaiyaji.co.in",
+            liveUrl: "https://almahafoods.com",
             buttons: ["CASE_STUDY", "INITIATE_LINK"]
         },
         {
@@ -744,6 +765,30 @@ export const ProjectsGrid = ({ onProjectClick }) => {
             ],
             githubUrl: "#",
             buttons: ["CASE_STUDY", "SOURCE_CODE"]
+        },
+        {
+            status: "development",
+            title: "Legacy Retail — Quotation Intelligence & Catalog Recovery",
+            description: "A VLM-powered document extraction pipeline that transforms 491 historical PDFs into a queryable pricing memory. Features intelligent quotation MVP with autocomplete, last-sold price context, and full audit trails.",
+            tags: ["FastAPI", "SQLite", "Sarvam AI Vision", "VLM", "OCR"],
+            type: "ai",
+            metrics: [
+                { label: "Catalog Rows", value: "1,250+" },
+                { label: "Time Savings", value: "40%" }
+            ],
+            buttons: ["CASE_STUDY"]
+        },
+        {
+            status: "development",
+            title: "WhatsApp Lead Management — Recovering Lost Ad Leads",
+            description: "End-to-end lead management platform capturing 130+ daily WhatsApp leads from Meta/Google ads. Features 5-stage workflow, automated follow-ups, win/loss research, and real-time pipeline visibility to recover 80% of previously lost leads.",
+            tags: ["FastAPI", "React", "TypeScript", "WhatsApp API", "SQLite"],
+            type: "ai",
+            metrics: [
+                { label: "Daily Leads", value: "130+" },
+                { label: "Recovery Rate", value: "50-60%" }
+            ],
+            buttons: ["CASE_STUDY"]
         }
     ];
 
@@ -761,7 +806,7 @@ export const BottomNav = ({ currentPage, setPage }) => {
     const navItems = [
         { id: 'home', label: 'Home', icon: <Home className="w-6 h-6" /> },
         { id: 'services', label: 'Services', icon: <Zap className="w-6 h-6" /> },
-        { id: 'projects', label: 'Projects', icon: <Code2 className="w-6 h-6" /> },
+        { id: 'case-studies', label: 'Cases', icon: <Code2 className="w-6 h-6" /> },
         { id: 'about', label: 'About', icon: <User className="w-6 h-6" /> },
         { id: 'architect', label: 'AI Architect', icon: <Sparkles className="w-6 h-6" /> },
         { id: 'contact', label: 'Contact', icon: <Mail className="w-6 h-6" /> },

@@ -6,13 +6,13 @@ A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our e
 
 - **Superposition Design Theme**: Dark mode with neon accents, particle backgrounds, and glitch effects
 - **AI Infrastructure Architect**: Powered by Gemini API for intelligent infrastructure planning
-- **Interactive Project Showcase**: Detailed case studies with metrics and tech stacks
+- **Interactive Case Study Showcase**: Detailed case studies with metrics and tech stacks
 - **Responsive Navigation**: Bottom navigation bar with tooltips and system menu overlay
-- **Content-Rich Pages**: Services, Projects, About, Contact, and AI Architect
+- **Content-Rich Pages**: Services, Case Studies, About, Contact, and AI Architect
 
 ## 🚀 Tech Stack
 
-- **Framework**: React 18 with Vite
+- **Framework**: React 19 with Vite
 - **Styling**: Tailwind CSS with custom animations
 - **Icons**: Lucide React
 - **AI Integration**: Google Gemini API
@@ -51,7 +51,7 @@ qpanda/
 
 - **Home**: Hero section with AI-themed branding
 - **Services**: Q Panda Cloud, AI Infrastructure, Traditional Web Services
-- **Projects**: Real project showcase with case study modals
+- **Case Studies**: Real project showcase with case study modals
 - **About**: Company evolution timeline and team
 - **AI Architect**: Gemini-powered infrastructure blueprint generator
 - **Contact**: Contact form with Calendly integration

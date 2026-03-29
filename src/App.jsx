@@ -368,7 +368,7 @@ const CaseStudyModal = ({ project, onClose }) => {
                       className="flex items-center gap-2 text-sm text-gray-300 hover:text-cyan-400 transition-colors"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      Live Demo
+                      {caseStudy.linkText || 'Live Website'}
                     </a>
                   )}
                 </div>
@@ -430,8 +430,8 @@ const HomePage = ({ navigate }) => (
           <Button onClick={() => navigate('services')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             Services
           </Button>
-          <Button onClick={() => navigate('projects')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
-            Projects
+          <Button onClick={() => navigate('case-studies')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
+            Case Studies
           </Button>
           <Button onClick={() => navigate('architect')} variant="outline" className="justify-center border-white/40 bg-black/40 hover:bg-cyan-900/20 hover:border-cyan-500 hover:text-cyan-400">
             AI Architect Demo
@@ -475,8 +475,8 @@ const HomePage = ({ navigate }) => (
         <FeaturedProjects navigate={navigate} />
 
         <div className="text-center mt-12">
-          <Button onClick={() => navigate('projects')} variant="outline" className="mx-auto">
-            View All Projects <ArrowRight className="w-4 h-4" />
+          <Button onClick={() => navigate('case-studies')} variant="outline" className="mx-auto">
+            View All Case Studies <ArrowRight className="w-4 h-4" />
           </Button>
         </div>
       </div>
@@ -1154,7 +1154,7 @@ const Footer = ({ navigate }) => (
           <h3 className="font-mono text-white font-bold mb-6 uppercase text-xl">Quick Links</h3>
           <ul className="space-y-4 text-xl">
             <li><button onClick={() => navigate('services')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">Services</button></li>
-            <li><button onClick={() => navigate('projects')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">Projects</button></li>
+            <li><button onClick={() => navigate('case-studies')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">Case Studies</button></li>
             <li><button onClick={() => navigate('about')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">About Us</button></li>
             <li><button onClick={() => navigate('architect')} className="text-gray-300 hover:text-cyan-400 transition-colors text-left">AI Architect</button></li>
           </ul>
@@ -1192,7 +1192,7 @@ const SystemMenu = ({ isOpen, onClose, navigate }) => {
   const menuItems = [
     { id: 'home', label: 'HOME' },
     { id: 'services', label: 'SERVICES' },
-    { id: 'projects', label: 'PROJECTS' },
+    { id: 'case-studies', label: 'Case Studies' },
     { id: 'about', label: 'ABOUT' },
     { id: 'architect', label: 'AI ARCHITECT' },
     { id: 'contact', label: 'CONTACT' },
@@ -1301,7 +1301,7 @@ const App = () => {
         {page === 'about' && <AboutPage navigate={navigate} />}
         {page === 'contact' && <ContactPage />}
         {page === 'architect' && <InfrastructureArchitect />}
-        {page === 'projects' && <ProjectsPage onOpenCaseStudy={setSelectedCaseStudy} />}
+        {page === 'case-studies' && <ProjectsPage onOpenCaseStudy={setSelectedCaseStudy} />}
       </main>
 
       {/* Footer */}

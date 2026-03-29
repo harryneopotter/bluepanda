@@ -24,7 +24,8 @@ export const caseStudiesData = {
             "Simplified hosting and monitoring model"
         ],
         impact: "Outcome: repeated incidents stopped and the site became stable, predictable, and low-maintenance without a redesign.",
-        liveUrl: "https://bhaiyaji.co.in"
+        liveUrl: "https://almahafoods.com",
+        linkText: "Live Website"
     },
     "Remote Cloud Dashboard — Secure VM Orchestration": {
         challenge: "Need for efficient remote monitoring and management of Google Cloud Platform resources without constant manual checking.",
@@ -100,7 +101,8 @@ export const caseStudiesData = {
         ],
         impact: "Turned developer rage into usable product. Good tools don't come from planning - they come from pain and refusing to repeat it. Journey from desperate fix to typed, structured, maintainable product.",
         githubUrl: "https://github.com/harryneopotter/Codex-webui",
-        liveUrl: "https://codex-webui-ts.hnpart.xyz"
+        liveUrl: "https://codex-webui-ts.hnpart.xyz",
+        linkText: "Live Website"
     },
     "PandaBanana": {
         challenge: "Need for efficient project management and collaboration tool tailored for development teams.",
@@ -114,6 +116,53 @@ export const caseStudiesData = {
         ],
         impact: "Improved team productivity and project visibility with AI-driven automation.",
         githubUrl: "https://github.com/harryneopotter/PandaBanana",
-        liveUrl: "https://banana.bluepanda.cloud/"
+        liveUrl: "https://banana.bluepanda.cloud/",
+        linkText: "Live Demo"
+    },
+    "Nobius Content Bot — Self-Healing CMS via Telegram": {
+        challenge: "Client needed to update website content regularly but every change required code editing, GitHub commits, and hoping the build wouldn't break. A headline change shouldn't need a developer. And when builds failed at 2 AM from a misplaced quote, manual intervention was required.",
+        solution: "Built a two-bot ecosystem: a Content Bot that lets non-technical users edit 60+ website sections via Telegram conversation, and an Auto-Fixer Bot that detects build failures, analyzes errors with AI, and applies fixes autonomously. Zero code knowledge required, zero manual intervention needed.",
+        techStack: ["Node.js 20.x", "Telegram Bot API", "GitHub API (Octokit)", "Netlify API", "AI-powered error analysis", "PM2"],
+        keyFeatures: [
+            "60+ editable content sections via Telegram commands",
+            "Auto-commit to GitHub with real-time build monitoring",
+            "AI-powered auto-fixer for build failures",
+            "Multi-user support with role-based access",
+            "Guardrails: max 50 lines changed, single file, 3 attempts max",
+            "Self-healing deployment pipeline"
+        ],
+        impact: "Client feedback was overwhelmingly positive. Website updates went from developer-dependent to fully autonomous, and build failures now auto-repair in minutes.",
+        liveUrl: "https://nobius.audio",
+        linkText: "Live Website"
+    },
+    "Legacy Retail — Quotation Intelligence & Catalog Recovery": {
+        challenge: "A 75-year-running physical retail business needed to digitize decades of messy purchase records and invoices scattered across PDFs and spreadsheets. Their quotation process was entirely manual—sales teams spent hours searching for historical prices, risking misquotes and lost deals. Legacy OCR broke on complex invoice structures, and data was cluttered with GST fragments and address noise.",
+        solution: "Built an agentic four-step pipeline (Classify → Extract → Verify → Merge) that transforms raw documents into a clean, queryable pricing memory. Migrated to Sarvam AI Vision (VLM) for structural fidelity, with fallback patterns and full provenance tracking. Implemented a quotation MVP with client/product autocomplete showing last-sold prices, GST computation, and PDF generation. Production data remains frozen until post-demo approval.",
+        techStack: ["FastAPI", "SQLite", "HTML/JS verification UI", "Sarvam AI Vision (VLM)", "OCR + heuristics fallback", "PDF generation"],
+        keyFeatures: [
+            "VLM-powered document extraction with structural fidelity",
+            "Human-in-the-loop verification with provenance tracking",
+            "Client/product autocomplete with pricing intelligence",
+            "Last-sold price context at quote time",
+            "PDF quote generation",
+            "Production data frozen until post-demo signoff"
+        ],
+        impact: "Cleaned and verified 1,250+ product catalog rows from 491 historical PDFs. Cut average quote assembly time by over 40%. Full audit trails enable faster dispute resolution and build merchant trust.",
+        status: "In Development"
+    },
+    "WhatsApp Lead Management — Recovering Lost Ad Leads": {
+        challenge: "A small business receiving ~130 leads daily through WhatsApp (100 from Meta ads, 30 from Google). Their 2-3 person team could only follow up on ~20% of Meta leads—80 leads per day went cold with no tracking, no systematic follow-up, and no visibility into why deals were lost. They were wasting 80% of paid ad spend with zero conversion insights.",
+        solution: "Built an end-to-end lead management platform with automated capture from WhatsApp Business API webhooks, a 5-stage workflow (Fresh → Estimate Sent → Followup → PO Received → Closed), and timed follow-up sequences (Day 0, Day 3, Day 7). Implemented automated win/loss research that asks customers why they didn't convert. Manager dashboard provides real-time pipeline visibility, team performance metrics, and exportable audit logs.",
+        techStack: ["FastAPI (Python)", "React + TypeScript", "SQLite/PostgreSQL", "WhatsApp Business API", "SMTP/email", "JWT auth", "PM2"],
+        keyFeatures: [
+            "Real-time lead ingestion from WhatsApp Business API",
+            "5-stage workflow with automated status transitions",
+            "Timed multi-touch follow-ups (Day 0, Day 3, Day 7, Day 14)",
+            "Automated win/loss research surveys",
+            "Round-robin lead assignment with role-based access",
+            "Manager + Agent dashboards with full audit trail"
+        ],
+        impact: "Projected recovery of 50-60% of currently lost leads. Estimated +20-35% uplift in recovered leads. Reduced time-to-first-response from hours to under 30 seconds. Win/loss analysis reveals why customers don't convert—enabling data-driven pricing and targeting.",
+        status: "In Development"
     }
 };
