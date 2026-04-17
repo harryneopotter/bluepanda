@@ -8,6 +8,16 @@
   <title>Blue Panda - Responsible Infrastructure & Applied AI</title>
   <meta name="description"
     content="Responsible infrastructure, applied AI, and system correction since 2013. Focusing on long-term stability and resilience." />
+
+  <!--
+    Apollo.io visitor tracking.
+    Set VITE_APOLLO_TOKEN in your .env file (never commit the value).
+    SRI is intentionally omitted: the script URL includes a dynamic nocache
+    timestamp, making a static integrity hash impossible.
+  -->
+  <script>
+    (function(c,b,d,a){c[a]=c[a]||{};c[a].trigger=c[a].trigger||function(){(c[a].queue=c[a].queue||[]).push(arguments)};c[a].trigger("create",{token:"%VITE_APOLLO_TOKEN%"});var e=b.createElement(d);e.async=!0;e.src='https://assets.apollo.io/micro/website-tracker/tracker.iife.js?nocache='+new Date().getTime();b.getElementsByTagName(d)[0].before(e)})(window,document,"script","Apollo")
+  </script>
 </head>
 
 <body>
