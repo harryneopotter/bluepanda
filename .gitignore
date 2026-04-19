@@ -45,6 +45,7 @@ env
 
 # Scratch/test/old files
 *.txt
+!public/robots.txt
 *CLEAN*
 *ENHANCED*
 *NEW_*
