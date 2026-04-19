@@ -84,7 +84,7 @@ const LoadingScreen = ({ onComplete }) => {
   const [progress, setProgress] = useState(0);
   
   // Bot and crawler detection
-  const isBot = /bot|googlebot|crawler|spider|curl|wget|slurp|bingbot|yandexbot|duckduckbot|baiduspider|facebot|ia_archiver/i.test(navigator.userAgent);
+  const isBot = /bot|googlebot|crawler|spider|curl|wget|slurp|bingbot|yandexbot|duckduckbot|baiduspider|facebot|ia_archiver|chatgpt|claude|perplexity|anthropic|oai-search|github-copilot|headlesschrome|phantomjs|puppeteer|playwright|selenium/i.test(navigator.userAgent) || navigator.webdriver;
   const isScreenReader = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   
   // Skip loading for bots or screen readers
