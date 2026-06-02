@@ -17,3 +17,19 @@
 [build.environment]
   # Node version
   NODE_VERSION = "18"
+
+# RFC 8288 Link Headers for Agent Discovery
+[[headers]]
+  for = "/"
+  [headers.values]
+    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </docs>; rel=\"service-doc\""
+
+[[headers]]
+  for = "/.well-known/agent-skills/index.json"
+  [headers.values]
+    Content-Type = "application/json"
+
+[[headers]]
+  for = "/agent-readme.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
