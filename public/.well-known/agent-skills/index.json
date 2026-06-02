@@ -1,0 +1,26 @@
+{
+  "$schema": "https://raw.githubusercontent.com/cloudflare/agent-skills-discovery-rfc/main/schema.json",
+  "skills": [
+    {
+      "name": "company-information",
+      "type": "information",
+      "description": "Access to Blue Panda company information, team profiles, and service overview",
+      "url": "https://www.bluepanda.in/.well-known/agent-skills/company-information.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "service-documentation",
+      "type": "documentation",
+      "description": "Complete documentation of Blue Panda services and infrastructure offerings",
+      "url": "https://www.bluepanda.in/.well-known/agent-skills/service-documentation.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "contact-information",
+      "type": "query",
+      "description": "Find contact details, support channels, and how to reach Blue Panda",
+      "url": "https://www.bluepanda.in/.well-known/agent-skills/contact-information.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}
