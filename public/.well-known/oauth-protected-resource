@@ -1,0 +1,15 @@
+{
+  "resource": "https://api.bluepanda.in",
+  "authorization_servers": [
+    "https://auth.bluepanda.in"
+  ],
+  "scopes_supported": [
+    "agent:read",
+    "agent:write"
+  ],
+  "bearer_methods_supported": [
+    "header"
+  ],
+  "resource_policy_uri": "https://www.bluepanda.in/privacy",
+  "resource_tos_uri": "https://www.bluepanda.in/terms"
+}

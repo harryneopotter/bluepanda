@@ -22,7 +22,7 @@
 [[headers]]
   for = "/"
   [headers.values]
-    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </docs>; rel=\"service-doc\""
+    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/api-catalog>; rel=\"api-catalog\", </docs/api>; rel=\"service-doc\""
 
 [[headers]]
   for = "/.well-known/agent-skills/index.json"
@@ -33,3 +33,8 @@
   for = "/agent-readme.md"
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
+
+# Added for Markdown Negotiation
+[[edge_functions]]
+  path = "/*"
+  function = "markdown-negotiation"
