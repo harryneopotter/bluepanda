@@ -28,6 +28,17 @@
   for = "/.well-known/agent-skills/index.json"
   [headers.values]
     Content-Type = "application/json"
+    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/api-catalog>; rel=\"api-catalog\", </docs/api>; rel=\"service-doc\""
+
+[[headers]]
+  for = "/.well-known/api-catalog"
+  [headers.values]
+    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/api-catalog>; rel=\"api-catalog\", </docs/api>; rel=\"service-doc\""
+
+[[headers]]
+  for = "/docs/api"
+  [headers.values]
+    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </.well-known/api-catalog>; rel=\"api-catalog\", </docs/api>; rel=\"service-doc\""
 
 [[headers]]
   for = "/agent-readme.md"

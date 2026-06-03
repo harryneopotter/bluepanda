@@ -2,10 +2,10 @@
 # Add these records to your domain's DNS configuration
 
 # 1. Base DNS-AID Discovery Record (SVCB format)
-_agents.bluepanda.in. 3600 IN SVCB 1 bluepanda.in. alpn="h2,http/1.1"
+_agents.bluepanda.in. 3600 IN SVCB 1 www.bluepanda.in. alpn="h2,http/1.1"
 
 # 2. If you want to use the draft-mozleywilliams format for _index and _a2a:
 _index._agents.bluepanda.in. 3600 IN SVCB 1 www.bluepanda.in. alpn="h2,http/1.1" path="/.well-known/agent-skills/index.json"
-_a2a._agents.bluepanda.in. 3600 IN SVCB 1 api.bluepanda.in. alpn="h2,http/1.1" path="/.well-known/api-catalog"
+_a2a._agents.bluepanda.in. 3600 IN SVCB 1 www.bluepanda.in. alpn="h2,http/1.1" path="/.well-known/api-catalog"
 
 # Note: DNSSEC must be enabled on your domain for full agent verification.

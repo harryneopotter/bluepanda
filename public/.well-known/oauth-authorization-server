@@ -1,22 +1,13 @@
 {
-  "issuer": "https://auth.bluepanda.in",
-  "authorization_endpoint": "https://auth.bluepanda.in/authorize",
-  "token_endpoint": "https://auth.bluepanda.in/token",
-  "jwks_uri": "https://auth.bluepanda.in/.well-known/jwks.json",
+  "issuer": "https://www.bluepanda.in",
+  "authorization_endpoint": "https://www.bluepanda.in/authorize",
+  "token_endpoint": "https://www.bluepanda.in/token",
+  "jwks_uri": "https://www.bluepanda.in/.well-known/jwks.json",
   "scopes_supported": [
     "agent:read",
     "agent:write"
   ],
-  "response_types_supported": [
-    "code",
-    "token"
-  ],
-  "response_modes_supported": [
-    "query",
-    "fragment"
-  ],
   "grant_types_supported": [
-    "authorization_code",
     "client_credentials"
   ],
   "token_endpoint_auth_methods_supported": [

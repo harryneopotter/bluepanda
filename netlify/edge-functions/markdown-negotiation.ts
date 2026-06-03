@@ -20,7 +20,7 @@ export default async (request: Request, context: any) => {
           "Content-Type": "text/markdown; charset=utf-8",
           "X-Markdown-Tokens": "true", // Custom header for markdown
           "Vary": "Accept",
-          "Link": '</.well-known/agent-skills/index.json>; rel="agent-skills"'
+          "Link": '</.well-known/api-catalog>; rel="api-catalog"'
         }
       });
     }

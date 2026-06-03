@@ -20,11 +20,23 @@ export const initWebMCP = () => {
               required: ["page"]
             },
             execute: async (args) => {
-              const path = args.page === 'home' ? '/' : `/${args.page}`;
+              // Input validation
+              if (!args || typeof args !== 'object' || typeof args.page !== 'string' || !args.page.trim()) {
+                return { success: false, error: 'Invalid input: page must be a non-empty string' };
+              }
+
+              const validPages = ["home", "services", "case-studies", "about", "architect", "contact"];
+              const page = args.page.trim();
+
+              if (!validPages.includes(page)) {
+                return { success: false, error: `Invalid page: ${page}. Valid pages are: ${validPages.join(', ')}` };
+              }
+
+              const path = page === 'home' ? '/' : `/${page}`;
               window.history.pushState({}, '', path);
               // Dispatch popstate event to trigger React Router
               window.dispatchEvent(new PopStateEvent('popstate'));
-              return { success: true, message: `Navigated to ${args.page}` };
+              return { success: true, message: `Navigated to ${page}` };
             }
           },
           {

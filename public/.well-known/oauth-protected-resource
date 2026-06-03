@@ -1,7 +1,7 @@
 {
-  "resource": "https://api.bluepanda.in",
+  "resource": "https://www.bluepanda.in",
   "authorization_servers": [
-    "https://auth.bluepanda.in"
+    "https://www.bluepanda.in"
   ],
   "scopes_supported": [
     "agent:read",
