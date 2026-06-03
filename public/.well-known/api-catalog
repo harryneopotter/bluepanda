@@ -1,0 +1,25 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.bluepanda.in/api",
+      "service-desc": [
+        {
+          "href": "https://www.bluepanda.in/openapi.json",
+          "type": "application/vnd.oai.openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://www.bluepanda.in/docs/api",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://www.bluepanda.in/api/health",
+          "type": "application/json"
+        }
+      ]
+    }
+  ]
+}
