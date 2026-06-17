@@ -1330,10 +1330,18 @@ const AppContent = () => {
   );
 };
 
-const App = () => (
-  <BrowserRouter>
-    <AppContent />
-  </BrowserRouter>
-);
+const App = () => {
+  React.useEffect(() => {
+    import('./services/webmcp.js').then(({ registerWebMCPTools }) => {
+      registerWebMCPTools();
+    });
+  }, []);
+
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+};
 
 export default App;

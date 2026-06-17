@@ -33,3 +33,8 @@
   for = "/agent-readme.md"
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
+
+[[edge_functions]]
+  function = "markdown-negotiation"
+  path = "/*"
+
