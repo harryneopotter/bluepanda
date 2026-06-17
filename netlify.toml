@@ -16,7 +16,7 @@
 
 [build.environment]
   # Node version
-  NODE_VERSION = "18"
+  NODE_VERSION = "20"
 
 # RFC 8288 Link Headers for Agent Discovery
 [[headers]]
@@ -38,3 +38,8 @@
   function = "markdown-negotiation"
   path = "/*"
 
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"

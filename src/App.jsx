@@ -33,6 +33,135 @@ import { caseStudiesData } from './caseStudiesData';
 import { projects } from './projects';
 import { slugify } from './utils/slugify';
 
+
+const SITE_URL = 'https://bluepanda.in';
+const DEFAULT_TITLE = 'Blue Panda - Responsible Infrastructure & Applied AI';
+const DEFAULT_DESCRIPTION = 'Responsible infrastructure, applied AI, and system correction since 2013. Focusing on long-term stability and resilience.';
+const DEFAULT_IMAGE = `${SITE_URL}/favicon.svg`;
+
+const routeMeta = {
+  '/': {
+    title: DEFAULT_TITLE,
+    description: DEFAULT_DESCRIPTION,
+  },
+  '/services': {
+    title: 'Services - Blue Panda Infrastructure, AI & Engineering',
+    description: 'Explore Blue Panda services across resilient cloud infrastructure, controlled AI integration, automation, and custom engineering correction.',
+  },
+  '/case-studies': {
+    title: 'Case Studies - Blue Panda Systems Work',
+    description: 'Detailed Blue Panda case studies covering secure infrastructure, applied AI, custom engineering, automation, and measurable system outcomes.',
+  },
+  '/about': {
+    title: 'About - Blue Panda Hosting and Designs',
+    description: 'Learn how Blue Panda has built and maintained infrastructure, websites, and applied systems since 2013 with a long-term reliability focus.',
+  },
+  '/contact': {
+    title: 'Contact - Blue Panda',
+    description: 'Contact Blue Panda to discuss resilient infrastructure, applied AI, automation, system correction, or careful long-term engineering support.',
+  },
+  '/architect': {
+    title: 'AI Architect Demo - Blue Panda',
+    description: 'Use the Blue Panda AI Architect demo to turn messy system constraints into a practical infrastructure and implementation blueprint.',
+  },
+};
+
+const buildStructuredData = (canonicalUrl) => [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Organization',
+    name: 'Blue Panda Hosting and Designs',
+    url: SITE_URL,
+    logo: DEFAULT_IMAGE,
+    foundingDate: '2013',
+    email: 'mailto:sachin@bluepanda.in',
+    sameAs: ['https://github.com/harryneopotter'],
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'Blue Panda',
+    url: SITE_URL,
+    description: DEFAULT_DESCRIPTION,
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: 'Responsible Infrastructure and Applied AI Engineering',
+    provider: {
+      '@type': 'Organization',
+      name: 'Blue Panda Hosting and Designs',
+      url: SITE_URL,
+    },
+    areaServed: 'Worldwide',
+    serviceType: ['Cloud Infrastructure', 'AI Integration', 'Automation', 'Custom Development', 'Technical Consulting'],
+    url: canonicalUrl,
+  },
+];
+
+const SEOHead = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    const normalizedPath = location.pathname.replace(/\/$/, '') || '/';
+    const projectSlug = normalizedPath.startsWith('/case-studies/') ? normalizedPath.split('/').pop() : null;
+    const project = projectSlug ? projects.find((item) => slugify(item.title) === projectSlug) : null;
+    const meta = project
+      ? {
+        title: `${project.title} - Blue Panda Case Study`,
+        description: project.description,
+      }
+      : normalizedPath.startsWith('/case-studies')
+        ? routeMeta['/case-studies']
+        : routeMeta[normalizedPath] || routeMeta['/'];
+    const canonicalUrl = `${SITE_URL}${normalizedPath === '/' ? '' : normalizedPath}`;
+
+    document.title = meta.title;
+
+    const upsertMeta = (selector, attributes) => {
+      let element = document.head.querySelector(selector);
+      if (!element) {
+        element = document.createElement('meta');
+        document.head.appendChild(element);
+      }
+      Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+    };
+
+    const upsertLink = (rel, href) => {
+      let element = document.head.querySelector(`link[rel="${rel}"]`);
+      if (!element) {
+        element = document.createElement('link');
+        element.setAttribute('rel', rel);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('href', href);
+    };
+
+    upsertMeta('meta[name="description"]', { name: 'description', content: meta.description });
+    upsertMeta('meta[property="og:title"]', { property: 'og:title', content: meta.title });
+    upsertMeta('meta[property="og:description"]', { property: 'og:description', content: meta.description });
+    upsertMeta('meta[property="og:type"]', { property: 'og:type', content: project ? 'article' : 'website' });
+    upsertMeta('meta[property="og:url"]', { property: 'og:url', content: canonicalUrl });
+    upsertMeta('meta[property="og:image"]', { property: 'og:image', content: DEFAULT_IMAGE });
+    upsertMeta('meta[name="twitter:card"]', { name: 'twitter:card', content: 'summary' });
+    upsertMeta('meta[name="twitter:title"]', { name: 'twitter:title', content: meta.title });
+    upsertMeta('meta[name="twitter:description"]', { name: 'twitter:description', content: meta.description });
+    upsertMeta('meta[name="twitter:image"]', { name: 'twitter:image', content: DEFAULT_IMAGE });
+    upsertLink('canonical', canonicalUrl);
+
+    let script = document.head.querySelector('script[data-blue-panda-schema="site"]');
+    if (!script) {
+      script = document.createElement('script');
+      script.type = 'application/ld+json';
+      script.dataset.bluePandaSchema = 'site';
+      document.head.appendChild(script);
+    }
+    script.textContent = JSON.stringify(buildStructuredData(canonicalUrl));
+  }, [location.pathname]);
+
+  return null;
+};
+
 // ============================================
 // FRAMER MOTION ANIMATION VARIANTS
 // ============================================
@@ -1283,6 +1412,8 @@ const AppContent = () => {
 
   return (
     <div className="bg-void min-h-screen text-white selection:bg-cyan-500/30 selection:text-cyan-100">
+      <SEOHead />
+      <a href="#main-content" className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[120] focus:rounded focus:bg-cyan-400 focus:px-4 focus:py-2 focus:font-mono focus:font-bold focus:text-black">Skip to content</a>
       <SystemMenu isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
 
       {/* Global Top Bar (Visible on all pages) */}
@@ -1305,7 +1436,7 @@ const AppContent = () => {
         </div>
       </div>
 
-      <main className="animate-fade-in pt-20">
+      <main id="main-content" className="animate-fade-in pt-20" tabIndex="-1">
         <AnimatePresence mode="wait">
           <Routes location={location} key={location.pathname.split('/')[1]}>
             <Route path="/" element={<HomePage />} />
