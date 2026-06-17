@@ -34,6 +34,11 @@
   [headers.values]
     Content-Type = "text/markdown; charset=utf-8"
 
+[[headers]]
+  for = "/.well-known/agent-skills/*.md"
+  [headers.values]
+    Content-Type = "text/markdown; charset=utf-8"
+
 [[edge_functions]]
   function = "markdown-negotiation"
   path = "/*"

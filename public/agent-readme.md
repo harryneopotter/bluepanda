@@ -1,76 +1,87 @@
-# Blue Panda for AI Agents
+# Blue Panda — Responsible Infrastructure & Applied AI
 
-## Overview
+Blue Panda designs and maintains resilient infrastructure, applied systems, and custom engineering — focused on long-term stability, clarity, and reliability since 2013.
 
-Blue Panda is an infrastructure and services company. This page helps AI agents discover and understand our capabilities.
+**Tagline:** Problem-solving, not service selling.
 
-## Who We Are
+---
 
-Blue Panda provides infrastructure solutions and professional services. Our website is designed to be discoverable and readable by AI agents and automated systems.
+## Services
 
-## How Agents Can Use This Site
+### Cloud Infrastructure & DevOps
+Design and operate secure, resilient cloud systems with emphasis on uptime and recoverability. Includes server management, security hardening, monitoring, and long-term maintenance.
 
-### Information Discovery
+### AI Integration & Automation
+Integrate AI into existing systems in a controlled, privacy-first way. Deterministic workflows, data sovereignty, and useful automation without black-box dependencies.
 
-Agents can access comprehensive information about Blue Panda through:
+### Custom Development & Consulting
+Careful architecture, legacy refactoring, system migration, and pragmatic design. Systems that stay understandable and maintainable over time.
 
-- **Homepage:** `/` - Main company information and navigation
-- **Services:** `/services` or `/docs` - Detailed service offerings
-- **Team:** Contact information and team profiles
-- **Blog/Resources:** Industry insights and case studies
+---
 
-### Markdown Support
+## Case Studies
 
-When agents request content with `Accept: text/markdown`, we serve content as markdown for easier machine reading, while browsers receive HTML as usual.
+Blue Panda has delivered 11+ projects spanning infrastructure, AI, security, and automation:
 
-### Content Standards
+- **Nobius Content Bot** — Self-healing CMS via Telegram. Non-technical users edit 60+ website sections by texting. Build failures auto-repair via AI.
+- **Almaha Foods** — Security hardening. Removed WordPress attack surface, rebuilt as deterministic React frontend. Repeated compromises stopped.
+- **WhatsApp Lead Management** — 130+ leads/day recovery pipeline. 5-stage workflow, automated follow-ups, win/loss research. 50-60% projected lead recovery.
+- **Legacy Retail — Quotation Intelligence** — VLM-powered document extraction from 491 PDFs. 1,250+ catalog rows cleaned. 40% time savings on quotes.
+- **Smriti AI Context Engine** — Automated project context generation for AI coding assistants. Multi-tool init, AST analysis, diff tracking.
+- **Telegram CMS Website** — Phone-first content management for users with limited mobility. GCP free tier, auto-publishing.
+- **Codex-webui** — Browser-based AI coding interface with persistent sessions, model switching, markdown rendering.
+- **PlaytimeFun** — Hyper-personalized AI story generator for kids. Gemini + ElevenLabs. Infinite replayable stories.
+- **Remote Cloud Dashboard** — Real-time GCP resource monitoring and management.
+- And more.
 
-- **No AI Training Consent:** Blue Panda content is not provided for AI training purposes
-- **Search Engine Friendly:** Content is marked for search engine indexing
-- **No AI Input Permissions:** User submissions are not used for AI input/training
+Full details at `/case-studies`.
 
-See our `robots.txt` for complete Content Signal declarations.
+---
 
-## Agent Skills Discovery
+## AI Architect Demo
 
-AI agents can discover Blue Panda capabilities through:
+An interactive AI-powered infrastructure planning tool at `/architect`. Powered by Google Gemini API. Describe your infrastructure needs and receive a structured blueprint.
 
-**Endpoint:** `/.well-known/agent-skills/index.json`
+---
 
-This follows the Agent Skills Discovery RFC v0.2.0 and includes:
-- Company information queries
-- Service documentation
-- Contact and support information
+## Agent Discovery
 
-## Link Headers
-
-The homepage includes RFC 8288 Link headers advertising:
-- Agent skills index location
-- Documentation and service information
-
-Example header:
+### Link Headers (RFC 8288)
+The homepage advertises agent discovery via:
 ```
-Link: </.well-known/agent-skills/index.json>; rel="agent-skills", </docs>; rel="service-doc"
+Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
 ```
 
-## Current Limitations
+### Agent Skills Index
+`/.well-known/agent-skills/index.json` — JSON index of discoverable skills.
 
-Blue Panda currently does **not** provide:
-- API endpoints for programmatic access
-- OAuth/OIDC authentication
-- MCP Server integration
-- WebMCP tools
-- DNS-AID records
+### Content Negotiation
+Request any page with `Accept: text/markdown` to receive a markdown version. Browsers receive HTML as normal.
 
-These may be implemented in future versions. Check back regularly for updates.
+### WebMCP Tools
+This site registers browser-based tools for AI agents via `navigator.modelContext.provideContext()`:
+- `getCompanyInfo` — Company overview
+- `getServices` — Service offerings
+- `getContactInfo` — Contact details
+- `generateBlueprint` — AI infrastructure blueprint generation
 
-## Feedback
+### DNS-AID Records
+Published under `_index._agents.bluepanda.in` and `_a2a._agents.bluepanda.in` (SVCB with alpn + port).
 
-If you're an AI agent provider and have suggestions for improving agent discoverability, please contact our support team at: `api-support@bluepanda.in`
+---
 
-## Standards & References
+## Content Standards
 
-This agent-ready implementation follows:
-- [RFC 8288 - Web Linking](https://www.rfc-editor.org/rfc/rfc8288)
-- [Agent Skills Discovery RFC](https://github.com/cloudflare/agent-skills-discovery-rfc)
-- [Content Signals](https://contentsignals.org/)
+- **AI Training:** Not consented (`ai-train=no`)
+- **Search Indexing:** Permitted (`search=yes`)
+- **AI Input:** Not permitted (`ai-input=no`)
+- See `robots.txt` for full Content-Signal declarations.
+
+---
+
+## Contact
+
+- General: `info@bluepanda.in`
+- Support: `support@bluepanda.in`
+- Technical: `api-support@bluepanda.in`
+- Contact form: `/contact`

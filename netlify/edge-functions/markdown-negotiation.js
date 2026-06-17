@@ -1,8 +1,8 @@
 /**
  * Markdown Content Negotiation Edge Function
  *
- * When an agent sends Accept: text/markdown, serve markdown versions of HTML pages.
- * Otherwise pass through to the SPA.
+ * When an agent sends Accept: text/markdown, serve comprehensive markdown versions
+ * of each page. Otherwise pass through to the SPA.
  */
 export default async (request, context) => {
   const accept = request.headers.get('accept') || '';
@@ -12,6 +12,12 @@ export default async (request, context) => {
   }
 
   const url = new URL(request.url);
+  let path = url.pathname;
+
+  // Strip trailing slash
+  if (path.endsWith('/') && path !== '/') {
+    path = path.slice(0, -1);
+  }
 
   // Map page routes to existing markdown files
   const markdownMap = {
@@ -19,14 +25,19 @@ export default async (request, context) => {
     '/services':            '/.well-known/agent-skills/service-documentation.md',
     '/about':               '/.well-known/agent-skills/company-information.md',
     '/contact':             '/.well-known/agent-skills/contact-information.md',
+    '/architect':           '/.well-known/agent-skills/ai-architect.md',
   };
 
-  // Strip trailing slash for matching
-  const path = url.pathname.endsWith('/') && url.pathname !== '/'
-    ? url.pathname.slice(0, -1)
-    : url.pathname;
+  // Case studies — try to match /case-studies/some-title
+  if (path.startsWith('/case-studies/')) {
+    return context.rewrite('/.well-known/agent-skills/case-studies.md');
+  }
+  // Case studies index
+  if (path === '/case-studies') {
+    return context.rewrite('/.well-known/agent-skills/case-studies.md');
+  }
 
-  const markdownPath = markdownMap[path] || markdownMap[`${path}/`];
+  const markdownPath = markdownMap[path];
 
   if (!markdownPath) {
     return context.next();

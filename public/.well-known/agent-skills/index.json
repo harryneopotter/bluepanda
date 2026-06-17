@@ -4,22 +4,36 @@
     {
       "name": "company-information",
       "type": "information",
-      "description": "Access to Blue Panda company information, team profiles, and service overview",
+      "description": "Blue Panda company profile, history since 2013, philosophy, and principles",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/company-information.md",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "name": "service-documentation",
       "type": "documentation",
-      "description": "Complete documentation of Blue Panda services and infrastructure offerings",
+      "description": "Complete documentation of Blue Panda services: Cloud Infrastructure, AI Integration, Custom Development",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/service-documentation.md",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     },
     {
       "name": "contact-information",
       "type": "query",
-      "description": "Find contact details, support channels, and how to reach Blue Panda",
+      "description": "Contact details, support channels, and how to reach Blue Panda",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/contact-information.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "ai-architect",
+      "type": "tool",
+      "description": "Interactive AI infrastructure planning tool powered by Google Gemini API",
+      "url": "https://www.bluepanda.in/.well-known/agent-skills/ai-architect.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "case-studies",
+      "type": "documentation",
+      "description": "Detailed case studies of 11+ projects: infrastructure, security, AI, automation",
+      "url": "https://www.bluepanda.in/.well-known/agent-skills/case-studies.md",
       "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
     }
   ]

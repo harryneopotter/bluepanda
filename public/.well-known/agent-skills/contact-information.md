@@ -1,47 +1,33 @@
-# Blue Panda Contact Information
+# Blue Panda — Contact Information
 
-## Get in Touch
+## General Inquiries
 
-We'd love to hear from you. Here's how to reach Blue Panda:
+- **Email:** `info@bluepanda.in`
+- **Contact Form:** Visit `/contact` on our website
+- **Website:** `https://www.bluepanda.in`
 
-### General Inquiries
+## Support
 
-**Email:** `info@bluepanda.in`
+- **Support Email:** `support@bluepanda.in`
+- For urgent issues, use the contact form on our website.
 
-**Website:** `https://www.bluepanda.in`
+## Technical & API
 
-**Contact Form:** Visit `/contact` on our website
+- **Technical Contact:** `api-support@bluepanda.in`
+- For questions about programmatic integration, AI Architect API, or technical partnerships.
 
-### Support
+## Business Development
 
-**Support Email:** `support@bluepanda.in`
-
-For urgent support issues, use the contact form on our website.
-
-### API & Technical Questions
-
-**API/Technical Support:** `api-support@bluepanda.in`
-
-Interested in programmatic integration or have technical questions? Our team is here to help.
-
-### Business Development
-
-For partnership opportunities and business inquiries, reach out to: `partnerships@bluepanda.in`
-
-## Office Hours
-
-Support is available during standard business hours. Response times may vary based on inquiry complexity.
-
-## Social & Community
-
-- **Blog/Resources:** Visit our website for latest insights
-- **Documentation:** `/docs` - Technical documentation
+- **Partnerships:** `partnerships@bluepanda.in`
+- For partnership opportunities and business inquiries.
 
 ## Response Times
 
-- General inquiries: 1-2 business days
-- Support requests: Within 24 hours
-- Technical questions: Within 48 hours
+| Type | Expected response |
+|---|---|
+| General inquiries | 1-2 business days |
+| Support requests | Within 24 hours |
+| Technical questions | Within 48 hours |
 
 ---
 
