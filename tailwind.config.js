@@ -11,6 +11,7 @@ export default {
                 void: 'var(--bg-main)',
                 surface: 'var(--bg-surface)',
                 primary: 'var(--text-primary)',
+                muted: 'var(--text-muted)',
                 accent: 'var(--text-accent)',
                 brand: {
                     primary: 'var(--brand-primary)',

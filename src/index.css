@@ -67,7 +67,7 @@
 
     body {
         background-color: var(--bg-main);
-        color: var(--text-main);
+        color: var(--text-primary);
         font-family: 'Space Grotesk', sans-serif;
         overflow-x: hidden;
         transition: background-color 0.3s ease, color 0.3s ease;
