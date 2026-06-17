@@ -84,6 +84,34 @@ Blue Panda's services are best suited for:
 
 ---
 
+## Demonstrated Capabilities
+
+Each service domain is backed by shipped projects with real users and measurable outcomes.
+
+### Cloud Infrastructure & DevOps
+
+- **Remote Cloud Dashboard** (`gcp-remote-dashboard`) — Secure orchestration of remote Docker containers over Tailscale SSH. Real-time GCP resource monitoring, automated alerts, cost tracking, multi-project management.
+- **Nobius Content Bot** — Self-healing deployment pipeline. Telegram bot + auto-fixer bot that detects build failures, analyzes errors with AI, and applies fixes autonomously. Node.js, GitHub API (Octokit), Netlify API, PM2.
+- **Almaha Foods** — Security hardening engagement. Complete deconstruction of repeatedly compromised WordPress into deterministic React frontend. Zero attack surface remaining. Static delivery with controlled deployment pipeline.
+
+### AI Integration & Automation
+
+- **LLM Orchestration** (`aicli`) — Agentic command-line interface integrating OpenAI, Anthropic, Google Gemini, Ollama, and GLM-4. Secure API key management, session encryption, autonomous tool use.
+- **Autonomous Build Repair** (`NobiusHandyman`) — AI agent that detects CI build failures, diagnoses root cause, and applies fixes without human intervention. Guardrailed with change limits and retry caps.
+- **Context Engineering** (`Smriti`) — Automated project context generation for AI coding assistants (Copilot, Cursor, Windsurf). Multi-tool initialization, AST parsing, SHA256 change detection, diff tracking. Evolved through 4 versions.
+- **Document Intelligence** (`Bajaj` / Legacy Retail) — VLM-powered document extraction pipeline processing 491 historical PDFs. Classify → Extract → Verify → Merge pipeline. 1,250+ catalog rows cleaned. 40% time savings on quotations.
+- **Generative AI Applications** (`PlaytimeFun`, `Kid-mini`) — Hyper-personalized AI story generation with Gemini API + ElevenLabs TTS. Kids' favorite heroes in culturally resonant Hinglish. AI coloring pages, text-to-speech narration.
+
+### Custom Development & Consulting
+
+- **Full-Stack Web** — React 19, Next.js 15, Astro, SvelteKit, Tailwind CSS, Framer Motion, Radix UI. Shipped: agency website, `nobius.audio` equipment site, `op143` manga PWA.
+- **Real-Time Systems** (`Bot-Complex`, `Codex-webui`) — WebSocket and Server-Sent Events for persistent AI coding sessions with model switching, markdown rendering, session persistence, chat export/import.
+- **Mobile & Cross-Platform** (`Qscale`, `cactus-soa1-mobile-agent`) — Expo + React Native cross-platform image utility app. On-device mobile agent. PWAs with app-like browser experiences.
+- **Specialized Applications** (`CloudChakra`) — Professional-grade Vedic astrology engine with precise planetary calculations using astronomical algorithms.
+- **WhatsApp Lead Management** — End-to-end lead platform ingesting 130+ daily leads from Meta/Google ads. 5-stage workflow, timed multi-touch follow-ups, automated win/loss research, manager dashboards.
+
+---
+
 ## Contact
 
 - General Inquiries: `info@bluepanda.in`
