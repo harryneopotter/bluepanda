@@ -1388,7 +1388,6 @@ const SystemMenu = ({ isOpen, onClose }) => {
 
 // --- Main App Component ---
 const AppContent = () => {
-  const [loading, setLoading] = useState(true);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
@@ -1407,8 +1406,6 @@ const AppContent = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
-
-  if (loading) return <LoadingScreen onComplete={() => setLoading(false)} />;
 
   return (
     <div className="bg-void min-h-screen text-white selection:bg-cyan-500/30 selection:text-cyan-100">
