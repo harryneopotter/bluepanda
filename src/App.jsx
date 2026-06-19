@@ -37,7 +37,7 @@ import { slugify } from './utils/slugify';
 const SITE_URL = 'https://bluepanda.in';
 const DEFAULT_TITLE = 'Blue Panda - Responsible Infrastructure & Applied AI';
 const DEFAULT_DESCRIPTION = 'Responsible infrastructure, applied AI, and system correction since 2013. Focusing on long-term stability and resilience.';
-const DEFAULT_IMAGE = `${SITE_URL}/favicon.svg`;
+const DEFAULT_IMAGE = `${SITE_URL}/og-image.svg`;
 
 const routeMeta = {
   '/': {

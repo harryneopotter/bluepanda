@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a0a0a"/>
+      <stop offset="50%" style="stop-color:#0d1b2a"/>
+      <stop offset="100%" style="stop-color:#0a0a0a"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#00F0FF"/>
+      <stop offset="100%" style="stop-color:#BF00FF"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="50%" y1="50%" x2="50%" y2="100%">
+      <stop offset="0%" style="stop-color:#00F0FF;stop-opacity:0.15"/>
+      <stop offset="100%" style="stop-color:#00F0FF;stop-opacity:0"/>
+    </linearGradient>
+    <filter id="glowText">
+      <feDropShadow dx="0" dy="0" stdDeviation="4" flood-color="#00F0FF" flood-opacity="0.6"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <!-- Top accent line -->
+  <rect x="0" y="0" width="1200" height="3" fill="url(#accent)"/>
+  <!-- Glow sphere -->
+  <circle cx="600" cy="315" r="280" fill="url(#glow)"/>
+  <!-- Grid lines -->
+  <line x1="0" y1="210" x2="1200" y2="210" stroke="#00F0FF" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="0" y1="420" x2="1200" y2="420" stroke="#00F0FF" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="400" y1="0" x2="400" y2="630" stroke="#00F0FF" stroke-opacity="0.05" stroke-width="1"/>
+  <line x1="800" y1="0" x2="800" y2="630" stroke="#00F0FF" stroke-opacity="0.05" stroke-width="1"/>
+  <!-- Logo mark - simplified panda face -->
+  <circle cx="600" cy="260" r="60" fill="none" stroke="#00F0FF" stroke-width="2" opacity="0.3"/>
+  <circle cx="600" cy="260" r="40" fill="none" stroke="#00F0FF" stroke-width="1.5" opacity="0.5"/>
+  <circle cx="600" cy="260" r="20" fill="#00F0FF" opacity="0.8"/>
+  <!-- Brand name -->
+  <text x="600" y="360" text-anchor="middle" font-family="'Courier New', monospace" font-size="48" font-weight="bold" fill="#00F0FF" filter="url(#glowText)" letter-spacing="8">BLUE PANDA</text>
+  <!-- Tagline -->
+  <text x="600" y="410" text-anchor="middle" font-family="'Courier New', monospace" font-size="18" fill="#9CA3AF" letter-spacing="4">RESPONSIBLE INFRASTRUCTURE &amp; APPLIED AI</text>
+  <!-- Status badge -->
+  <rect x="480" y="445" width="240" height="32" rx="16" fill="none" stroke="#00F0FF" stroke-opacity="0.3" stroke-width="1"/>
+  <text x="600" y="466" text-anchor="middle" font-family="'Courier New', monospace" font-size="12" fill="#00F0FF" opacity="0.6" letter-spacing="3">SINCE 2013</text>
+  <!-- Bottom line -->
+  <rect x="480" y="510" width="240" height="2" fill="url(#accent)" opacity="0.4"/>
+  <text x="600" y="540" text-anchor="middle" font-family="'Courier New', monospace" font-size="11" fill="#6B7280" letter-spacing="2">bluepanda.in</text>
+  <!-- Decorative corner brackets -->
+  <path d="M30 30 L30 80 M30 30 L80 30" fill="none" stroke="#00F0FF" stroke-opacity="0.15" stroke-width="2"/>
+  <path d="M1170 30 L1170 80 M1170 30 L1120 30" fill="none" stroke="#BF00FF" stroke-opacity="0.15" stroke-width="2"/>
+  <path d="M30 600 L30 550 M30 600 L80 600" fill="none" stroke="#BF00FF" stroke-opacity="0.15" stroke-width="2"/>
+  <path d="M1170 600 L1170 550 M1170 600 L1120 600" fill="none" stroke="#00F0FF" stroke-opacity="0.15" stroke-width="2"/>
+  <!-- Subtle cyan dot -->
+  <circle cx="600" cy="590" r="3" fill="#00F0FF" opacity="0.4"/>
+</svg>

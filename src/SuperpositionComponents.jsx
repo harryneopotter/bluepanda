@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { motion, useReducedMotion } from 'framer-motion';
 import { Zap, Cpu, Server, Globe, Shield, Activity, Sparkles, Code2, Database, ExternalLink, Github, ArrowRight, Home, Briefcase, User, Mail, Terminal, FileText, BrainCircuit, Wrench, Factory } from 'lucide-react';
-import pandaHologram from './assets/panda-hologram.png';
+import pandaHologram from './assets/panda-hologram.webp';
 import { projects } from "./projects";
 
 // --- Particle Background ---

@@ -31,7 +31,7 @@ vi.mock('lucide-react', () => {
 })
 
 // Mock the panda hologram image import
-vi.mock('./assets/panda-hologram.png', () => ({ default: 'panda-hologram.png' }))
+vi.mock('./assets/panda-hologram.webp', () => ({ default: 'panda-hologram.webp' }))
 
 import { ProjectCard, ProjectsGrid, BottomNav, FeaturedProjects } from '../SuperpositionComponents.jsx'
 
