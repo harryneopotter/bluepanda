@@ -1,3 +1,4 @@
+import { useRef } from 'react';
 import { motion, useInView, useReducedMotion } from 'framer-motion';
 
 // ============================================
