@@ -1,41 +1,50 @@
-import { Suspense } from 'react';
-import { ParticleBackground } from '../SuperpositionComponents';
-import { PageWrapper, Section } from '../components/shared';
+import { Suspense } from "react";
+import { ParticleBackground } from "../SuperpositionComponents";
+import { PageWrapper, Section } from "../components/shared";
 
 const AboutPage = () => (
   <PageWrapper>
     <div className="relative min-h-screen bg-void text-white pt-8 pb-32 px-4">
       <Suspense fallback={<div className="three-fallback fixed inset-0 z-0" />}><ParticleBackground /></Suspense>
-      <Section className="relative z-10 max-w-4xl">
-        <h1 className="text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">THE HISTORY</h1>
-        <div className="space-y-12 border-l border-cyan-500/20 ml-4 pl-8">
-          <div className="relative group">
-            <div className="absolute -left-[37px] w-4 h-4 bg-black border-2 border-cyan-500 rounded-full group-hover:bg-cyan-500 group-hover:shadow-[0_0_10px_#00F0FF] transition-all" />
-            <span className="font-mono text-cyan-400 text-sm mb-2 block">2013 — 2018</span>
-            <h3 className="text-2xl font-bold mb-4">Traditional Infrastructure</h3>
-            <p className="text-gray-300 leading-relaxed text-lg">Web hosting, domain management, and website development. Building foundational relationships with clients who trusted us with their digital presence.</p>
-          </div>
-          <div className="relative group">
-            <div className="absolute -left-[37px] w-4 h-4 bg-black border-2 border-purple-500 rounded-full group-hover:bg-purple-500 group-hover:shadow-[0_0_10px_#BF00FF] transition-all" />
-            <span className="font-mono text-purple-400 text-sm mb-2 block">2018 — 2024</span>
-            <h3 className="text-2xl font-bold mb-4">Expanding Capabilities</h3>
-            <p className="text-gray-300 leading-relaxed text-lg">Server management, technical consulting, and infrastructure optimization. Growing alongside our clients' needs.</p>
-          </div>
-          <div className="relative group">
-            <div className="absolute -left-[37px] w-4 h-4 bg-cyan-400 rounded-full shadow-[0_0_20px_#00F0FF] animate-pulse" />
-            <span className="font-mono text-cyan-400 text-sm mb-2 block">2025+</span>
-            <h3 className="text-2xl font-bold mb-4 text-white">Responsible Infrastructure</h3>
-            <p className="text-gray-300 leading-relaxed text-lg">Blue Panda has worked on infrastructure and systems since 2013. The focus shifts with client needs, but the principle stays the same: systems should be understandable, stable, and designed for the long term.</p>
-          </div>
-        </div>
-        <div className="mt-20">
-          <h2 className="text-3xl font-bold mb-8 text-white">OUR PHILOSOPHY</h2>
-          <div className="grid md:grid-cols-2 gap-6">
-            <div className="p-6 bg-black/40 border border-white/10 rounded-xl"><p className="text-gray-300 font-mono">&gt; Proportion before complexity</p></div>
-            <div className="p-6 bg-black/40 border border-white/10 rounded-xl"><p className="text-gray-300 font-mono">&gt; Control over novelty</p></div>
-            <div className="p-6 bg-black/40 border border-white/10 rounded-xl"><p className="text-gray-300 font-mono">&gt; Stability before scale</p></div>
-            <div className="p-6 bg-black/40 border border-white/10 rounded-xl"><p className="text-gray-300 font-mono">&gt; Human responsibility in system design</p></div>
-          </div>
+      <Section className="relative z-10 max-w-5xl">
+        <p className="font-mono text-cyan-400 text-sm mb-4">BLUE PANDA // SINCE 2013</p>
+        <h1 className="text-5xl md:text-6xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">ABOUT BLUE PANDA</h1>
+        <p className="text-2xl text-gray-300 leading-relaxed max-w-4xl mb-16">Responsible infrastructure, applied AI, and system correction since 2013.</p>
+
+        <div className="space-y-12 text-gray-300 leading-relaxed text-lg">
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-5">It started with the work after delivery</h2>
+            <p>Blue Panda began around 2004–05 building HTML sites for cafes, then grew through Joomla, Magento, WordPress, WooCommerce, and OpenCart as a straightforward freelance web development practice.</p>
+            <p className="mt-5">Hosting was never the original plan. It became necessary because clients do not distinguish between a slow site and a throttled hosting account. They know the thing they paid for does not work, and they call the person who built it.</p>
+            <p className="mt-5">By 2013, that responsibility had become a full-time operation, with dedicated sites launched for both hosting and web development. The standard was set early: infrastructure is part of the outcome, and if the result fails, it is our problem to fix.</p>
+          </section>
+
+          <section className="p-8 rounded-2xl bg-black/40 border border-cyan-500/20">
+            <p className="font-mono text-cyan-400 text-sm mb-3">RESPONSIBLE OPERATOR //</p>
+            <h2 className="text-3xl font-bold text-white mb-5">Sachin</h2>
+            <p>Blue Panda is built and operated by Sachin, based in Delhi. Independently self-directed since the age of 17, he has roughly three decades of self-taught technical work behind him—from freelance web development and CMS platforms to hosting infrastructure and applied AI systems.</p>
+            <p className="mt-5">The work today includes a public open-source portfolio, live agent-orchestration infrastructure, and multi-model review processes intended to keep solo-operator work honest.</p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-5">The philosophy: remove friction, keep judgment</h2>
+            <p>Infrastructure and software work are often bottlenecked by coordination overhead rather than underlying difficulty. Meetings replace work, review cycles multiply, and decisions become diffused until no one owns them.</p>
+            <p className="mt-5">Blue Panda is built around the opposite principle: one accountable operator, supported by AI agents that handle execution and cross-check output, can move quickly without removing the judgment that makes decisions sound.</p>
+            <p className="mt-5">The hosting infrastructure, agent fleet, and review loops all exist to remove friction between a decision and its execution while keeping responsibility clear.</p>
+          </section>
+
+          <section className="p-8 rounded-2xl bg-black/40 border border-purple-500/20">
+            <p className="font-mono text-purple-400 text-sm mb-3">A CASE STUDY, NOT A CLAIM //</p>
+            <h2 className="text-3xl font-bold text-white mb-5">When the fix was a better-run server</h2>
+            <p>An agency running a popular WordPress publication with multiple daily writers and 70,000–100,000 daily visitors faced repeated downtime despite a managed dedicated server costing more than $500 per month.</p>
+            <p className="mt-5">The solution was not a larger server. A locally sourced bare-metal server was configured with CentminMod, memcached, a paid CDN, and lighter custom-coded functionality. The result was delivered as an all-inclusive $250 per month hosting package.</p>
+            <p className="mt-5">The site then ran without downtime for years. The point was not the hardware; it was taking responsibility for the whole system.</p>
+          </section>
+
+          <section>
+            <h2 className="text-3xl font-bold text-white mb-5">What this means for you</h2>
+            <p>If you work with Blue Panda, you are not routed through a support queue or a rotating cast of engineers. You get one accountable operator, backed by infrastructure and AI tooling built to make that accountability scale without adding unnecessary coordination.</p>
+          </section>
         </div>
       </Section>
     </div>

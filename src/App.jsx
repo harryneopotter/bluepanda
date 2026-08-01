@@ -15,6 +15,7 @@ const ServicesPage = lazy(() => import('./pages/ServicesPage'));
 const ProjectsPage = lazy(() => import('./pages/ProjectsPage'));
 const AboutPage = lazy(() => import('./pages/AboutPage'));
 const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PrivacyPage = lazy(() => import('./pages/PrivacyPage'));
 const InfrastructureArchitect = lazy(() => import('./pages/InfrastructureArchitect'));
 
 const SITE_URL = 'https://bluepanda.in';
@@ -48,7 +49,7 @@ const routeMeta = {
 };
 
 const buildStructuredData = (canonicalUrl) => [
-  { '@context': 'https://schema.org', '@type': 'Organization', name: 'Blue Panda Hosting and Designs', url: SITE_URL, logo: DEFAULT_IMAGE, foundingDate: '2013', email: 'mailto:sachin@bluepanda.in', sameAs: ['https://github.com/harryneopotter'] },
+  { '@context': 'https://schema.org', '@type': 'Organization', name: 'Blue Panda Hosting and Designs', url: SITE_URL, logo: DEFAULT_IMAGE, foundingDate: '2013', email: 'mailto:contact@bluepanda.in', sameAs: ['https://github.com/harryneopotter', 'https://www.linkedin.com/in/sachin-sharma-533692b/'] },
   { '@context': 'https://schema.org', '@type': 'WebSite', name: 'Blue Panda', url: SITE_URL, description: 'Responsible infrastructure, applied AI, and system correction since 2013.' },
   { '@context': 'https://schema.org', '@type': 'Service', name: 'Responsible Infrastructure and Applied AI Engineering', provider: { '@type': 'Organization', name: 'Blue Panda Hosting and Designs', url: SITE_URL }, areaServed: 'Worldwide', serviceType: ['Cloud Infrastructure', 'AI Integration', 'Automation', 'Custom Development', 'Technical Consulting'], url: canonicalUrl },
 ];
@@ -107,6 +108,7 @@ const AppContent = () => {
     if (path.startsWith('/case-studies')) return 'case-studies';
     if (path.startsWith('/about')) return 'about';
     if (path.startsWith('/contact')) return 'contact';
+    if (path.startsWith('/privacy')) return 'privacy';
     if (path.startsWith('/architect')) return 'architect';
     return 'home';
   };
@@ -138,6 +140,7 @@ const AppContent = () => {
               <Route path="/services" element={<ServicesPage />} />
               <Route path="/about" element={<AboutPage />} />
               <Route path="/contact" element={<ContactPage />} />
+              <Route path="/privacy" element={<PrivacyPage />} />
               <Route path="/architect" element={<InfrastructureArchitect />} />
               <Route path="/case-studies/*" element={<ProjectsPage />} />
             </Routes>

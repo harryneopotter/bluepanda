@@ -1,75 +1,74 @@
-# Blue Panda - Resilient Infrastructure Website
+# Blue Panda Website
 
-A cutting-edge web presence for Blue Panda Hosting and Designs, showcasing our evolution from traditional hosting to AI-powered resilient infrastructure.
+The Blue Panda website presents responsible infrastructure, applied systems, and careful engineering for the long term. It preserves the distinctive dark cyan/magenta visual identity while making the work and reasoning easier to understand.
 
-## 🌟 Features
+## Current features
 
-- **Superposition Design Theme**: Dark mode with neon accents, particle backgrounds, and glitch effects
-- **AI Infrastructure Architect**: Powered by Gemini API for intelligent infrastructure planning
-- **Interactive Case Study Showcase**: Detailed case studies with metrics and tech stacks
-- **Responsive Navigation**: Bottom navigation bar with tooltips and system menu overlay
-- **Content-Rich Pages**: Services, Case Studies, About, Contact, and AI Architect
+- React/Vite single-page site with client-side routes for Home, Services, Case Studies, About, Contact, and AI Architect.
+- Lazy-loaded route pages with case-study detail URLs and modal presentation.
+- Dark neon visual system, particle effects, holographic panda, responsive navigation, and reduced-motion support.
+- AI Architect reasoning tool that sends the user’s blueprint prompt through a Netlify function to Google Gemini.
+- Contact form backed by a Netlify function and SMTP delivery.
+- Agent discovery resources under public/.well-known/agent-skills/, agent metadata, WebMCP registration, and Markdown content negotiation.
 
-## 🚀 Tech Stack
+The AI Architect is a reasoning surface, not a chatbot, pricing tool, sales funnel, or replacement for human judgment. Its product direction is defined by ai-architect.md, which takes precedence over broader marketing or review suggestions.
 
-- **Framework**: React 19 with Vite
-- **Styling**: Tailwind CSS with custom animations
-- **Icons**: Lucide React
-- **AI Integration**: Google Gemini API
-- **Deployment**: Static build ready for any hosting platform
+## Tech stack
 
-## 📦 Installation
+- React 19
+- Vite
+- React Router
+- Tailwind CSS
+- Framer Motion
+- Three.js / React Three Fiber
+- Lucide React
+- Netlify Functions and Edge Functions
+- Google Gemini API
 
-```bash
-# Install dependencies
-npm install
+## Development
 
-# Run development server
+~~~bash
+npm ci
 npm run dev
-
-# Build for production
 npm run build
-
-# Preview production build
 npm run preview
-```
+~~~
 
-## 🎨 Project Structure
+Netlify uses Node 20 and npm run build. The build generates public/sitemap.xml before creating the deployable dist/ directory.
 
-```
-qpanda/
-├── src/
-│   ├── App.jsx                      # Main application with routing
-│   ├── SuperpositionComponents.jsx  # Reusable UI components
-│   └── index.css                    # Global styles and animations
-├── public/                          # Static assets
-├── index.html                       # Entry HTML
-└── vite.config.js                   # Vite configuration
-```
+## Environment variables
 
-## 🌐 Pages
+Secrets belong in the Netlify environment, not in client-side source files.
 
-- **Home**: Hero section with AI-themed branding
-- **Services**: Q Panda Cloud, AI Infrastructure, Traditional Web Services
-- **Case Studies**: Real project showcase with case study modals
-- **About**: Company evolution timeline and team
-- **AI Architect**: Gemini-powered infrastructure blueprint generator
-- **Contact**: Contact form with Calendly integration
+- GEMINI_API_KEY — server-side key for the AI Architect function.
+- BREV_API_KEY — SMTP credential for the contact function.
+- CONTACT_TO_EMAIL — optional contact destination.
+- CONTACT_FROM_EMAIL — optional sender address.
 
-## 🔑 Environment Variables
+## Project structure
 
-To use the AI Architect feature, you'll need a Gemini API key. Update the API key in `src/App.jsx`:
+~~~text
+src/
+├── App.jsx                         # Global shell, routes, and metadata
+├── pages/                          # Lazy-loaded route pages
+├── components/                     # Shared layout and page sections
+├── SuperpositionComponents.jsx     # Visual and portfolio components
+├── services/                       # AI and WebMCP integrations
+├── projects.js                     # Portfolio data
+└── caseStudiesData.js              # Case-study content
+netlify/
+├── functions/                      # Contact and Gemini endpoints
+└── edge-functions/                 # Markdown negotiation
+public/                             # Static assets and agent resources
+~~~
 
-```javascript
-const apiKey = "YOUR_GEMINI_API_KEY";
-```
+## Documentation
 
-## 📝 License
+- ai-architect.md — authoritative product direction for the AI Architect.
+- bluepanda-website-review-codex-handoff.md — latest website review and implementation backlog.
+- PROGRESS.md — historical task log. Entries record work completed at that time; later code may have changed or removed it.
+- REVIEW.md and AGENT_READY_IMPLEMENTATION.md — earlier review and implementation notes; verify claims against current code before relying on them.
 
-© 2013-2025 Blue Panda Hosting and Designs. All rights reserved.
+## Contact
 
-## 🐼 About Blue Panda
-
-Operating since 2013, Blue Panda has evolved from traditional web hosting to pioneering resilient cloud infrastructure with AI-powered autonomous systems.
-
-**Contact**: sachin@bluepanda.in
+For website enquiries, use the contact form or email the address configured for the deployment.

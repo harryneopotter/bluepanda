@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -25,13 +25,18 @@ const Footer = () => {
           </div>
           <div>
             <h3 className="font-mono text-white font-bold mb-4 uppercase text-xl">Contact</h3>
-            <button onClick={() => navigate('/contact')} className="w-12 h-12 rounded-full border border-cyan-500/30 flex items-center justify-center text-cyan-400 hover:bg-cyan-500/10 hover:shadow-[0_0_15px_rgba(0,240,255,0.3)] transition-all">
-              <Mail className="w-6 h-6" />
-            </button>
+            <a href="mailto:contact@bluepanda.in" className="inline-flex items-center gap-3 text-gray-300 hover:text-cyan-400 transition-colors text-lg" aria-label="Email Blue Panda">
+              <Mail className="w-6 h-6 text-cyan-400" />
+              contact@bluepanda.in
+            </a>
+            <div className="flex gap-4 mt-5">
+              <a href="https://github.com/harryneopotter" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="GitHub"><Github className="w-6 h-6" /></a>
+              <a href="https://www.linkedin.com/in/sachin-sharma-533692b/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="LinkedIn"><Linkedin className="w-6 h-6" /></a>
+            </div>
           </div>
         </div>
         <div className="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-500 text-xl font-mono">© 2013-2025 Blue Panda Hosting and Designs. All rights reserved.</p>
+          <p className="text-gray-500 text-xl font-mono">© 2013-{new Date().getFullYear()} Blue Panda. All rights reserved.</p>
         </div>
       </div>
     </footer>

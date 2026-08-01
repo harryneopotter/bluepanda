@@ -130,6 +130,11 @@ const InfrastructureArchitect = () => {
                 <div className="mb-8">
                   <label className="block text-sm font-bold text-purple-300 mb-2 font-mono uppercase">Describe the system, problem, or constraint</label>
                   <textarea value={projectDesc} onChange={(e) => setProjectDesc(e.target.value)} placeholder="Describe your project here..." className="w-full h-32 p-4 rounded-xl bg-black/50 border border-purple-500/30 text-white focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all resize-none font-mono mb-2" />
+                  <div className="text-xs text-gray-500 font-mono space-y-1 mb-6">
+                    <p className="font-bold text-purple-400">Try these examples:</p>
+                    <button type="button" className="block text-left hover:text-white transition-colors" onClick={() => setProjectDesc("E-commerce site expecting 10K daily visitors with peaks during sales.")}>"E-commerce site expecting 10K daily visitors..."</button>
+                    <button type="button" className="block text-left hover:text-white transition-colors" onClick={() => setProjectDesc("Internal RAG system for searching 50,000 PDF documents securely.")}>"Internal RAG system for searching 50,000 PDF documents..."</button>
+                  </div>
                 </div>
                 <div className="mb-8">
                   <label className="block text-sm font-bold text-purple-300 mb-2 font-mono uppercase">Analysis Depth</label>
@@ -140,6 +145,7 @@ const InfrastructureArchitect = () => {
                     ))}
                   </div>
                 </div>
+                <p className="text-sm text-gray-400 italic mb-6">Do not submit passwords, API keys, private keys, personal data, or confidential client information. See the <a href="/privacy" className="text-purple-300 hover:text-white">Privacy Policy</a>.</p>
                 <Button variant="gradient" onClick={handleGenerate} disabled={loading || !projectDesc.trim()} className="w-full md:w-auto bg-gradient-to-r from-purple-600 to-pink-600 border-none">
                   {loading ? <><Activity className="w-4 h-4 animate-spin" /> PROCESSING...</> : <><Sparkles className="w-4 h-4" /> GENERATE BLUEPRINT</>}
                 </Button>

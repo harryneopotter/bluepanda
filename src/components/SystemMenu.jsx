@@ -39,7 +39,7 @@ const SystemMenu = ({ isOpen, onClose }) => {
           <p className="text-gray-500 font-mono text-sm mb-4">EXTERNAL LINKS</p>
           <div className="flex gap-4">
             <a href="https://github.com/harryneopotter" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="GitHub"><Github className="w-6 h-6" /></a>
-            <a href="mailto:sachin@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Email"><Mail className="w-6 h-6" /></a>
+            <a href="mailto:contact@bluepanda.in" className="text-gray-400 hover:text-cyan-400 transition-colors" aria-label="Email"><Mail className="w-6 h-6" /></a>
           </div>
         </div>
       </div>

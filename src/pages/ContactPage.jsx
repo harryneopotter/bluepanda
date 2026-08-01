@@ -22,7 +22,7 @@ const ContactPage = () => {
       setFormData({ name: '', email: '', message: '' });
     } catch {
       setFormStatus('error');
-      setFormError('Connection error. Please email us directly at info@bluepanda.in');
+      setFormError('Connection error. Please email us directly at contact@bluepanda.in');
     }
   };
 
@@ -66,6 +66,7 @@ const ContactPage = () => {
                 </Button>
                 {formStatus !== 'idle' && <Button type="button" variant="outline" onClick={handleReset}>RESET</Button>}
               </div>
+              <p className="text-sm text-gray-500 font-mono">By sending this form, you acknowledge our <a href="/privacy" className="text-cyan-400 hover:text-white">Privacy Policy</a>.</p>
             </form>
           </div>
         </Section>

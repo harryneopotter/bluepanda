@@ -23,6 +23,7 @@ const pages = [
   '/about',
   '/architect',
   '/contact',
+  '/privacy',
 ];
 
 const caseStudies = projects.map(p => `/case-studies/${slugify(p.title)}`);
