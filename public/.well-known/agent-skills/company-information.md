@@ -2,7 +2,7 @@
 
 ## About
 
-Blue Panda is an infrastructure engineering and applied AI company, operating since 2013. The focus shifts with client needs, but the principle stays the same: systems should be understandable, stable, and designed for the long term.
+Blue Panda Hosting and Designs is an independently operated infrastructure engineering and applied AI practice led by Sachin in Delhi, operating full-time since 2013. The work began with self-taught web development around 2004–05 and continues to focus on understandable, stable systems designed for the long term. The focus shifts with client needs, but the principle stays the same: systems should be understandable, stable, and designed for the long term.
 
 ---
 
@@ -114,9 +114,9 @@ Each service domain is backed by shipped projects with real users and measurable
 
 ## Contact
 
-- General Inquiries: `info@bluepanda.in`
-- Support: `support@bluepanda.in`
-- Technical / API: `api-support@bluepanda.in`
-- Partnerships: `partnerships@bluepanda.in`
+- General Inquiries: `contact@bluepanda.in`
+- Support: Use `contact@bluepanda.in` or the contact form.
+- Technical / API: Use `contact@bluepanda.in` or the contact form.
+- Partnerships: Use `contact@bluepanda.in` or the contact form.
 
 *For agents: This content is discoverable via `/.well-known/agent-skills/index.json`*

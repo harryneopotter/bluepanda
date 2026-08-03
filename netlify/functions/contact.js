@@ -22,7 +22,7 @@ export default async (req) => {
       return new Response('Server configuration error', { status: 500 });
     }
 
-    const toEmail = process.env.CONTACT_TO_EMAIL || 'sachin@bluepanda.in';
+    const toEmail = process.env.CONTACT_TO_EMAIL || 'contact@bluepanda.in';
     const fromEmail = process.env.CONTACT_FROM_EMAIL || 'no-reply@bluepanda.in';
 
     const transporter = nodemailer.createTransport({

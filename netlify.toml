@@ -22,7 +22,7 @@
 [[headers]]
   for = "/"
   [headers.values]
-    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\", </docs>; rel=\"service-doc\""
+    Link = "</.well-known/agent-skills/index.json>; rel=\"agent-skills\""
 
 [[headers]]
   for = "/.well-known/agent-skills/index.json"

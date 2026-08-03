@@ -4,37 +4,44 @@
     {
       "name": "company-information",
       "type": "information",
-      "description": "Blue Panda company profile, history since 2013, philosophy, and principles",
+      "description": "Blue Panda company profile, history, philosophy, and principles",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/company-information.md",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "312cf4ff29724b08416c9248344df325f57e1a3535c3796319efba6cbfca1370"
     },
     {
       "name": "service-documentation",
       "type": "documentation",
-      "description": "Complete documentation of Blue Panda services: Cloud Infrastructure, AI Integration, Custom Development",
+      "description": "Blue Panda services: infrastructure, applied AI, and custom engineering",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/service-documentation.md",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "f9e7a871c5f246c0099dd594f0dbb78573cbd71d16c7d5f781d3c32d7fd2e563"
     },
     {
       "name": "contact-information",
       "type": "query",
-      "description": "Contact details, support channels, and how to reach Blue Panda",
+      "description": "Blue Panda contact details and contact form",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/contact-information.md",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "6b8c9fda7a80f84b3d637012819b365f742d0eed0a98c8dae9a639ecbe187b9e"
     },
     {
       "name": "ai-architect",
       "type": "tool",
-      "description": "Interactive AI infrastructure planning tool powered by Google Gemini API",
+      "description": "Blue Panda AI Architect reasoning surface and infrastructure planning tool",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/ai-architect.md",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "67c7c72b479354861de75b689827d1db8973fe805bb621e452fe7580db2bcb0d"
     },
     {
       "name": "case-studies",
       "type": "documentation",
-      "description": "Detailed case studies of 11+ projects: infrastructure, security, AI, automation",
+      "description": "Blue Panda case studies across infrastructure, security, AI, and automation",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/case-studies.md",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      "sha256": "dacfae45e91952204dd7b5970c306d8ae9ad857e2d62eb36ffe3be2ffcc50555"
+    },
+    {
+      "name": "privacy-policy",
+      "type": "information",
+      "description": "Blue Panda privacy policy and data-handling practices",
+      "url": "https://www.bluepanda.in/.well-known/agent-skills/privacy-policy.md",
+      "sha256": "3c79375d4702465383c618e965a37e1172ed70a1a0cad9a8598b03bf46d4522e"
     }
   ]
 }

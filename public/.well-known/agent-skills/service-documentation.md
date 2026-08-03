@@ -69,7 +69,7 @@ Blue Panda follows these principles in every engagement:
 ## Getting Started
 
 - Website: `https://www.bluepanda.in`
-- Contact: `/contact` or `info@bluepanda.in`
+- Contact: `/contact` or `contact@bluepanda.in`
 - AI Architect Demo: `/architect`
 
 *For agents: This documentation is discoverable via `/.well-known/agent-skills/index.json`*

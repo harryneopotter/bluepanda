@@ -1,6 +1,6 @@
 # Blue Panda — Responsible Infrastructure & Applied AI
 
-Blue Panda designs and maintains resilient infrastructure, applied systems, and custom engineering — focused on long-term stability, clarity, and reliability since 2013.
+Blue Panda Hosting and Designs is a Delhi-based, independently operated practice led by Sachin. It designs and maintains resilient infrastructure, applied systems, and custom engineering — focused on long-term stability, clarity, and reliability since 2013.
 
 **Tagline:** Problem-solving, not service selling.
 
@@ -21,7 +21,7 @@ Careful architecture, legacy refactoring, system migration, and pragmatic design
 
 ## Case Studies
 
-Blue Panda has delivered 11+ projects spanning infrastructure, AI, security, and automation:
+Blue Panda has delivered projects spanning infrastructure, AI, security, and automation:
 
 - **Nobius Content Bot** — Self-healing CMS via Telegram. Non-technical users edit 60+ website sections by texting. Build failures auto-repair via AI.
 - **Almaha Foods** — Security hardening. Removed WordPress attack surface, rebuilt as deterministic React frontend. Repeated compromises stopped.
@@ -34,7 +34,7 @@ Blue Panda has delivered 11+ projects spanning infrastructure, AI, security, and
 - **Remote Cloud Dashboard** — Real-time GCP resource monitoring and management.
 - And more.
 
-Full details at `/case-studies`.
+Full details at `/case-studies`, including individual project URLs listed in the sitemap.
 
 ---
 
@@ -81,7 +81,7 @@ Published under `_index._agents.bluepanda.in` and `_a2a._agents.bluepanda.in` (S
 
 ## Contact
 
-- General: `info@bluepanda.in`
-- Support: `support@bluepanda.in`
-- Technical: `api-support@bluepanda.in`
+- Email: `contact@bluepanda.in`
+- GitHub: `https://github.com/harryneopotter`
+- LinkedIn: `https://www.linkedin.com/in/sachin-sharma-533692b/`
 - Contact form: `/contact`

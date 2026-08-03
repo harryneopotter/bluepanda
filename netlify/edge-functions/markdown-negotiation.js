@@ -25,6 +25,7 @@ export default async (request, context) => {
     '/services':            '/.well-known/agent-skills/service-documentation.md',
     '/about':               '/.well-known/agent-skills/company-information.md',
     '/contact':             '/.well-known/agent-skills/contact-information.md',
+    '/privacy':             '/.well-known/agent-skills/privacy-policy.md',
     '/architect':           '/.well-known/agent-skills/ai-architect.md',
   };
 
