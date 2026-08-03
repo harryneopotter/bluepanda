@@ -19,6 +19,13 @@ Blue Panda has worked on infrastructure and systems since 2013. The focus shifts
 
 ---
 
+## Current Focus
+
+Blue Panda now focuses increasingly on applied AI systems that make existing work more reliable and understandable. Recent work includes document classification and verification, lead-recovery workflows, context engineering for AI coding, automated deployment repair, and AI applications designed around specific human needs.
+
+The principle is not to add AI for its own sake. Useful intelligence belongs inside a real process, with clear boundaries, human review where it matters, and enough structure to understand what happened when something goes wrong.
+
+Infrastructure remains the foundation. An AI-assisted cPanel service with account monitoring, proactive maintenance and optimization, and L1 support is being prepared as a future extension of that operating experience.
 ## Philosophy
 
 - **Proportion before complexity**
@@ -53,7 +60,7 @@ The infrastructure and development market today has a gap between two extremes:
 - **Enterprise agencies** that charge enterprise rates for simple problems, assign rotating junior teams, and push platform lock-in.
 - **Freelance solo operators** who are affordable but lack backup, accountability, and the breadth needed for non-trivial systems.
 
-Blue Panda sits in the middle — a small, experienced team that charges fair rates for work that's actually needed, not work that fills a proposal template. Clients get direct access to the person building their systems, with the stability of a company that has operated continuously since 2013.
+Blue Panda is an independently operated practice focused on work that is actually needed, not work that fills a proposal template. Clients get direct access to the person building their systems, with the stability of a company that has operated continuously since 2013.
 
 ### Specific Gaps We Address
 
