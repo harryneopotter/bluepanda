@@ -1,0 +1,21 @@
+# Blue Panda
+
+> Blue Panda builds and repairs systems where software, infrastructure, and real-world operations meet, using AI where it creates useful leverage without removing accountability.
+
+Blue Panda is an independently operated systems engineering and applied-AI practice led by Sachin in Delhi. The work focuses on reducing manual effort, preserving operational knowledge, improving reliability, and making difficult systems understandable.
+
+## Key pages
+
+- [Home and company overview](https://www.bluepanda.in/): Blue Panda overview, services, case studies, AI Architect, and contact details. Markdown source: https://www.bluepanda.in/agent-readme.md
+- [Services](https://www.bluepanda.in/services): Infrastructure, applied AI, automation, and custom engineering capabilities. Markdown source: https://www.bluepanda.in/.well-known/agent-skills/service-documentation.md
+- [About](https://www.bluepanda.in/about): Company history, current applied-AI focus, principles, and operating model. Markdown source: https://www.bluepanda.in/.well-known/agent-skills/company-information.md
+- [Case studies](https://www.bluepanda.in/case-studies): Projects covering document intelligence, automation, security, context engineering, and AI products. Markdown source: https://www.bluepanda.in/.well-known/agent-skills/case-studies.md
+- [AI Architect](https://www.bluepanda.in/architect): A reasoning surface for turning messy system constraints into a practical blueprint. Markdown source: https://www.bluepanda.in/.well-known/agent-skills/ai-architect.md
+- [Contact](https://www.bluepanda.in/contact): How to contact Blue Panda about a system, automation, or applied-AI problem. Markdown source: https://www.bluepanda.in/.well-known/agent-skills/contact-information.md
+- [Privacy policy](https://www.bluepanda.in/privacy): Data handling for the contact form, AI Architect, and service providers. Markdown source: https://www.bluepanda.in/.well-known/agent-skills/privacy-policy.md
+
+## Optional
+
+- [Agent skills index](https://www.bluepanda.in/.well-known/agent-skills/index.json): Structured discovery index with hashes for page resources.
+- [Robots policy](https://www.bluepanda.in/robots.txt): Current search, training, and AI-input content signals.
+- [Sitemap](https://www.bluepanda.in/sitemap.xml): All public routes and case-study URLs.

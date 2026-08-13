@@ -25,7 +25,6 @@ Blue Panda now focuses increasingly on applied AI systems that make existing wor
 
 The principle is not to add AI for its own sake. Useful intelligence belongs inside a real process, with clear boundaries, human review where it matters, and enough structure to understand what happened when something goes wrong.
 
-Infrastructure remains the foundation. An AI-assisted cPanel service with account monitoring, proactive maintenance and optimization, and L1 support is being prepared as a future extension of that operating experience.
 ## Philosophy
 
 - **Proportion before complexity**

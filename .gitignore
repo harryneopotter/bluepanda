@@ -53,3 +53,5 @@ env
 /v2-issues
 PROGRESS.md
 redesign.md
+!public/llms.txt
+!public/llms-full.txt

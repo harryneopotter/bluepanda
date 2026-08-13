@@ -6,7 +6,7 @@
       "type": "information",
       "description": "Blue Panda company profile, history, philosophy, and principles",
       "url": "https://www.bluepanda.in/.well-known/agent-skills/company-information.md",
-      "sha256": "403edebebd42619ea95a2b404cff81d28061a29164e26fa0104b447c8f342012"
+      "sha256": "b1e90e780bf8650fa54ff288980be53b2ae93a1a590179dd9f8ce48da53ae40e"
     },
     {
       "name": "service-documentation",

@@ -1,0 +1,542 @@
+# Blue Panda — Full LLM Content
+
+---
+
+# Home and company overview
+
+Canonical URL: https://www.bluepanda.in/
+
+# Blue Panda — Responsible Infrastructure & Applied AI
+
+Blue Panda Hosting and Designs is a Delhi-based, independently operated practice led by Sachin. It designs and maintains resilient infrastructure, applied systems, and custom engineering — focused on long-term stability, clarity, and reliability since 2013.
+
+**Tagline:** Problem-solving, not service selling.
+
+---
+
+## Services
+
+### Cloud Infrastructure & DevOps
+Design and operate secure, resilient cloud systems with emphasis on uptime and recoverability. Includes server management, security hardening, monitoring, and long-term maintenance.
+
+### AI Integration & Automation
+Integrate AI into existing systems in a controlled, privacy-first way. Deterministic workflows, data sovereignty, and useful automation without black-box dependencies.
+
+### Custom Development & Consulting
+Careful architecture, legacy refactoring, system migration, and pragmatic design. Systems that stay understandable and maintainable over time.
+
+---
+
+## Case Studies
+
+Blue Panda has delivered projects spanning infrastructure, AI, security, and automation:
+
+- **Nobius Content Bot** — Self-healing CMS via Telegram. Non-technical users edit 60+ website sections by texting. Build failures auto-repair via AI.
+- **Almaha Foods** — Security hardening. Removed WordPress attack surface, rebuilt as deterministic React frontend. Repeated compromises stopped.
+- **WhatsApp Lead Management** — 130+ leads/day recovery pipeline. 5-stage workflow, automated follow-ups, win/loss research. 50-60% projected lead recovery.
+- **Legacy Retail — Quotation Intelligence** — VLM-powered document extraction from 491 PDFs. 1,250+ catalog rows cleaned. 40% time savings on quotes.
+- **Smriti AI Context Engine** — Automated project context generation for AI coding assistants. Multi-tool init, AST analysis, diff tracking.
+- **Telegram CMS Website** — Phone-first content management for users with limited mobility. GCP free tier, auto-publishing.
+- **Codex-webui** — Browser-based AI coding interface with persistent sessions, model switching, markdown rendering.
+- **PlaytimeFun** — Hyper-personalized AI story generator for kids. Gemini + ElevenLabs. Infinite replayable stories.
+- **Remote Cloud Dashboard** — Real-time GCP resource monitoring and management.
+- And more.
+
+Full details at `/case-studies`, including individual project URLs listed in the sitemap.
+
+---
+
+## AI Architect Demo
+
+An interactive AI-powered infrastructure planning tool at `/architect`. Powered by Google Gemini API. Describe your infrastructure needs and receive a structured blueprint.
+
+---
+
+## Agent Discovery
+
+### Link Headers (RFC 8288)
+The homepage advertises agent discovery via:
+```
+Link: </.well-known/agent-skills/index.json>; rel="agent-skills"
+```
+
+### Agent Skills Index
+`/.well-known/agent-skills/index.json` — JSON index of discoverable skills.
+
+### Content Negotiation
+Request any page with `Accept: text/markdown` to receive a markdown version. Browsers receive HTML as normal.
+
+### WebMCP Tools
+This site registers browser-based tools for AI agents via `navigator.modelContext.provideContext()`:
+- `getCompanyInfo` — Company overview
+- `getServices` — Service offerings
+- `getContactInfo` — Contact details
+- `generateBlueprint` — AI infrastructure blueprint generation
+
+### DNS-AID Records
+Published under `_index._agents.bluepanda.in` and `_a2a._agents.bluepanda.in` (SVCB with alpn + port).
+
+---
+
+## Content Standards
+
+- **AI Training:** Not consented (`ai-train=no`)
+- **Search Indexing:** Permitted (`search=yes`)
+- **AI Input:** Not permitted (`ai-input=no`)
+- See `robots.txt` for full Content-Signal declarations.
+
+---
+
+## Contact
+
+- Email: `contact@bluepanda.in`
+- GitHub: `https://github.com/harryneopotter`
+- LinkedIn: `https://www.linkedin.com/in/sachin-sharma-533692b/`
+- Contact form: `/contact`
+
+---
+
+# Services
+
+Canonical URL: https://www.bluepanda.in/services
+
+# Blue Panda — Services Documentation
+
+Blue Panda works on systems that need to function reliably over time — not just launch successfully. The work spans infrastructure, applied AI, and engineering correction, depending on what the problem actually requires.
+
+---
+
+## Cloud Infrastructure & DevOps
+
+**Problem:** Systems that are fragile or unclear under real-world load.
+
+**Approach:** Design and operate secure, resilient cloud systems with emphasis on uptime and recoverability.
+
+**Outcome:** Stable operations with clear ownership, monitoring, and maintenance.
+
+### Capabilities
+
+- Server Management — provisioning, configuration, scaling
+- Security Hardening — attack surface reduction, deterministic deployments
+- Monitoring — observability, alerting, incident response
+- Long-term Maintenance — predictable operations over years, not just launch
+
+---
+
+## AI Integration & Automation
+
+**Problem:** AI added without control or clarity.
+
+**Approach:** Integrate AI into existing systems in a controlled, privacy-first way.
+
+**Outcome:** Deterministic workflows, data sovereignty, and useful automation without black-box dependencies.
+
+### Capabilities
+
+- Privacy-First AI — data stays under your control
+- Data Sovereignty — no training on customer data
+- Deterministic Workflows — predictable outputs from AI pipelines
+- Controlled Automation — human-in-the-loop where it matters
+
+---
+
+## Custom Development & Consulting
+
+**Problem:** Systems that are bloated, brittle, or hard to change.
+
+**Approach:** Careful architecture, refactoring, migration, and system design.
+
+**Outcome:** Pragmatic systems that stay understandable and maintainable over time.
+
+### Capabilities
+
+- Careful Architecture — proportion before complexity
+- Legacy Refactoring — modernize without rewriting
+- System Migration — move from fragile to stable foundations
+- Pragmatic Design — control over novelty, stability before scale
+
+---
+
+## Philosophy
+
+Blue Panda follows these principles in every engagement:
+
+- **Proportion before complexity** — use what fits the problem, not the trend
+- **Control over novelty** — understand what you depend on
+- **Stability before scale** — reliable first, big second
+- **Human responsibility in system design** — no black boxes, no blame-shifting to automation
+
+---
+
+## Getting Started
+
+- Website: `https://www.bluepanda.in`
+- Contact: `/contact` or `contact@bluepanda.in`
+- AI Architect Demo: `/architect`
+
+*For agents: This documentation is discoverable via `/.well-known/agent-skills/index.json`*
+
+---
+
+# About
+
+Canonical URL: https://www.bluepanda.in/about
+
+# Blue Panda — Company Information
+
+## About
+
+Blue Panda Hosting and Designs is an independently operated infrastructure engineering and applied AI practice led by Sachin in Delhi, operating full-time since 2013. The work began with self-taught web development around 2004–05 and continues to focus on understandable, stable systems designed for the long term. The focus shifts with client needs, but the principle stays the same: systems should be understandable, stable, and designed for the long term.
+
+---
+
+## History
+
+### 2013 — 2018: Traditional Infrastructure
+Web hosting, domain management, and website development. Building foundational relationships with clients who trusted us with their digital presence.
+
+### 2018 — 2024: Expanding Capabilities
+Server management, technical consulting, and infrastructure optimization. Growing alongside our clients' needs.
+
+### 2025+: Responsible Infrastructure
+Blue Panda has worked on infrastructure and systems since 2013. The focus shifts with client needs, but the principle stays the same: systems should be understandable, stable, and designed for the long term.
+
+---
+
+## Current Focus
+
+Blue Panda now focuses increasingly on applied AI systems that make existing work more reliable and understandable. Recent work includes document classification and verification, lead-recovery workflows, context engineering for AI coding, automated deployment repair, and AI applications designed around specific human needs.
+
+The principle is not to add AI for its own sake. Useful intelligence belongs inside a real process, with clear boundaries, human review where it matters, and enough structure to understand what happened when something goes wrong.
+
+## Philosophy
+
+- **Proportion before complexity**
+- **Control over novelty**
+- **Stability before scale**
+- **Human responsibility in system design**
+
+---
+
+## Principles
+
+### Proportion before complexity
+We use what fits the problem, not what's trendy. Every dependency is a liability. The right solution for a small business is different from the right solution for an enterprise — we don't apply one-size-fits-all architecture.
+
+### Control over novelty
+We understand what we depend on. New technology is evaluated for stability, maintainability, and actual problem fit — not adopted for its own sake. If a shell script and cron job solves it, that's the answer.
+
+### Stability before scale
+Reliable first, big second. Systems that work for the long term are designed for operations, not just features. Monitoring, backup, recovery, and documentation are not optional.
+
+### Human responsibility in system design
+No black boxes, no blame-shifting to automation. Engineers remain responsible for what their systems do. AI is a tool, not a decision-maker. Automated processes have human oversight where decisions matter.
+
+---
+
+## Market Positioning
+
+### The Gap Blue Panda Fills
+
+The infrastructure and development market today has a gap between two extremes:
+
+- **Enterprise agencies** that charge enterprise rates for simple problems, assign rotating junior teams, and push platform lock-in.
+- **Freelance solo operators** who are affordable but lack backup, accountability, and the breadth needed for non-trivial systems.
+
+Blue Panda is an independently operated practice focused on work that is actually needed, not work that fills a proposal template. Clients get direct access to the person building their systems, with the stability of a company that has operated continuously since 2013.
+
+### Specific Gaps We Address
+
+| Market Gap | How Blue Panda Fills It |
+|---|---|
+| **Fragile WordPress/Frankenstein setups** recurringly compromised | Full deconstruction and rebuild as deterministic static frontends — remove attack surface without visual redesign |
+| **Manual processes drowning teams** (lead management, quotation, content updates) | Custom automation pipelines with AI where it helps, human workflow where it matters |
+| **AI sold as a black box** — vendor lock-in, no data sovereignty | Controlled AI integration with transparent data boundaries, deterministic outputs, and privacy-first design |
+| **Overengineered solutions for simple problems** — microservices for a brochure site | Proportionate architecture: the right tool for the actual scale, not the resume-driven choice |
+| **No long-term ownership** — build-and-abandon consulting | Systems designed for operations, with documentation, monitoring, and maintainability built in from the start |
+
+### Ideal Customers
+
+Blue Panda's services are best suited for:
+
+- **Small to medium businesses** (10-200 employees) that have outgrown DIY setups but don't need (or want) enterprise agency overhead
+- **Companies with existing systems** that are fragile, insecure, or require too much manual effort to operate
+- **Organizations that value stability over novelty** — if you've been burned by trend-chasing vendors or overengineered architectures, the approach here is deliberately different
+- **Businesses needing one-person accountability** — a single point of contact who understands the full system, not a rotating roster of junior consultants
+- **Teams that want controlled AI integration** — adding AI capabilities without losing data sovereignty or operational predictability
+
+### What We Don't Do
+
+- We don't build for massive scale by default — we build what fits the problem, then scale when there's evidence it's needed
+- We don't lock clients into proprietary platforms or recurring fees for access to their own data
+- We don't take projects where the goal is "use this trendy technology" rather than "solve this real problem"
+- We don't provide 24/7 enterprise support SLAs — we provide clear, honest communication about timelines and availability
+
+---
+
+## Demonstrated Capabilities
+
+Each service domain is backed by shipped projects with real users and measurable outcomes.
+
+### Cloud Infrastructure & DevOps
+
+- **Remote Cloud Dashboard** (`gcp-remote-dashboard`) — Secure orchestration of remote Docker containers over Tailscale SSH. Real-time GCP resource monitoring, automated alerts, cost tracking, multi-project management.
+- **Nobius Content Bot** — Self-healing deployment pipeline. Telegram bot + auto-fixer bot that detects build failures, analyzes errors with AI, and applies fixes autonomously. Node.js, GitHub API (Octokit), Netlify API, PM2.
+- **Almaha Foods** — Security hardening engagement. Complete deconstruction of repeatedly compromised WordPress into deterministic React frontend. Zero attack surface remaining. Static delivery with controlled deployment pipeline.
+
+### AI Integration & Automation
+
+- **LLM Orchestration** (`aicli`) — Agentic command-line interface integrating OpenAI, Anthropic, Google Gemini, Ollama, and GLM-4. Secure API key management, session encryption, autonomous tool use.
+- **Autonomous Build Repair** (`NobiusHandyman`) — AI agent that detects CI build failures, diagnoses root cause, and applies fixes without human intervention. Guardrailed with change limits and retry caps.
+- **Context Engineering** (`Smriti`) — Automated project context generation for AI coding assistants (Copilot, Cursor, Windsurf). Multi-tool initialization, AST parsing, SHA256 change detection, diff tracking. Evolved through 4 versions.
+- **Document Intelligence** (`Bajaj` / Legacy Retail) — VLM-powered document extraction pipeline processing 491 historical PDFs. Classify → Extract → Verify → Merge pipeline. 1,250+ catalog rows cleaned. 40% time savings on quotations.
+- **Generative AI Applications** (`PlaytimeFun`, `Kid-mini`) — Hyper-personalized AI story generation with Gemini API + ElevenLabs TTS. Kids' favorite heroes in culturally resonant Hinglish. AI coloring pages, text-to-speech narration.
+
+### Custom Development & Consulting
+
+- **Full-Stack Web** — React 19, Next.js 15, Astro, SvelteKit, Tailwind CSS, Framer Motion, Radix UI. Shipped: agency website, `nobius.audio` equipment site, `op143` manga PWA.
+- **Real-Time Systems** (`Bot-Complex`, `Codex-webui`) — WebSocket and Server-Sent Events for persistent AI coding sessions with model switching, markdown rendering, session persistence, chat export/import.
+- **Mobile & Cross-Platform** (`Qscale`, `cactus-soa1-mobile-agent`) — Expo + React Native cross-platform image utility app. On-device mobile agent. PWAs with app-like browser experiences.
+- **Specialized Applications** (`CloudChakra`) — Professional-grade Vedic astrology engine with precise planetary calculations using astronomical algorithms.
+- **WhatsApp Lead Management** — End-to-end lead platform ingesting 130+ daily leads from Meta/Google ads. 5-stage workflow, timed multi-touch follow-ups, automated win/loss research, manager dashboards.
+
+---
+
+## Contact
+
+- General Inquiries: `contact@bluepanda.in`
+- Support: Use `contact@bluepanda.in` or the contact form.
+- Technical / API: Use `contact@bluepanda.in` or the contact form.
+- Partnerships: Use `contact@bluepanda.in` or the contact form.
+
+*For agents: This content is discoverable via `/.well-known/agent-skills/index.json`*
+
+---
+
+# Case studies
+
+Canonical URL: https://www.bluepanda.in/case-studies
+
+# Blue Panda — Case Studies
+
+Blue Panda case studies show practical work across infrastructure, security hardening, applied AI, automation, and custom engineering. Each project is approached proportionately: understand the failure mode, reduce unnecessary complexity, and leave an operable system.
+
+## Nobius Content Bot — Self-Healing CMS via Telegram
+
+**Challenge:** Website updates required developer involvement, and failed builds needed manual intervention.
+
+**Approach:** A Telegram content bot lets non-technical users edit 60+ website sections. An auto-fixer bot monitors builds, analyzes failures with AI, and applies guardrailed repairs.
+
+**Stack:** Node.js, Telegram Bot API, GitHub API, Netlify API, AI error analysis, PM2.
+
+**Outcome:** Content updates became autonomous and build failures can be repaired in minutes. [Live site](https://nobius.audio).
+
+## Almaha Foods — Frontend Deconstruction and Security Hardening
+
+**Challenge:** A simple marketing site was repeatedly compromised through its WordPress runtime.
+
+**Approach:** Rebuilt the site as a deterministic React frontend, removed WordPress and its plugin attack surface, and retained the visual design.
+
+**Outcome:** Repeated incidents stopped and the site became stable and low-maintenance. [Live site](https://almahafoods.com).
+
+## Telegram CMS Website
+
+**Challenge:** A creative educator needed to manage PDFs, images, student work, and leads from a phone because conventional CMS workflows were difficult.
+
+**Approach:** Built Telegram-based content uploads, automatic processing and publishing, contact-lead notifications, and monitoring on GCP serverless infrastructure.
+
+**Stack:** Next.js, Telegram, GCP Cloud Functions, Cloud Storage, Firestore, Cloud Run.
+
+**Outcome:** Independent phone-first website management focused on accessibility and simplicity. [Public source](https://github.com/harryneopotter/telegram-cms-website-public).
+
+## Remote Cloud Dashboard — Secure VM Orchestration
+
+**Challenge:** GCP resources needed centralized monitoring and management without constant manual checking.
+
+**Approach:** Built a dashboard for real-time resource monitoring, alerts, cost tracking, and multi-project management using secure remote access.
+
+**Stack:** React, GCP APIs, Cloud Functions, Docker, Tailscale.
+
+**Outcome:** Improved infrastructure visibility and reduced manual monitoring. [Source](https://github.com/harryneopotter/gcp-remote-dashboard).
+
+## Smriti — AI Context Engine
+
+**Challenge:** AI coding sessions repeatedly required project trees, dependencies, and structure to be pasted into different tools.
+
+**Approach:** Automated repository scanning, context generation, multi-tool initialization, SHA256 change detection, diff tracking, and semantic AST analysis.
+
+**Stack:** Python AST parsing, TypeScript, ts-morph, SHA256.
+
+**Outcome:** Less context re-entry and lower friction for AI-assisted development. [Source](https://github.com/harryneopotter/Smriti).
+
+## PlaytimeFun
+
+**Challenge:** Children needed engaging, replayable entertainment while the developer worked.
+
+**Approach:** Created personalized AI stories in culturally resonant Hinglish, coloring pages, narration, and a digital piano.
+
+**Stack:** React, Vite, Google Gemini, ElevenLabs.
+
+**Outcome:** A deliberately specific, personalized generative-AI experience. [Source](https://github.com/harryneopotter/PlaytimeFun).
+
+## aicli
+
+An AI-powered Python CLI for developer workflows, AI API integration, and automation. [Source](https://github.com/harryneopotter/aicli).
+
+## Codex-webui
+
+**Challenge:** Terminal sessions could lose context and produce unreadable output during connection drops.
+
+**Approach:** Built a typed browser interface with persistent sessions, model switching, WebSocket streaming, markdown rendering, and chat export/import.
+
+**Stack:** TypeScript, WebSocket, modular browser architecture.
+
+**Outcome:** A usable, maintainable interface for persistent AI coding sessions. [Live site](https://codex-webui-ts.hnpart.xyz) · [Source](https://github.com/harryneopotter/Codex-webui).
+
+## PandaBanana
+
+A creative web-based project for rapid prototyping and UI experimentation, with collaborative and AI-assisted concepts. [Live demo](https://banana.bluepanda.cloud/) · [Source](https://github.com/harryneopotter/PandaBanana).
+
+## Legacy Retail — Quotation Intelligence and Catalog Recovery
+
+**Challenge:** A long-running retail business had decades of invoices and purchase records scattered across PDFs and spreadsheets, making quotations slow and error-prone.
+
+**Approach:** Built a Classify → Extract → Verify → Merge pipeline with VLM extraction, provenance, product autocomplete, last-sold pricing, GST calculation, and PDF generation.
+
+**Outcome:** 1,250+ catalog rows cleaned from 491 PDFs and quotation assembly time reduced by over 40%. Production data remains frozen pending approval.
+
+## WhatsApp Lead Management — Recovering Lost Ad Leads
+
+**Challenge:** A team receiving roughly 130 daily WhatsApp leads could follow up on only a fraction, with no systematic pipeline or loss analysis.
+
+**Approach:** Built webhook ingestion, a five-stage workflow, timed follow-ups, win/loss research, role-based dashboards, and audit logs.
+
+**Outcome:** Projected recovery of 50–60% of previously lost leads and response time reduced from hours to under 30 seconds.
+
+For the interactive project pages, visit `/case-studies` on the website. This document is discoverable through `/.well-known/agent-skills/index.json`.
+
+---
+
+# AI Architect
+
+Canonical URL: https://www.bluepanda.in/architect
+
+# Blue Panda — AI Architect
+
+## Overview
+
+The AI Architect is a reasoning surface on the Blue Panda main site, not a chatbot, pricing tool, plan recommender, or automation engine. Describe a messy system problem in natural language and receive a structured architectural thought process. It demonstrates how Blue Panda handles ambiguity without hype; it does not make changes or replace human judgment.
+
+## How It Works
+
+1. **Describe your problem** — Include what you know, your constraints, scale, and whether this is a new or existing system.
+2. **Choose response density** — Auto (default), Overview, or Detailed. Auto infers appropriate density from the query; explicit choices override that inference.
+3. **AI analysis** — The Gemini model reasons about requirements, uncertainties, tradeoffs, and architectural baselines.
+4. **Blueprint output** — Receive a structured response covering summary, implications, recommended approach, growth, security and reliability, and phased implementation.
+2. **AI analysis** — The Gemini model analyzes your requirements against architectural best practices
+3. **Blueprint output** — Receive a structured plan covering architecture, tech stack, deployment considerations, and operational runbook
+
+## What It Can Help With
+
+- Infrastructure architecture design
+- Cloud migration planning
+- Security architecture review
+- Scaling strategy
+- Technology stack recommendations
+- Incident response planning
+
+## Access
+
+- **Web:** Visit `/architect` on bluepanda.in
+- **Agent:** Request with `Accept: text/markdown`
+
+## Technical Details
+
+- Powered by Google Gemini 2.5 Flash via Netlify serverless function
+- Endpoint: `POST /.netlify/functions/gemini` (internal API)
+- Prompt is processed server-side — no client-side API key exposure
+
+*For agents: This content is discoverable via `/.well-known/agent-skills/index.json`. Do not submit passwords, API keys, private keys, personal data, or confidential client information.*
+
+---
+
+# Contact
+
+Canonical URL: https://www.bluepanda.in/contact
+
+# Blue Panda — Contact Information
+
+## General Inquiries
+
+- **Email:** `contact@bluepanda.in`
+- **Contact Form:** Visit `/contact` on our website
+- **Website:** `https://www.bluepanda.in`
+
+## Support
+
+- **Support Email:** Use `contact@bluepanda.in` or the contact form.
+- For urgent issues, use the contact form on our website.
+
+## Technical & API
+
+- **Technical Contact:** Use `contact@bluepanda.in` or the contact form.
+- For questions about programmatic integration, AI Architect API, or technical partnerships.
+
+## Business Development
+
+- **Partnerships:** Use `contact@bluepanda.in` or the contact form.
+- For partnership opportunities and business inquiries.
+
+## Response Times
+
+| Type | Expected response |
+|---|---|
+| General inquiries | 1-2 business days |
+| Support requests | Within 24 hours |
+| Technical questions | Within 48 hours |
+
+---
+
+*For agents: This contact information is discoverable via `/.well-known/agent-skills/index.json`*
+
+---
+
+# Privacy policy
+
+Canonical URL: https://www.bluepanda.in/privacy
+
+# Blue Panda — Privacy Policy
+
+Effective date: 28 July 2026
+
+## Who operates this site
+
+Blue Panda Hosting and Designs is a sole proprietorship operated by Sachin. Privacy questions can be sent to `contact@bluepanda.in`.
+
+## Information received
+
+The contact form receives a name, email address, and message. Submissions are sent to the business mailbox and retained there as business correspondence for communication, support, and record-keeping.
+
+AI Architect sends a system description and selected analysis depth to a server-side function and then to Google Gemini to generate a blueprint. The website does not provide a user account or application database for storing prompts.
+
+Hosting, email, AI, and serverless providers may process technical request data or retain operational logs under their own policies.
+
+## Use of information
+
+Information is used to respond to enquiries, provide requested support, generate AI Architect blueprints, operate and secure the website, and meet applicable business or legal obligations. Contact submissions are not used to create a marketing newsletter or sell personal information.
+
+## Service providers
+
+The current deployment uses Netlify for hosting and serverless functions, Brevo SMTP for contact-message delivery, and Google Gemini for AI Architect generation. The hosting environment may later move to a virtual machine; this policy will be updated if processing changes.
+
+## AI Architect warning
+
+Do not submit passwords, access tokens, API keys, private keys, personal data, confidential client information, or other sensitive material to AI Architect. Generated blueprints are informational and require human review. The tool does not make infrastructure changes or guarantee production readiness.
+
+## Retention, security, and rights
+
+Contact emails are retained in the business mailbox as reasonably needed for communication, support, business records, or legal obligations. AI Architect prompts are not intentionally stored in a Blue Panda application database; provider logs, mailbox backups, and third-party retention follow relevant provider settings and policies.
+
+For questions, access, correction, or deletion requests where applicable, email `contact@bluepanda.in`. We may verify identity before handling a request. Rights depend on applicable law.
+
+Blue Panda may update this policy when the site, providers, or data practices change.

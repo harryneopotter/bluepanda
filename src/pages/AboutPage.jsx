@@ -42,7 +42,6 @@ const AboutPage = () => (
             <h2 className="text-3xl font-bold text-white mb-5">Applied AI that stays accountable</h2>
             <p>The current work is increasingly focused on applied AI: systems that classify and verify messy documents, recover lost leads, preserve context for developers, repair routine deployment failures, and turn repetitive decisions into understandable workflows.</p>
             <p className="mt-5">The common requirement is not to add AI for its own sake. It is to make useful intelligence available inside an existing process, with clear boundaries, human review where it matters, and enough structure to understand what happened when something goes wrong.</p>
-            <p className="mt-5">Infrastructure remains the foundation. An AI-assisted cPanel service with account monitoring, proactive maintenance and optimization, and L1 support is being prepared as a new extension of that operating experience—not as a return to hosting as the center of the business.</p>
           </section>
 
           <section className="p-8 rounded-2xl bg-black/40 border border-cyan-500/20">
